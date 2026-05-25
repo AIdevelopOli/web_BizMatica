@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="sk" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BizMatica — AI Automation Agency</title>
-  <meta name="description" content="BizMatica helps SMBs eliminate repetitive work with intelligent AI automation. Process automation, chatbots, integrations, and custom AI solutions." />
+  <title>BizMatica — Agentúra pre AI Automatizáciu</title>
+  <meta name="description" content="BizMatica pomáha malým a stredným podnikateľom eliminovať opakujúcu sa prácu pomocou inteligentnej AI automatizácie. Automatizácia procesov, chatboty, integrácie a vlastné AI riešenia." />
   <link rel="alternate" hreflang="en" href="https://bizmatica.net/" />
   <link rel="alternate" hreflang="cs" href="https://bizmatica.net/cs/" />
   <link rel="alternate" hreflang="sk" href="https://bizmatica.net/sk/" />
@@ -40,7 +40,6 @@
     *, body { font-family: 'DM Sans', sans-serif; }
     h1, h2, h3, .font-display { font-family: 'Syne', sans-serif; }
 
-    /* Grain texture overlay */
     .grain::before {
       content: '';
       position: absolute;
@@ -51,14 +50,12 @@
       z-index: 1;
     }
 
-    /* Nav scroll */
     .nav-scrolled {
       background: rgba(6, 13, 46, 0.96) !important;
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(59,110,248,0.15);
     }
 
-    /* Cards */
     .card-hover {
       transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
                   box-shadow 0.3s ease,
@@ -70,7 +67,6 @@
       border-color: rgba(59,110,248,0.35);
     }
 
-    /* Buttons */
     .btn-p {
       transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1),
                   box-shadow 0.2s ease;
@@ -79,7 +75,6 @@
     .btn-p:active { transform: translateY(0); }
     .btn-g { transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
 
-    /* Inputs */
     .inp {
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
       outline: none;
@@ -89,7 +84,6 @@
       box-shadow: 0 0 0 3px rgba(59,110,248,0.14);
     }
 
-    /* Gradient text */
     .grad-text {
       background: linear-gradient(135deg, #7BB8FF 0%, #5B9CF6 40%, #3B6EF8 100%);
       -webkit-background-clip: text;
@@ -97,7 +91,6 @@
       background-clip: text;
     }
 
-    /* Scroll reveal */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -105,7 +98,6 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Ref card tag */
     .tag {
       display: inline-flex;
       align-items: center;
@@ -129,8 +121,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="flex items-center justify-between py-4">
 
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 group" aria-label="BizMatica">
+      <a href="/sk/" class="flex items-center gap-3 group" aria-label="BizMatica">
         <svg width="34" height="34" viewBox="0 0 72 72" class="transition-transform duration-300 group-hover:scale-105" fill="none">
           <line x1="38" y1="26" x2="38" y2="9"  stroke="#5B9CF6" stroke-width="2"   stroke-linecap="round" opacity=".75"/>
           <line x1="47" y1="31" x2="63" y2="25" stroke="#5B9CF6" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
@@ -157,24 +148,22 @@
         </span>
       </a>
 
-      <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-7">
-        <a href="#services"     class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Services</a>
-        <a href="#how-it-works" class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">How it works</a>
-        <a href="#references"   class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">References</a>
-        <a href="#about"        class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">About</a>
-        <a href="#contact"      class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Contact</a>
+        <a href="#sluzby"        class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Služby</a>
+        <a href="#ako-to-funguje" class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Ako to funguje</a>
+        <a href="#referencie"    class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Referencie</a>
+        <a href="#o-nas"         class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">O nás</a>
+        <a href="#kontakt"       class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Kontakt</a>
       </div>
 
-      <!-- Lang + CTA -->
       <div class="flex items-center gap-3">
         <div class="hidden sm:flex items-center gap-1 text-xs font-semibold">
-          <a href="/"    class="px-2.5 py-1 rounded-md text-white bg-white/15 border border-white/25 focus-visible:ring-2 focus-visible:ring-bm-sky">EN</a>
+          <a href="/"    class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-bm-sky">EN</a>
           <a href="/cs/" class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-bm-sky">CS</a>
-          <a href="/sk/" class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-bm-sky">SK</a>
+          <a href="/sk/" class="px-2.5 py-1 rounded-md text-white bg-white/15 border border-white/25 focus-visible:ring-2 focus-visible:ring-bm-sky">SK</a>
         </div>
-        <a href="#contact" class="btn-p hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-bm-electric text-white text-sm font-semibold focus-visible:ring-2 focus-visible:ring-bm-sky focus-visible:ring-offset-2 focus-visible:ring-offset-bm-dark">
-          Get started
+        <a href="#kontakt" class="btn-p hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-bm-electric text-white text-sm font-semibold focus-visible:ring-2 focus-visible:ring-bm-sky focus-visible:ring-offset-2 focus-visible:ring-offset-bm-dark">
+          Začať
         </a>
         <button id="menuBtn" class="md:hidden text-white/75 hover:text-white transition-colors p-1 focus-visible:ring-2 focus-visible:ring-bm-sky rounded" aria-label="Menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -185,29 +174,26 @@
     </div>
   </div>
 
-  <!-- Mobile menu -->
   <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 px-6 py-5 space-y-4" style="background:rgba(6,13,46,0.98);backdrop-filter:blur(14px);">
-    <a href="#services"     class="block text-white/75 hover:text-white text-sm font-medium transition-colors">Services</a>
-    <a href="#how-it-works" class="block text-white/75 hover:text-white text-sm font-medium transition-colors">How it works</a>
-    <a href="#references"   class="block text-white/75 hover:text-white text-sm font-medium transition-colors">References</a>
-    <a href="#about"        class="block text-white/75 hover:text-white text-sm font-medium transition-colors">About</a>
-    <a href="#contact"      class="block text-white/75 hover:text-white text-sm font-medium transition-colors">Contact</a>
+    <a href="#sluzby"         class="block text-white/75 hover:text-white text-sm font-medium transition-colors">Služby</a>
+    <a href="#ako-to-funguje" class="block text-white/75 hover:text-white text-sm font-medium transition-colors">Ako to funguje</a>
+    <a href="#referencie"     class="block text-white/75 hover:text-white text-sm font-medium transition-colors">Referencie</a>
+    <a href="#o-nas"          class="block text-white/75 hover:text-white text-sm font-medium transition-colors">O nás</a>
+    <a href="#kontakt"        class="block text-white/75 hover:text-white text-sm font-medium transition-colors">Kontakt</a>
     <div class="flex gap-2 pt-2 border-t border-white/10">
-      <a href="/"    class="px-3 py-1.5 rounded-md text-white bg-white/15 border border-white/25 text-xs font-semibold">EN</a>
+      <a href="/"    class="px-3 py-1.5 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors text-xs font-semibold">EN</a>
       <a href="/cs/" class="px-3 py-1.5 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors text-xs font-semibold">CS</a>
-      <a href="/sk/" class="px-3 py-1.5 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors text-xs font-semibold">SK</a>
+      <a href="/sk/" class="px-3 py-1.5 rounded-md text-white bg-white/15 border border-white/25 text-xs font-semibold">SK</a>
     </div>
-    <a href="#contact" class="btn-p flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-bm-electric text-white text-sm font-semibold">Get started</a>
+    <a href="#kontakt" class="btn-p flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-bm-electric text-white text-sm font-semibold">Začať</a>
   </div>
 </nav>
 
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
 <section class="relative grain min-h-screen flex items-center overflow-hidden" style="background: radial-gradient(ellipse 90% 70% at 75% 35%, rgba(59,110,248,0.2) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 15% 75%, rgba(26,74,219,0.14) 0%, transparent 60%), #060D2E;">
 
-  <!-- Grid lines -->
   <div class="absolute inset-0 opacity-[0.035]" style="background-image:linear-gradient(rgba(91,156,246,1) 1px,transparent 1px),linear-gradient(90deg,rgba(91,156,246,1) 1px,transparent 1px);background-size:64px 64px;"></div>
 
-  <!-- Decorative bg network -->
   <div class="absolute right-[-40px] top-1/2 -translate-y-1/2 opacity-[0.055] pointer-events-none hidden xl:block" style="width:580px;height:580px;">
     <svg viewBox="0 0 580 580" fill="none">
       <circle cx="290" cy="290" r="110" stroke="#5B9CF6" stroke-width="1"/>
@@ -232,50 +218,35 @@
   <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-28 lg:py-36">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-      <!-- Left: text -->
       <div>
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-bm-electric/40 bg-bm-electric/10 mb-8">
-          <span class="w-1.5 h-1.5 rounded-full bg-bm-sky animate-pulse"></span>
-          <span class="text-bm-sky text-sm font-semibold tracking-wide">AI Automation for SMBs</span>
-        </div>
 
-        <!-- H1 -->
         <h1 class="font-display font-bold text-white mb-6 leading-[1.05]" style="font-size:clamp(2.6rem,5vw,4.4rem);letter-spacing:-0.04em;">
-          Automate the routine.<br/>
-          <span class="grad-text">Focus on growth.</span>
+          Zautomatizujte rutinu.<br/>
+          <span class="grad-text">Sústreďte sa na rast.</span>
         </h1>
 
-        <!-- Sub -->
         <p class="text-white/60 text-lg mb-10" style="line-height:1.72;">
-          BizMatica helps small and medium businesses eliminate repetitive tasks, integrate systems, and deploy intelligent AI solutions — so your team can focus on what actually matters.
+          BizMatica pomáha malým a stredným podnikateľom eliminovať opakujúce sa úlohy, integrovať systémy a nasadzovať inteligentné AI riešenia — aby sa váš tím mohol sústrediť na to, na čom skutočne záleží.
         </p>
 
-        <!-- CTAs -->
         <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="btn-p inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-bm-electric text-white font-semibold text-base focus-visible:ring-2 focus-visible:ring-bm-sky focus-visible:ring-offset-2 focus-visible:ring-offset-bm-dark">
-            Start automating
+          <a href="#kontakt" class="btn-p inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-bm-electric text-white font-semibold text-base focus-visible:ring-2 focus-visible:ring-bm-sky focus-visible:ring-offset-2 focus-visible:ring-offset-bm-dark">
+            Začať automatizovať
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
-          <a href="#services" class="btn-g inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-white/20 text-white/75 hover:text-white hover:border-white/40 hover:bg-white/5 font-medium text-base focus-visible:ring-2 focus-visible:ring-white/30">
-            See our services
+          <a href="#sluzby" class="btn-g inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-white/20 text-white/75 hover:text-white hover:border-white/40 hover:bg-white/5 font-medium text-base focus-visible:ring-2 focus-visible:ring-white/30">
+            Naše služby
           </a>
         </div>
 
       </div>
 
-      <!-- Right: hero image -->
       <div class="hidden lg:block relative">
         <div class="relative rounded-2xl overflow-hidden" style="height:520px;box-shadow:0 40px 80px rgba(0,0,0,0.5),0 8px 24px rgba(59,110,248,0.25);">
           <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&h=720&fit=crop&q=80"
-               alt="AI automation dashboard" class="w-full object-cover" style="height:520px;">
-          <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(10,31,122,0.30) 0%,rgba(3,10,30,0.15) 100%);mix-blend-mode:multiply;"></div>
+               alt="AI automatizácia" class="w-full object-cover" style="height:520px;">
+<div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(10,31,122,0.30) 0%,rgba(3,10,30,0.15) 100%);mix-blend-mode:multiply;"></div>
           <div class="absolute bottom-0 left-0 right-0 h-24" style="background:linear-gradient(to top,rgba(3,10,30,0.6),transparent);"></div>
-        </div>
-        <!-- Floating badge -->
-        <div class="absolute -top-4 -right-4 px-4 py-2.5 rounded-xl flex items-center gap-2" style="background:#060D2E;border:1px solid rgba(59,110,248,0.3);box-shadow:0 8px 24px rgba(0,0,0,0.3);">
-          <span class="w-2 h-2 rounded-full bg-bm-sky animate-pulse"></span>
-          <span class="text-white text-xs font-semibold">AI running 24/7</span>
         </div>
       </div>
 
@@ -285,19 +256,19 @@
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-16 pt-12 border-t border-white/10">
       <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
         <div class="font-display font-bold text-white text-3xl mb-1" style="letter-spacing:-0.04em;">80%</div>
-        <div class="text-white/45 text-sm" style="line-height:1.6;">of repetitive tasks can be automated</div>
+        <div class="text-white/45 text-sm" style="line-height:1.6;">opakujúcich sa úloh možno automatizovať</div>
       </div>
       <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
         <div class="font-display font-bold text-white text-3xl mb-1" style="letter-spacing:-0.04em;">3×</div>
-        <div class="text-white/45 text-sm" style="line-height:1.6;">average productivity increase after automation</div>
+        <div class="text-white/45 text-sm" style="line-height:1.6;">priemerný nárast produktivity po automatizácii</div>
       </div>
       <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
-        <div class="font-display font-bold text-white text-3xl mb-1" style="letter-spacing:-0.04em;">30 days</div>
-        <div class="text-white/45 text-sm" style="line-height:1.6;">from audit to first automation live</div>
+        <div class="font-display font-bold text-white text-3xl mb-1" style="letter-spacing:-0.04em;">30 dní</div>
+        <div class="text-white/45 text-sm" style="line-height:1.6;">od auditu po spustenie prvej automatizácie</div>
       </div>
       <div class="p-5 rounded-2xl border border-white/10 bg-white/5">
         <div class="font-display font-bold text-white text-3xl mb-1" style="letter-spacing:-0.04em;">ROI</div>
-        <div class="text-white/45 text-sm" style="line-height:1.6;">projected before we write a single line of code</div>
+        <div class="text-white/45 text-sm" style="line-height:1.6;">vypočítame pred napísaním jediného riadku kódu</div>
       </div>
     </div>
 
@@ -305,81 +276,75 @@
 </section>
 
 <!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
-<section id="services" class="py-24 lg:py-32 bg-white">
+<section id="sluzby" class="py-24 lg:py-32 bg-white">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-    <div class="max-w-2xl mb-14 reveal">
-      <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">What we do</p>
-      <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl mb-5" style="letter-spacing:-0.03em;line-height:1.08;">Services built for<br/>real business impact</h2>
-      <p class="text-gray-500 text-lg" style="line-height:1.72;">We don't sell technology. We sell time back to your team and revenue back to your business.</p>
+    <div class="max-w-3xl mb-14 reveal">
+      <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">Čo robíme</p>
+      <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl mb-5" style="letter-spacing:-0.03em;line-height:1.08;">Služby vytvorené pre<br/>reálny dopad na váš biznis</h2>
+      <p class="text-gray-500 text-lg" style="line-height:1.72;">Nepredávame technológie. Vraciame čas vášmu tímu a príjmy vášmu podnikaniu.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <!-- 1 -->
       <div class="card-hover reveal group p-8 rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-11 h-11 rounded-xl bg-bm-pale flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-bm-electric/10">
           <svg class="w-5 h-5 text-bm-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
           </svg>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">AI Automation Consultation & Strategy</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">Not sure where to start? We map your business processes, identify the highest-ROI automation opportunities, and build a clear roadmap — before writing a single line of code.</p>
+        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">Konzultácia a stratégia AI automatizácie</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Neviete, kde začať? Zmapujeme vaše obchodné procesy, identifikujeme príležitosti s najvyššou návratnosťou a zostavíme jasný plán — ešte pred napísaním jediného riadku kódu.</p>
       </div>
 
-      <!-- 2 -->
       <div class="card-hover reveal group p-8 rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-11 h-11 rounded-xl bg-bm-pale flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-bm-electric/10">
           <svg class="w-5 h-5 text-bm-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">AI Process Automation</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">Eliminate repetitive manual tasks with custom automation workflows. We handle data entry, approvals, notifications, and more — automatically.</p>
+        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">AI Automatizácia procesov</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Eliminujte opakujúce sa manuálne úlohy pomocou vlastných automatizačných workflow. Zabezpečujeme zadávanie dát, schvaľovanie, notifikácie a oveľa viac — automaticky.</p>
       </div>
 
-      <!-- 3 -->
       <div class="card-hover reveal group p-8 rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-11 h-11 rounded-xl bg-bm-pale flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-bm-electric/10">
           <svg class="w-5 h-5 text-bm-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
           </svg>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">AI Chatbots</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">Deploy 24/7 AI assistants that handle customer inquiries, qualify leads, and book appointments — while your team focuses on high-value work.</p>
+        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">AI Chatboty</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Nasaďte AI asistentov dostupných 24/7, ktorí vybavujú otázky zákazníkov, kvalifikujú leady a rezervujú stretnutia — zatiaľ čo sa váš tím sústreďuje na hodnotnejšiu prácu.</p>
       </div>
 
-      <!-- 4 -->
       <div class="card-hover reveal group p-8 rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-11 h-11 rounded-xl bg-bm-pale flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-bm-electric/10">
           <svg class="w-5 h-5 text-bm-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
           </svg>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">System Integrations</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">Connect your CRM, ERP, email, and other tools into one seamless automated ecosystem. Stop copying data between apps manually.</p>
+        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">Systémové integrácie</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Prepojte váš CRM, ERP, e-mail a ďalšie nástroje do jedného bezproblémového automatizovaného ekosystému. Prestaňte ručne kopírovať dáta medzi aplikáciami.</p>
       </div>
 
-      <!-- 5 -->
       <div class="card-hover reveal group p-8 rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-11 h-11 rounded-xl bg-bm-pale flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-bm-electric/10">
           <svg class="w-5 h-5 text-bm-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
           </svg>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">Automated Reporting</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">Get real-time dashboards and scheduled reports delivered automatically. No more manual data pulling — insights arrive when you need them.</p>
+        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">Automatizované reporty</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Získajte prehľadné dashboardy a plánované reporty doručené automaticky. Žiadne ručné sťahovanie dát — prehľady prídu, keď ich potrebujete.</p>
       </div>
 
-      <!-- 6 -->
       <div class="card-hover reveal group p-8 rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-11 h-11 rounded-xl bg-bm-pale flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-bm-electric/10">
           <svg class="w-5 h-5 text-bm-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
           </svg>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">Custom AI Solutions</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">From document processing to predictive analytics — tailored AI solutions that solve your specific business challenges, not generic ones.</p>
+        <h3 class="font-display font-bold text-bm-dark text-lg mb-3" style="letter-spacing:-0.02em;">Vlastné AI riešenia</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Od spracovania dokumentov po prediktívne analýzy — AI riešenia na mieru, ktoré riešia vaše konkrétne obchodné výzvy, nie generické.</p>
       </div>
 
     </div>
@@ -387,12 +352,12 @@
 </section>
 
 <!-- ═══════════════════════════ HOW IT WORKS ═══════════════════════════ -->
-<section id="how-it-works" class="py-24 lg:py-32" style="background:#F4F7FF;">
+<section id="ako-to-funguje" class="py-24 lg:py-32" style="background:#F4F7FF;">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
     <div class="max-w-2xl mb-14 reveal">
-      <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">The process</p>
-      <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl" style="letter-spacing:-0.03em;line-height:1.08;">From idea to automation<br/>in 5 steps</h2>
+      <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">Postup</p>
+      <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl" style="letter-spacing:-0.03em;line-height:1.08;">Od nápadu k automatizácii<br/>v 5 krokoch</h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -401,40 +366,40 @@
         <div class="w-12 h-12 rounded-full bg-bm-electric flex items-center justify-center mb-6" style="box-shadow:0 4px 18px rgba(59,110,248,0.38);">
           <span class="font-display font-bold text-white text-lg">1</span>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Discovery Audit</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">We analyze your workflows, tools, and pain points to identify the highest-impact automation opportunities — completely free.</p>
+        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Úvodný audit</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Analyzujeme vaše procesy, nástroje a slabé miesta, aby sme identifikovali príležitosti s najvyšším dopadom — úplne zdarma.</p>
       </div>
 
       <div class="reveal p-8 rounded-2xl bg-white" style="box-shadow:0 2px 24px rgba(0,0,0,0.06),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-12 h-12 rounded-full bg-bm-electric flex items-center justify-center mb-6" style="box-shadow:0 4px 18px rgba(59,110,248,0.38);">
           <span class="font-display font-bold text-white text-lg">2</span>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Custom Design</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">We design a tailored automation solution with clear ROI projections and a realistic implementation timeline — no surprises.</p>
+        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Návrh riešenia</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Navrhneme automatizačné riešenie na mieru s jasnou projekciou návratnosti a reálnym harmonogramom implementácie — bez prekvapení.</p>
       </div>
 
       <div class="reveal p-8 rounded-2xl bg-white" style="box-shadow:0 2px 24px rgba(0,0,0,0.06),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-12 h-12 rounded-full bg-bm-electric flex items-center justify-center mb-6" style="box-shadow:0 4px 18px rgba(59,110,248,0.38);">
           <span class="font-display font-bold text-white text-lg">3</span>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Implementation</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">We build and deploy your custom automation solution according to the agreed timeline and specifications.</p>
+        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Implementácia</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Vybudujeme a nasadíme vaše automatizačné riešenie podľa dohodnutého harmonogramu a špecifikácií.</p>
       </div>
 
       <div class="reveal p-8 rounded-2xl bg-white" style="box-shadow:0 2px 24px rgba(0,0,0,0.06),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-12 h-12 rounded-full bg-bm-electric flex items-center justify-center mb-6" style="box-shadow:0 4px 18px rgba(59,110,248,0.38);">
           <span class="font-display font-bold text-white text-lg">4</span>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Ongoing Support</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">We monitor and maintain your automation to ensure it runs smoothly and adapts as your business evolves.</p>
+        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Priebežná podpora</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Monitorujeme a udržiavame vašu automatizáciu, aby fungovala spoľahlivo a prispôsobovala sa vášmu biznisu.</p>
       </div>
 
       <div class="reveal p-8 rounded-2xl bg-white" style="box-shadow:0 2px 24px rgba(0,0,0,0.06),0 1px 4px rgba(0,0,0,0.04);">
         <div class="w-12 h-12 rounded-full bg-bm-electric flex items-center justify-center mb-6" style="box-shadow:0 4px 18px rgba(59,110,248,0.38);">
           <span class="font-display font-bold text-white text-lg">5</span>
         </div>
-        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Change Requests</h3>
-        <p class="text-gray-500 text-sm" style="line-height:1.72;">Need adjustments? We handle updates, enhancements, and new requirements as your business grows.</p>
+        <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Zmenové požiadavky</h3>
+        <p class="text-gray-500 text-sm" style="line-height:1.72;">Potrebujete úpravy? Riešime aktualizácie, vylepšenia a nové požiadavky s rastom vášho biznisu.</p>
       </div>
 
     </div>
@@ -442,115 +407,109 @@
 </section>
 
 <!-- ═══════════════════════════ REFERENCES ═══════════════════════════ -->
-<section id="references" class="py-24 lg:py-32 bg-white">
+<section id="referencie" class="py-24 lg:py-32 bg-white">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
     <div class="max-w-2xl mb-14 reveal">
-      <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">Our work</p>
-      <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl mb-5" style="letter-spacing:-0.03em;line-height:1.08;">What we can<br/>build for you</h2>
-      <p class="text-gray-500 text-lg" style="line-height:1.72;">A selection of our projects showcasing real AI automation capabilities.</p>
+      <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">Naša práca</p>
+      <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl mb-5" style="letter-spacing:-0.03em;line-height:1.08;">Čo dokážeme<br/>vytvoriť pre vás</h2>
+      <p class="text-gray-500 text-lg" style="line-height:1.72;">Výber z našich projektov ukazujúcich reálne možnosti AI automatizácie.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- Project card 1 — AI Lead Qualifier -->
       <div class="card-hover reveal group rounded-2xl border border-gray-100 overflow-hidden bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
         <div class="h-44 relative overflow-hidden">
           <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=350&fit=crop&q=80" alt="" class="absolute inset-0 w-full h-full object-cover"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
           <div class="absolute inset-0" style="background:rgba(10,31,122,0.30);mix-blend-mode:multiply;"></div>
           <div class="absolute bottom-4 left-5">
-            <span class="tag bg-white/20 text-white border border-white/30">Lead Qualification</span>
+            <span class="tag bg-white/20 text-white border border-white/30">Kvalifikácia leadov</span>
           </div>
         </div>
         <div class="p-6">
-          <h3 class="font-display font-bold text-bm-dark text-lg mb-2" style="letter-spacing:-0.02em;">AI Lead Qualifier</h3>
-          <p class="text-gray-500 text-sm mb-5" style="line-height:1.7;">Full-stack web app that uses AI to automatically score and qualify inbound leads. Saves sales teams hours per week by surfacing only high-intent prospects.</p>
+          <h3 class="font-display font-bold text-bm-dark text-lg mb-2" style="letter-spacing:-0.02em;">AI kvalifikácia leadov</h3>
+          <p class="text-gray-500 text-sm mb-5" style="line-height:1.7;">Full-stack webová aplikácia, ktorá pomocou AI automaticky hodnotí a kvalifikuje prichádzajúce leady. Šetrí obchodným tímom hodiny týždenne tým, že identifikuje zákazníkov s vysokým nákupným potenciálom.</p>
           <a href="https://demo-lead-qualifier-fullstack-eight.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-bm-electric text-sm font-semibold hover:text-bm-navy transition-colors duration-200 group-hover:gap-2.5">
-            View live demo
+            Zobraziť demo
             <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Project card 2 — PLACEHOLDER -->
       <div class="card-hover reveal group rounded-2xl border border-gray-100 overflow-hidden bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
         <div class="h-44 relative overflow-hidden">
           <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=350&fit=crop&q=80" alt="" class="absolute inset-0 w-full h-full object-cover"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
           <div class="absolute inset-0" style="background:rgba(10,31,122,0.30);mix-blend-mode:multiply;"></div>
           <div class="absolute bottom-4 left-5">
-            <span class="tag bg-white/20 text-white border border-white/30">Coming soon</span>
+            <span class="tag bg-white/20 text-white border border-white/30">Pripravujeme</span>
           </div>
         </div>
         <div class="p-6">
-          <h3 class="font-display font-bold text-bm-dark text-lg mb-2" style="letter-spacing:-0.02em;">Your project here</h3>
-          <p class="text-gray-500 text-sm mb-5" style="line-height:1.7;">More training projects coming soon. Got a specific automation challenge? We'd love to build a solution for it.</p>
-          <a href="#contact" class="inline-flex items-center gap-1.5 text-bm-electric text-sm font-semibold hover:text-bm-navy transition-colors duration-200 group-hover:gap-2.5">
-            Let's talk
+          <h3 class="font-display font-bold text-bm-dark text-lg mb-2" style="letter-spacing:-0.02em;">Váš projekt tu</h3>
+          <p class="text-gray-500 text-sm mb-5" style="line-height:1.7;">Ďalšie projekty pripravujeme. Máte konkrétnu automatizačnú výzvu? Radi pre ňu vytvoríme riešenie.</p>
+          <a href="#kontakt" class="inline-flex items-center gap-1.5 text-bm-electric text-sm font-semibold hover:text-bm-navy transition-colors duration-200 group-hover:gap-2.5">
+            Porozprávajme sa
             <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Project card 3 — PLACEHOLDER -->
       <div class="card-hover reveal group rounded-2xl border border-gray-100 overflow-hidden bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
         <div class="h-44 relative overflow-hidden">
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=350&fit=crop&q=80" alt="" class="absolute inset-0 w-full h-full object-cover"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
           <div class="absolute inset-0" style="background:rgba(10,31,122,0.30);mix-blend-mode:multiply;"></div>
           <div class="absolute bottom-4 left-5">
-            <span class="tag bg-white/20 text-white border border-white/30">Coming soon</span>
+            <span class="tag bg-white/20 text-white border border-white/30">Pripravujeme</span>
           </div>
         </div>
         <div class="p-6">
-          <h3 class="font-display font-bold text-bm-dark text-lg mb-2" style="letter-spacing:-0.02em;">Your project here</h3>
-          <p class="text-gray-500 text-sm mb-5" style="line-height:1.7;">More training projects coming soon. Got a specific automation challenge? We'd love to build a solution for it.</p>
-          <a href="#contact" class="inline-flex items-center gap-1.5 text-bm-electric text-sm font-semibold hover:text-bm-navy transition-colors duration-200 group-hover:gap-2.5">
-            Let's talk
+          <h3 class="font-display font-bold text-bm-dark text-lg mb-2" style="letter-spacing:-0.02em;">Váš projekt tu</h3>
+          <p class="text-gray-500 text-sm mb-5" style="line-height:1.7;">Ďalšie projekty pripravujeme. Máte konkrétnu automatizačnú výzvu? Radi pre ňu vytvoríme riešenie.</p>
+          <a href="#kontakt" class="inline-flex items-center gap-1.5 text-bm-electric text-sm font-semibold hover:text-bm-navy transition-colors duration-200 group-hover:gap-2.5">
+            Porozprávajme sa
             <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
         </div>
       </div>
 
     </div>
-
   </div>
 </section>
 
 <!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
-<section id="about" class="py-24 lg:py-32 relative grain overflow-hidden" style="background:#060D2E;">
+<section id="o-nas" class="py-24 lg:py-32 relative grain overflow-hidden" style="background:#060D2E;">
   <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 65% 80% at 85% 50%,rgba(59,110,248,0.13) 0%,transparent 65%);"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
       <div class="reveal">
-        <p class="text-bm-sky font-semibold text-xs tracking-widest uppercase mb-4">About BizMatica</p>
-        <h2 class="font-display font-bold text-white text-4xl lg:text-5xl mb-8" style="letter-spacing:-0.03em;line-height:1.08;">Enterprise AI.<br/><span class="grad-text">SMB price.</span></h2>
-        <p class="text-white/60 text-lg mb-6" style="line-height:1.75;">BizMatica is an AI automation agency built specifically for small and medium businesses. We believe every SMB deserves access to enterprise-grade AI technology — without the enterprise-grade complexity or cost.</p>
-        <p class="text-white/60 text-lg mb-10" style="line-height:1.75;">Our team combines deep AI expertise with practical business knowledge to deliver automation solutions that actually work — and actually pay for themselves.</p>
-        <a href="#contact" class="btn-p inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-bm-electric text-white font-semibold text-base focus-visible:ring-2 focus-visible:ring-bm-sky">
-          Talk to us
+        <p class="text-bm-sky font-semibold text-xs tracking-widest uppercase mb-4">O BizMatica</p>
+        <h2 class="font-display font-bold text-white text-4xl lg:text-5xl mb-8" style="letter-spacing:-0.03em;line-height:1.08;">AI pre korporácie.<br/><span class="grad-text">Ceny pre MSP.</span></h2>
+        <p class="text-white/60 text-lg mb-6" style="line-height:1.75;">BizMatica je agentúra pre AI automatizáciu vybudovaná špeciálne pre malé a stredné podniky. Veríme, že každý malý a stredný podnik si zaslúži prístup k AI technológiám na úrovni veľkých firiem — bez ich zložitosti alebo nákladov.</p>
+        <p class="text-white/60 text-lg mb-10" style="line-height:1.75;">Náš tím kombinuje hlboké znalosti AI s praktickými obchodnými skúsenosťami, aby sme dodávali automatizačné riešenia, ktoré skutočne fungujú — a ktoré sa skutočne zaplatia.</p>
+        <a href="#kontakt" class="btn-p inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-bm-electric text-white font-semibold text-base focus-visible:ring-2 focus-visible:ring-bm-sky">
+          Kontaktujte nás
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
       </div>
 
       <div class="reveal flex flex-col gap-4">
-        <p class="text-bm-sky font-semibold text-xs tracking-widest uppercase mb-2">The Team</p>
-        <!-- Oliver -->
+        <p class="text-bm-sky font-semibold text-xs tracking-widest uppercase mb-2">Tím</p>
         <div class="flex items-center gap-4 p-5 rounded-2xl border border-white/10 bg-white/5">
           <img src="/brand_assets/oliver-new.jpg.jpg" alt="Oliver Klamo" class="w-16 h-16 rounded-full object-cover flex-shrink-0" style="box-shadow:0 4px 16px rgba(0,0,0,0.3);">
           <div>
             <div class="text-white font-semibold text-sm">Ing. Oliver Klamo MBA</div>
-            <div class="text-white/50 text-xs mt-0.5">Projects &amp; Automation</div>
+            <div class="text-white/50 text-xs mt-0.5">Projekty &amp; Automatizácia</div>
           </div>
         </div>
-        <!-- Jana -->
         <div class="flex items-center gap-4 p-5 rounded-2xl border border-white/10 bg-white/5">
           <img src="https://prekladatelna.cz/wp-content/uploads/2020/01/Jana3-e1579615795349.png" alt="Jana Klamo" class="w-16 h-16 rounded-full object-cover flex-shrink-0 bg-[#7ef9f9]" style="box-shadow:0 4px 16px rgba(0,0,0,0.3);">
           <div>
             <div class="text-white font-semibold text-sm">Ing. Jana Klamo</div>
-            <div class="text-white/50 text-xs mt-0.5">Sales &amp; Marketing</div>
+            <div class="text-white/50 text-xs mt-0.5">Obchod &amp; Marketing</div>
           </div>
         </div>
       </div>
@@ -559,7 +518,7 @@
 
     <!-- Tech stack -->
     <div class="mt-16 pt-10 border-t border-white/10 reveal">
-      <p class="text-white/40 text-xs font-semibold tracking-widest uppercase mb-7">Tools we use</p>
+      <p class="text-white/40 text-xs font-semibold tracking-widest uppercase mb-7">Nástroje ktoré používame</p>
       <div class="flex flex-wrap items-center gap-8">
         <div class="flex items-center gap-2 opacity-50 hover:opacity-100" style="transition:opacity 0.2s;">
           <img src="https://cdn.simpleicons.org/n8n/ffffff" class="w-5 h-5" alt="n8n">
@@ -593,7 +552,7 @@
           <img src="https://cdn.simpleicons.org/qdrant/ffffff" class="w-5 h-5" alt="Qdrant">
           <span class="text-white text-sm font-medium">Qdrant</span>
         </div>
-        <span class="text-white/30 text-sm">+ more via API &amp; MCP</span>
+        <span class="text-white/30 text-sm">+ ďalšie cez API &amp; MCP</span>
       </div>
     </div>
 
@@ -601,20 +560,17 @@
 </section>
 
 <!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
-<section id="contact" class="py-24 lg:py-32 bg-white">
+<section id="kontakt" class="py-24 lg:py-32 bg-white">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-    <!-- Header -->
-    <div class="max-w-2xl mb-14 reveal">
-      <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">Get in touch</p>
-      <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl mb-5" style="letter-spacing:-0.03em;line-height:1.08;">Ready to automate<br/>your business?</h2>
-      <p class="text-gray-500 text-lg" style="line-height:1.72;">Start with a free discovery audit. We'll identify your top automation opportunities and present a clear plan — no commitment required.</p>
+    <div class="max-w-4xl mb-14 reveal">
+      <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">Kontakt</p>
+      <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl mb-5" style="letter-spacing:-0.03em;line-height:1.08;">Ste pripravení<br/>automatizovať vaše podnikanie?</h2>
+      <p class="text-gray-500 text-lg" style="line-height:1.72;">Začnite bezplatným auditom. Identifikujeme vaše najlepšie príležitosti na automatizáciu a pripravíme jasný plán — bez záväzkov.</p>
     </div>
 
-    <!-- Contact info row -->
     <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
 
-      <!-- Email -->
       <div class="flex items-start gap-3">
         <div class="w-10 h-10 rounded-xl bg-bm-pale flex items-center justify-center flex-shrink-0 mt-0.5">
           <svg class="w-5 h-5 text-bm-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -622,12 +578,11 @@
           </svg>
         </div>
         <div>
-          <div class="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1">Email</div>
+          <div class="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1">E-mail</div>
           <a href="mailto:info@bestbiz.cz" class="text-gray-700 text-sm hover:text-bm-electric transition-colors duration-200">info@bestbiz.cz</a>
         </div>
       </div>
 
-      <!-- Phone -->
       <div class="flex items-start gap-3">
         <div class="w-10 h-10 rounded-xl bg-bm-pale flex items-center justify-center flex-shrink-0 mt-0.5">
           <svg class="w-5 h-5 text-bm-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -635,13 +590,12 @@
           </svg>
         </div>
         <div>
-          <div class="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1">Phone</div>
+          <div class="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1">Telefón</div>
           <a href="tel:+420602134247" class="text-gray-700 text-sm hover:text-bm-electric transition-colors duration-200">+420 602 134 247</a>
-          <div class="text-gray-400 text-xs mt-0.5">Mon–Fri 8:00–18:00</div>
+          <div class="text-gray-400 text-xs mt-0.5">Po–Pi 8:00–18:00</div>
         </div>
       </div>
 
-      <!-- Address -->
       <div class="flex items-start gap-3">
         <div class="w-10 h-10 rounded-xl bg-bm-pale flex items-center justify-center flex-shrink-0 mt-0.5">
           <svg class="w-5 h-5 text-bm-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -649,49 +603,47 @@
           </svg>
         </div>
         <div>
-          <div class="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1">Address</div>
+          <div class="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1">Adresa</div>
           <div class="text-gray-700 text-sm">U Menhiru 658, 252 41 Dolní Břežany</div>
-          <div class="text-gray-400 text-xs mt-0.5">Prague – West, Czech Republic</div>
+          <div class="text-gray-400 text-xs mt-0.5">Praha – západ, Česká republika</div>
         </div>
       </div>
 
     </div>
 
-    <!-- Form — full width, horizontal -->
     <div class="reveal p-8 rounded-2xl border border-gray-100" style="box-shadow:0 4px 40px rgba(0,0,0,0.06),0 1px 6px rgba(0,0,0,0.04);">
       <form onsubmit="handleSubmit(event)">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1.5" for="name">Full name</label>
-            <input type="text" id="name" name="name" required placeholder="Jan Novák" class="inp w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm placeholder-gray-400"/>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5" for="name">Celé meno</label>
+            <input type="text" id="name" name="name" required placeholder="Ján Novák" class="inp w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm placeholder-gray-400"/>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1.5" for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="jan@firma.cz" class="inp w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm placeholder-gray-400"/>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5" for="email">E-mail</label>
+            <input type="email" id="email" name="email" required placeholder="jan@firma.sk" class="inp w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm placeholder-gray-400"/>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1.5" for="company">Company</label>
-            <input type="text" id="company" name="company" placeholder="Your company" class="inp w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm placeholder-gray-400"/>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5" for="company">Firma</label>
+            <input type="text" id="company" name="company" placeholder="Názov firmy" class="inp w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm placeholder-gray-400"/>
           </div>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1.5" for="message">How can we help?</label>
-          <textarea id="message" name="message" rows="3" required placeholder="Tell us about your current challenges or what you'd like to automate..." class="inp w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm placeholder-gray-400 resize-none"></textarea>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5" for="message">Ako vám môžeme pomôcť?</label>
+          <textarea id="message" name="message" rows="3" required placeholder="Opíšte nám vaše aktuálne výzvy alebo čo by ste chceli automatizovať..." class="inp w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm placeholder-gray-400 resize-none"></textarea>
         </div>
         <div class="flex justify-center mt-4">
           <button type="submit" class="btn-p inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-bm-electric text-white font-semibold text-base focus-visible:ring-2 focus-visible:ring-bm-sky focus-visible:ring-offset-2">
-            Send message
+            Odoslať správu
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </button>
         </div>
       </form>
     </div>
 
-    <!-- Legal info -->
     <div class="reveal mt-10 pt-8 border-t border-gray-100 flex flex-wrap gap-x-10 gap-y-3 text-gray-400 text-xs" style="line-height:1.8;">
-      <span><span class="font-semibold text-gray-500">Best Biz s.r.o.</span> · U Menhiru 658, 252 41 Dolní Břežany, Prague – West, Czech Republic</span>
-      <span>Reg. No.: 274 97 208 · VAT No.: CZ27497208 · VAT registered · Incorporated 5 July 2006</span>
-      <span>Bank: Fio banka · BIC/SWIFT: FIOBCZPPXXX · CZK: 2500054514/2010 · IBAN: CZ1120100000002500054514 · EUR: 2000841431/2010 · IBAN: CZ0920100000002000841431</span>
+      <span><span class="font-semibold text-gray-500">Best Biz s.r.o.</span> · U Menhiru 658, 252 41 Dolní Břežany, Praha – západ, Česká republika</span>
+      <span>IČ: 274 97 208 · DIČ: CZ27497208 · Platca DPH · Zapísaná 5. júla 2006</span>
+      <span>Banka: Fio banka · BIC/SWIFT: FIOBCZPPXXX · CZK: 2500054514/2010 · IBAN: CZ1120100000002500054514 · EUR: 2000841431/2010 · IBAN: CZ0920100000002000841431</span>
     </div>
 
   </div>
@@ -702,7 +654,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-5">
     <span style="font-family:'Syne',sans-serif;font-weight:800;color:white;font-size:1.1rem;letter-spacing:-0.03em;">
       Biz<span style="color:#5B9CF6;">Matica</span>
-      <span style="color:rgba(255,255,255,0.25);font-family:'DM Sans',sans-serif;font-weight:400;font-size:0.8rem;letter-spacing:0;"> · AI Automation Agency</span>
+      <span style="color:rgba(255,255,255,0.25);font-family:'DM Sans',sans-serif;font-weight:400;font-size:0.8rem;letter-spacing:0;"> · Agentúra pre AI Automatizáciu</span>
     </span>
     <div class="flex items-center gap-5 text-sm text-white/35">
       <a href="/"    class="hover:text-white/65 transition-colors duration-200">EN</a>
@@ -715,13 +667,11 @@
 </footer>
 
 <script>
-  // Nav scroll
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('nav-scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // Mobile menu
   document.getElementById('menuBtn').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });
@@ -729,14 +679,13 @@
     a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'))
   );
 
-  // Form
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
     const btn  = form.querySelector('button[type="submit"]');
 
     btn.disabled = true;
-    btn.textContent = 'Sending…';
+    btn.textContent = 'Odosielam…';
 
     const payload = {
       name:    document.getElementById('name').value,
@@ -753,20 +702,19 @@
       });
 
       if (res.ok) {
-        btn.textContent = '✓ Message sent!';
+        btn.textContent = '✓ Odoslané!';
         btn.style.background = '#16a34a';
         form.reset();
       } else {
-        throw new Error('Server error');
+        throw new Error();
       }
     } catch {
-      btn.textContent = 'Failed — try again';
+      btn.textContent = 'Chyba — skúste znova';
       btn.style.background = '#dc2626';
       btn.disabled = false;
     }
   }
 
-  // Scroll reveal
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
   }, { threshold: 0.08 });
