@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="sk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Lead Follow-up — BizMatica</title>
+  <meta name="description" content="Automatický follow-up systém: AI napíše personalizovaný e-mail, sleduje odpovede a odosiela nadväzujúce správy — bez manuálnej práce vášho obchodného tímu." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { bm: { darkest:'#030A1E', dark:'#060D2E', navy:'#0A1F7A', blue:'#1A4ADB', electric:'#3B6EF8', sky:'#5B9CF6', pale:'#EEF4FF' } }, fontFamily: { display:['Syne','sans-serif'], sans:['DM Sans','sans-serif'] } } }
+    }
+  </script>
+  <style>
+    *, body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3, .font-display { font-family: 'Syne', sans-serif; }
+    .grain::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size:200px; pointer-events:none; z-index:1; }
+    .nav-scrolled { background:rgba(6,13,46,0.96)!important; backdrop-filter:blur(14px); border-bottom:1px solid rgba(59,110,248,0.15); }
+    .card-hover { transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s ease,border-color 0.2s ease; }
+    .card-hover:hover { transform:translateY(-5px); box-shadow:0 24px 64px rgba(26,74,219,0.13),0 4px 16px rgba(0,0,0,0.07); border-color:rgba(59,110,248,0.35); }
+    .btn-p { transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease; }
+    .btn-p:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(59,110,248,0.4); }
+    .grad-text { background:linear-gradient(135deg,#7BB8FF 0%,#5B9CF6 40%,#3B6EF8 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.55s ease,transform 0.55s cubic-bezier(0.34,1.2,0.64,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .hero-grid { background-image:linear-gradient(rgba(59,110,248,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(59,110,248,0.035) 1px,transparent 1px); background-size:64px 64px; }
+    ::-webkit-scrollbar { width:5px; } ::-webkit-scrollbar-track { background:#060D2E; } ::-webkit-scrollbar-thumb { background:#1A4ADB; border-radius:3px; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between py-4">
+      <a href="/sk/" class="flex items-center gap-3 group">
+        <svg width="34" height="34" viewBox="0 0 72 72" fill="none"><line x1="38" y1="26" x2="38" y2="9" stroke="#5B9CF6" stroke-width="2" stroke-linecap="round" opacity=".75"/><line x1="47" y1="31" x2="63" y2="25" stroke="#5B9CF6" stroke-width="1.8" stroke-linecap="round" opacity=".75"/><line x1="46" y1="44" x2="61" y2="61" stroke="#5B9CF6" stroke-width="2" stroke-linecap="round" opacity=".75"/><line x1="28" y1="42" x2="10" y2="57" stroke="#5B9CF6" stroke-width="1.8" stroke-linecap="round" opacity=".75"/><line x1="29" y1="30" x2="11" y2="21" stroke="#5B9CF6" stroke-width="1.5" stroke-linecap="round" opacity=".65"/><circle cx="11" cy="21" r="4" fill="#3B6EF8"/><circle cx="38" cy="7" r="5" fill="#3B6EF8"/><circle cx="64" cy="24" r="4" fill="#3B6EF8"/><circle cx="62" cy="62" r="5.5" fill="#1A4ADB"/><circle cx="9" cy="57" r="3.5" fill="#3B6EF8"/><defs><linearGradient id="nc" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3B6EF8"/><stop offset="100%" stop-color="#0A1F7A"/></linearGradient></defs><circle cx="38" cy="38" r="11" fill="url(#nc)"/><circle cx="38" cy="38" r="5" fill="white" opacity=".95"/><circle cx="38" cy="38" r="2" fill="#1A4ADB"/></svg>
+        <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:white;letter-spacing:-0.03em;">Biz<span style="color:#5B9CF6;">Matica</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="/sk/#sluzby"          class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Služby</a>
+        <a href="/sk/#ako-to-funguje"  class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Ako to funguje</a>
+        <a href="/sk/#referencie"      class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Referencie</a>
+        <a href="/sk/#o-nas"           class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">O nás</a>
+        <a href="/sk/#kontakt"         class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Kontakt</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-1 text-xs font-semibold">
+          <a href="/ai-follow-up/"    class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200">EN</a>
+          <a href="/cs/ai-follow-up/" class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200">CS</a>
+          <a href="/sk/ai-follow-up/" class="px-2.5 py-1 rounded-md bg-white/15 text-white transition-colors duration-200">SK</a>
+        </div>
+        <a href="/sk/#kontakt" class="btn-p hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-bm-electric text-white text-sm font-semibold">Začať</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="relative bg-bm-dark grain hero-grid overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full opacity-20 pointer-events-none" style="background:radial-gradient(ellipse,#1A4ADB 0%,transparent 70%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-white/12 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-bm-sky animate-pulse"></span>
+        <span class="text-xs font-semibold text-bm-sky uppercase tracking-widest">AI Automatizácia · Lead Follow-up</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-[1.1] mb-6">
+        Obchodníci zabúdajú na follow-up.<br/><span class="grad-text">AI nezabúda.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-white/65 leading-relaxed mb-10 max-w-2xl">
+        Vytvorili sme automatický follow-up systém, ktorý za váš tím napíše personalizovaný prvý kontakt, sleduje odpovede a odosiela nadväzujúce správy — presne v správny čas, bez manuálnej práce.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/sk/#kontakt" class="btn-p inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-bm-electric text-white font-semibold text-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          Postaviť to pre mňa
+        </a>
+        <a href="#ako-to-funguje" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/20 text-white/80 hover:text-white hover:border-white/40 font-semibold text-sm transition-colors duration-200">
+          Ako to funguje
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+      <div class="mt-14 grid grid-cols-3 gap-6 max-w-lg">
+        <div><div class="text-2xl font-display font-bold text-white">&lt; 3 sek</div><div class="text-xs text-white/45 mt-0.5">Čas oslovovania</div></div>
+        <div><div class="text-2xl font-display font-bold text-white">3 e-maily</div><div class="text-xs text-white/45 mt-0.5">Automatická sekvencia</div></div>
+        <div><div class="text-2xl font-display font-bold text-white">+31 %</div><div class="text-xs text-white/45 mt-0.5">Reply rate</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-electric mb-3">Problém</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">Váš obchodný tím<br/><span class="grad-text">zabúda na follow-up</span></h2>
+      <p class="text-gray-500 text-lg leading-relaxed">Horúce leady chladnú, pretože obchodníci nestíhajú. Generické šablóny neprinesú odpoveď. A nikto nevie, kto odpovedal a kto čaká. Presne to rieši náš systém.</p>
+    </div>
+    <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card-hover bg-white border border-gray-100 rounded-2xl p-7 reveal" style="transition-delay:0.05s">
+        <div class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center mb-5"><svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3 class="font-display font-bold text-gray-900 mb-2">Zabudnutý follow-up</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Obchodník odošle prvý e-mail a potom na lead zabudne. Horúci zákazník medzitým osloví konkurenciu — a zmluva, ktorá mohla byť vaša, nie je.</p>
+      </div>
+      <div class="card-hover bg-white border border-gray-100 rounded-2xl p-7 reveal" style="transition-delay:0.1s">
+        <div class="w-11 h-11 rounded-xl bg-amber-50 flex items-center justify-center mb-5"><svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+        <h3 class="font-display font-bold text-gray-900 mb-2">Generické šablóny</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Rovnaký e-mail pre všetkých nefunguje. Príjemca vidí neosobné správy a ignoruje ich. Personalizácia zvyšuje reply rate priemerne o 31 % — ale ručne ju nemožno škálovať.</p>
+      </div>
+      <div class="card-hover bg-white border border-gray-100 rounded-2xl p-7 reveal" style="transition-delay:0.15s">
+        <div class="w-11 h-11 rounded-xl bg-purple-50 flex items-center justify-center mb-5"><svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+        <h3 class="font-display font-bold text-gray-900 mb-2">Žiadny prehľad</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Kto odpovedal? Kto e-mail otvoril, ale neodpovedal? Kto ešte čaká na follow-up? Bez systému sú tieto informácie rozptýlené v e-mailových schránkach obchodníkov.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ako-to-funguje" class="py-20 bg-bm-pale">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-electric mb-3">Riešenie</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900">Od nového leadu k odpovedi<br/><span class="grad-text">v troch krokoch</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+      <div class="relative text-center reveal" style="transition-delay:0.05s">
+        <div class="w-12 h-12 rounded-2xl bg-bm-electric flex items-center justify-center mx-auto mb-5 shadow-lg shadow-bm-electric/30">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <div class="text-xs font-bold text-bm-electric uppercase tracking-widest mb-2">Krok 1</div>
+        <h3 class="font-display font-bold text-gray-900 text-lg mb-3">AI napíše prvý kontakt</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Akonáhle príde nový kvalifikovaný lead, AI prečíta jeho profil — meno, firma, segment, skóre — a do 3 sekúnd napíše personalizovaný e-mail v tóne konzultanta, nie predajcu.</p>
+      </div>
+      <div class="relative text-center reveal" style="transition-delay:0.1s">
+        <div class="hidden md:block absolute top-6 -left-4 w-8 h-px bg-gradient-to-r from-bm-electric/50 to-bm-electric/10"></div>
+        <div class="hidden md:block absolute top-6 -right-4 w-8 h-px bg-gradient-to-r from-bm-electric/10 to-bm-electric/50"></div>
+        <div class="w-12 h-12 rounded-2xl bg-bm-electric flex items-center justify-center mx-auto mb-5 shadow-lg shadow-bm-electric/30">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="text-xs font-bold text-bm-electric uppercase tracking-widest mb-2">Krok 2</div>
+        <h3 class="font-display font-bold text-gray-900 text-lg mb-3">Systém sleduje odpoveď</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">E-mail sa automaticky odošle cez Gmail. Každé ráno systém skontroluje, či prišla odpoveď. Ak lead odpovedal, sekvencia sa automaticky zastaví a lead sa odovzdá obchodníkovi.</p>
+      </div>
+      <div class="relative text-center reveal" style="transition-delay:0.15s">
+        <div class="w-12 h-12 rounded-2xl bg-bm-electric flex items-center justify-center mx-auto mb-5 shadow-lg shadow-bm-electric/30">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </div>
+        <div class="text-xs font-bold text-bm-electric uppercase tracking-widest mb-2">Krok 3</div>
+        <h3 class="font-display font-bold text-gray-900 text-lg mb-3">Automatický follow-up</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Bez odpovede po 3 dňoch? AI napíše follow-up #2. Po ďalších 4 dňoch follow-up #3. Každý e-mail je iný — reaguje na predchádzajúcu správu a udržuje prirodzený tón konverzácie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-electric mb-3">Ako to funguje</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900">Systém <span class="grad-text">v praxi</span></h2>
+    </div>
+    <div class="reveal mb-8" style="transition-delay:0.05s">
+      <div class="mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-md" style="height:320px;"><img src="/brand_assets/screenshot-followup-sequence-sk.png" alt="Dashboard sekvencie follow-up" class="w-full h-full object-cover object-top"/></div>
+      <h3 class="font-display font-bold text-gray-900 mb-1">Dashboard sekvencie — prehľad v reálnom čase</h3>
+      <p class="text-gray-500 text-sm">Nastavíte kampaň raz. Systém potom sám spravuje časovanie, sleduje stav každého e-mailu a zobrazuje metriky — open rate, reply rate a počet aktívnych sekvencií.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="reveal" style="transition-delay:0.1s">
+        <div class="mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-md" style="height:260px;"><img src="/brand_assets/screenshot-followup-flow-sk.png" alt="Diagram priebehu follow-up" class="w-full h-full object-cover object-center"/></div>
+        <h3 class="font-display font-bold text-gray-900 mb-1">Inteligentné vetvenie sekvencie</h3>
+        <p class="text-gray-500 text-sm">Pri odpovedi sa sekvencia automaticky zastaví — lead sa odovzdá obchodníkovi. Bez odpovede pokračuje systém na follow-up. Žiadny zbytočný e-mail po odpovedi zákazníka.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.15s">
+        <div class="mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-md" style="height:260px;"><img src="/brand_assets/screenshot-followup-email-sk.png" alt="AI personalizovaný e-mail" class="w-full h-full object-cover object-top"/></div>
+        <h3 class="font-display font-bold text-gray-900 mb-1">Personalizovaný e-mail od AI</h3>
+        <p class="text-gray-500 text-sm">Každý e-mail je napísaný individuálne — AI zohľadňuje meno, firmu, segment a predchádzajúcu interakciu. Príjemca necíti automatizáciu, cíti záujem o jeho konkrétnu situáciu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-bm-pale">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-electric mb-3">V praxi</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900">Ako to vyzerá<br/><span class="grad-text">pre reálnu firmu</span></h2>
+      <p class="text-gray-500 mt-4 text-sm">Modelový príklad pre recruitingovú agentúru.</p>
+    </div>
+    <div class="max-w-3xl mx-auto reveal">
+      <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+        <div class="bg-bm-dark px-6 py-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-bm-electric/20 flex items-center justify-center">
+            <svg class="w-4 h-4 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div class="text-white font-display font-bold text-sm">Recruitingová agentúra</div>
+            <div class="text-white/40 text-xs">6 konzultantov · IT & tech pozície</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-500 text-sm leading-relaxed mb-6">Každý konzultant oslovoval denne 15–30 kandidátov. Follow-up bol manuálny — kto si pamätal, napísal. Kto nie, zabudol. Približne 40 % kandidátov nedostalo žiadny follow-up.</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+            <div class="text-center p-3 bg-gray-50 rounded-xl">
+              <div class="text-xs text-gray-400 mb-1">Reply rate pred</div>
+              <div class="text-xl font-display font-bold text-gray-400">6 %</div>
+            </div>
+            <div class="text-center p-3 bg-green-50 rounded-xl">
+              <div class="text-xs text-gray-400 mb-1">Reply rate po</div>
+              <div class="text-xl font-display font-bold text-green-600">22 %</div>
+            </div>
+            <div class="text-center p-3 bg-gray-50 rounded-xl">
+              <div class="text-xs text-gray-400 mb-1">Prvý kontakt pred</div>
+              <div class="text-xl font-display font-bold text-gray-400">2–4 dni</div>
+            </div>
+            <div class="text-center p-3 bg-green-50 rounded-xl">
+              <div class="text-xs text-gray-400 mb-1">Prvý kontakt po</div>
+              <div class="text-xl font-display font-bold text-green-600">15 min</div>
+            </div>
+          </div>
+          <div class="border-t border-gray-100 pt-5">
+            <p class="text-gray-500 text-sm leading-relaxed italic">„Prestali sme riešiť, kto napísal a kto nie. Systém to strája za nás — a kandidáti reagujú oveľa rýchlejšie, pretože dostanú správu, ktorá vyzerá ako od človeka, nie šablóna."</p>
+            <p class="text-gray-400 text-xs mt-2">— Operations Manager, recruitingová agentúra · modelový príklad</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-bm-dark grain relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none opacity-10" style="background:radial-gradient(ellipse 80% 50% at 50% 0%,#1A4ADB,transparent);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-sky mb-3">Čo je zahrnuté</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-white">Všetko čo potrebujete<br/><span class="grad-text">k automatickému follow-upu</span></h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.05s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+        <h3 class="font-display font-bold text-white mb-2">Personalizovaný prvý kontakt</h3>
+        <p class="text-white/50 text-sm leading-relaxed">AI napíše individuálny e-mail pre každý lead — zohľadňuje meno, firmu, segment a skóre z kvalifikácie. Žiadne šablóny, žiadne kopírovanie.</p>
+      </div>
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.1s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div>
+        <h3 class="font-display font-bold text-white mb-2">Automatická 3-e-mailová sekvencia</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Systém odosiela follow-up #2 po 3 dňoch a follow-up #3 po 7 dňoch. Každý e-mail nadväzuje na predchádzajúci — prirodzene, bez robotického dojmu.</p>
+      </div>
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.15s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></div>
+        <h3 class="font-display font-bold text-white mb-2">Denná kontrola odpovedí</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Každé ráno systém skontroluje, či lead odpovedal. Ak áno, sekvencia sa automaticky zastaví — žiadny zbytočný e-mail po odpovedi zákazníka.</p>
+      </div>
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.2s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+        <h3 class="font-display font-bold text-white mb-2">Prehľad sekvencií</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Stav každého leadu je sledovaný v Supabase — aktívne sekvencie, odpovede a dokončené sekvencie. Plný prehľad bez ručného logovania.</p>
+      </div>
+    </div>
+
+    <div class="mt-8 max-w-3xl mx-auto reveal" style="transition-delay:0.25s">
+      <div class="flex items-start gap-4 bg-white/5 border border-white/10 rounded-2xl px-6 py-4">
+        <div class="w-8 h-8 rounded-lg bg-bm-electric/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+          <svg class="w-4 h-4 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+        </div>
+        <p class="text-white/60 text-sm leading-relaxed"><span class="text-white font-semibold">Skvele funguje s AI Lead Qualifierom</span> — Systém sa prirodzene napojí na výstupy kvalifikátora. Leady s vysokým skóre priamo vstúpia do follow-up sekvencie bez akéhokoľvek manuálneho zásahu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <p class="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-10">Postavené na overených technológiách</p>
+    <div class="flex flex-wrap items-center justify-center gap-8 opacity-60">
+      <span class="text-sm font-semibold text-gray-500">n8n</span>
+      <img src="/brand_assets/groq.png" alt="Groq" class="h-7 object-contain grayscale hover:grayscale-0 transition-all duration-300"/>
+      <span class="text-sm font-semibold text-gray-500">Gmail API</span>
+      <span class="text-sm font-semibold text-gray-500">Supabase</span>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-bm-pale">
+  <div class="max-w-3xl mx-auto px-6 text-center reveal">
+    <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-5">Ste pripravení prestať<br/><span class="grad-text">ručne sledovať follow-upy?</span></h2>
+    <p class="text-gray-500 text-lg mb-10">Postavíme vám follow-up systém prispôsobený vášmu podnikaniu — váš tón komunikácie, vaše hodnotiace kritériá, vaša e-mailová schránka.</p>
+    <a href="/sk/#kontakt" class="btn-p inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-bm-electric text-white font-semibold text-base">
+      Kontaktujte nás
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+    <p class="text-gray-400 text-sm mt-4">Bez záväzkov. Najskôr vám ukážeme funkčné demo.</p>
+  </div>
+</section>
+
+<footer class="bg-bm-darkest py-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:white;letter-spacing:-0.03em;">Biz<span style="color:#5B9CF6;">Matica</span></span>
+    <p class="text-white/30 text-xs">© 2026 BizMatica. Všetky práva vyhradené.</p>
+    <a href="/sk/" class="text-white/40 hover:text-white/70 text-xs transition-colors duration-200">← Späť na hlavnú stránku</a>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('nav-scrolled', window.scrollY > 20); }, { passive: true });
+  const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

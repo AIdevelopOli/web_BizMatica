@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Customer Support Automation — BizMatica</title>
+  <meta name="description" content="Automate your customer support with AI. Instant email responses, intelligent chatbot, and a knowledge base that learns from your documents." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bm: {
+              darkest: '#030A1E',
+              dark:    '#060D2E',
+              navy:    '#0A1F7A',
+              blue:    '#1A4ADB',
+              electric:'#3B6EF8',
+              sky:     '#5B9CF6',
+              pale:    '#EEF4FF',
+            }
+          },
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            sans:    ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3, .font-display { font-family: 'Syne', sans-serif; }
+
+    .grain::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nav-scrolled {
+      background: rgba(6,13,46,0.96) !important;
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(59,110,248,0.15);
+    }
+
+    .card-hover {
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 64px rgba(26,74,219,0.13), 0 4px 16px rgba(0,0,0,0.07);
+      border-color: rgba(59,110,248,0.35);
+    }
+
+    .btn-p {
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+    }
+    .btn-p:hover  { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,110,248,0.4); }
+    .btn-p:active { transform: translateY(0); }
+
+    .grad-text {
+      background: linear-gradient(135deg, #7BB8FF 0%, #5B9CF6 40%, #3B6EF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.34,1.2,0.64,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Grid background for hero */
+    .hero-grid {
+      background-image: linear-gradient(rgba(59,110,248,0.035) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(59,110,248,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    /* Step connector line */
+    .step-line::after {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: calc(50% + 28px);
+      width: calc(100% - 56px);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(59,110,248,0.5), rgba(59,110,248,0.1));
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #060D2E; }
+    ::-webkit-scrollbar-thumb { background: #1A4ADB; border-radius: 3px; }
+
+    /* Screenshot placeholder */
+    .screenshot-placeholder {
+      background: linear-gradient(135deg, rgba(59,110,248,0.08) 0%, rgba(10,31,122,0.12) 100%);
+      border: 1px solid rgba(59,110,248,0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: rgba(91,156,246,0.6);
+      font-size: 13px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between py-4">
+
+      <a href="/" class="flex items-center gap-3 group" aria-label="BizMatica">
+        <svg width="34" height="34" viewBox="0 0 72 72" class="transition-transform duration-300 group-hover:scale-105" fill="none">
+          <line x1="38" y1="26" x2="38" y2="9"  stroke="#5B9CF6" stroke-width="2"   stroke-linecap="round" opacity=".75"/>
+          <line x1="47" y1="31" x2="63" y2="25" stroke="#5B9CF6" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+          <line x1="46" y1="44" x2="61" y2="61" stroke="#5B9CF6" stroke-width="2"   stroke-linecap="round" opacity=".75"/>
+          <line x1="28" y1="42" x2="10" y2="57" stroke="#5B9CF6" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+          <line x1="29" y1="30" x2="11" y2="21" stroke="#5B9CF6" stroke-width="1.5" stroke-linecap="round" opacity=".65"/>
+          <circle cx="11" cy="21" r="4"   fill="#3B6EF8"/>
+          <circle cx="38" cy="7"  r="5"   fill="#3B6EF8"/>
+          <circle cx="64" cy="24" r="4"   fill="#3B6EF8"/>
+          <circle cx="62" cy="62" r="5.5" fill="#1A4ADB"/>
+          <circle cx="9"  cy="57" r="3.5" fill="#3B6EF8"/>
+          <defs>
+            <linearGradient id="nc" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3B6EF8"/>
+              <stop offset="100%" stop-color="#0A1F7A"/>
+            </linearGradient>
+          </defs>
+          <circle cx="38" cy="38" r="11" fill="url(#nc)"/>
+          <circle cx="38" cy="38" r="5"  fill="white" opacity=".95"/>
+          <circle cx="38" cy="38" r="2"  fill="#1A4ADB"/>
+        </svg>
+        <span style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:white; letter-spacing:-0.03em;">
+          Biz<span style="color:#5B9CF6;">Matica</span>
+        </span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7">
+        <a href="/#services"     class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Services</a>
+        <a href="/#how-it-works" class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">How it works</a>
+        <a href="/#references"   class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">References</a>
+        <a href="/#about"        class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">About</a>
+        <a href="/#contact"      class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-1 text-xs font-semibold">
+          <a href="/"    class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200">EN</a>
+          <a href="/cs/" class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200">CS</a>
+          <a href="/sk/" class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200">SK</a>
+        </div>
+        <a href="/#contact" class="btn-p hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-bm-electric text-white text-sm font-semibold">
+          Get started
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section class="relative bg-bm-dark grain hero-grid overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+
+  <!-- Glow blobs -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full opacity-20 pointer-events-none"
+       style="background: radial-gradient(ellipse, #1A4ADB 0%, transparent 70%);"></div>
+  <div class="absolute top-20 right-0 w-[400px] h-[400px] rounded-full opacity-10 pointer-events-none"
+       style="background: radial-gradient(ellipse, #3B6EF8 0%, transparent 70%);"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl">
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-white/12 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-bm-sky animate-pulse"></span>
+        <span class="text-xs font-semibold text-bm-sky uppercase tracking-widest">AI Automation · Customer Support</span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-[1.1] mb-6">
+        Customer support that<br/>
+        <span class="grad-text">replies itself</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-white/65 leading-relaxed mb-10 max-w-2xl">
+        We build an AI system that reads incoming support emails, finds the right answer from your knowledge base, and prepares a draft reply — in seconds, not hours.
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="/#contact" class="btn-p inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-bm-electric text-white font-semibold text-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          Request a demo
+        </a>
+        <a href="#how-it-works" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/20 text-white/80 hover:text-white hover:border-white/40 font-semibold text-sm transition-colors duration-200">
+          See how it works
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="mt-14 grid grid-cols-3 gap-6 max-w-lg">
+        <div>
+          <div class="text-2xl font-display font-bold text-white">~3 sec</div>
+          <div class="text-xs text-white/45 mt-0.5">Response time</div>
+        </div>
+        <div>
+          <div class="text-2xl font-display font-bold text-white">24/7</div>
+          <div class="text-xs text-white/45 mt-0.5">Always on</div>
+        </div>
+        <div>
+          <div class="text-2xl font-display font-bold text-white">−80%</div>
+          <div class="text-xs text-white/45 mt-0.5">Manual replies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ PROBLEM ═══════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-electric mb-3">The Problem</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
+        Your team is answering the same questions<br/><span class="grad-text">over and over again</span>
+      </h2>
+      <p class="text-gray-500 text-lg leading-relaxed">
+        Return policies, warranty claims, order status, product questions — most support tickets are repetitive. Your team's time is worth more than copy-pasting template answers.
+      </p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card-hover bg-white border border-gray-100 rounded-2xl p-7 reveal" style="transition-delay:0.05s">
+        <div class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-gray-900 mb-2">Slow response times</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Customers wait hours or days for answers to simple questions, leading to frustration and churn.</p>
+      </div>
+
+      <div class="card-hover bg-white border border-gray-100 rounded-2xl p-7 reveal" style="transition-delay:0.1s">
+        <div class="w-11 h-11 rounded-xl bg-amber-50 flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-gray-900 mb-2">Wasted team capacity</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Skilled employees spend their day answering repetitive tickets instead of solving complex problems.</p>
+      </div>
+
+      <div class="card-hover bg-white border border-gray-100 rounded-2xl p-7 reveal" style="transition-delay:0.15s">
+        <div class="w-11 h-11 rounded-xl bg-purple-50 flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-gray-900 mb-2">Inconsistent answers</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Different agents give different answers. AI always answers from the same verified knowledge base.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ HOW IT WORKS ═══════════════════════════ -->
+<section id="how-it-works" class="py-20 bg-bm-pale">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-electric mb-3">How it works</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900">
+        From inbox to draft reply<br/><span class="grad-text">in three steps</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+
+      <div class="relative text-center reveal" style="transition-delay:0.05s">
+        <div class="w-12 h-12 rounded-2xl bg-bm-electric flex items-center justify-center mx-auto mb-5 shadow-lg shadow-bm-electric/30 relative">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-bm-sky border-2 border-white flex items-center justify-center">
+            <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          </span>
+        </div>
+        <div class="text-xs font-bold text-bm-electric uppercase tracking-widest mb-2">Step 1</div>
+        <h3 class="font-display font-bold text-gray-900 text-lg mb-3">Customer reaches out</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">A customer sends a support email or types a question in the chat widget on your website. Both channels are handled automatically.</p>
+      </div>
+
+      <div class="relative text-center reveal" style="transition-delay:0.1s">
+        <div class="hidden md:block absolute top-6 -left-4 w-8 h-px bg-gradient-to-r from-bm-electric/50 to-bm-electric/10"></div>
+        <div class="hidden md:block absolute top-6 -right-4 w-8 h-px bg-gradient-to-r from-bm-electric/10 to-bm-electric/50"></div>
+        <div class="w-12 h-12 rounded-2xl bg-bm-electric flex items-center justify-center mx-auto mb-5 shadow-lg shadow-bm-electric/30">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <div class="text-xs font-bold text-bm-electric uppercase tracking-widest mb-2">Step 2</div>
+        <h3 class="font-display font-bold text-gray-900 text-lg mb-3">AI finds the answer</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">The AI searches your knowledge base — FAQs, policies, manuals — and retrieves the most relevant information.</p>
+      </div>
+
+      <div class="relative text-center reveal" style="transition-delay:0.15s">
+        <div class="w-12 h-12 rounded-2xl bg-bm-electric flex items-center justify-center mx-auto mb-5 shadow-lg shadow-bm-electric/30">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="text-xs font-bold text-bm-electric uppercase tracking-widest mb-2">Step 3</div>
+        <h3 class="font-display font-bold text-gray-900 text-lg mb-3">Answer delivered</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Chat customers get an instant reply in seconds. Email customers receive a professional draft in your inbox — ready to review and send. Fully automatic sending is also available, depending on your workflow.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SCREENSHOTS ═══════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-electric mb-3">The Solution</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900">
+        See the system <span class="grad-text">at work</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- Screenshot 1 -->
+      <div class="reveal" style="transition-delay:0.05s">
+        <div class="mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-md" style="height:260px;">
+          <img src="/brand_assets/screenshot-gmail-draft.png" alt="AI generated email draft in Gmail" class="w-full h-full object-cover object-top"/>
+        </div>
+        <h3 class="font-display font-bold text-gray-900 mb-1">Auto-generated email draft</h3>
+        <p class="text-gray-500 text-sm">The AI creates a professional reply draft directly in Gmail, ready for the agent to review and send.</p>
+      </div>
+
+      <!-- Screenshot 2 -->
+      <div class="reveal" style="transition-delay:0.1s">
+        <div class="mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-md" style="height:260px;">
+          <img src="/brand_assets/screenshot-chatbot.png" alt="Chatbot widget" class="w-full h-full object-cover object-top"/>
+        </div>
+        <h3 class="font-display font-bold text-gray-900 mb-1">Embeddable chat widget</h3>
+        <p class="text-gray-500 text-sm">A branded chatbot widget that can be embedded on any website. Customers get instant answers without waiting for email.</p>
+      </div>
+
+      <!-- Screenshot 3 -->
+      <div class="reveal" style="transition-delay:0.15s">
+        <div class="mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-md" style="height:260px;">
+          <img src="/brand_assets/screenshot-flow-diagram.png" alt="AI customer support flow diagram" class="w-full h-full object-cover object-center"/>
+        </div>
+        <h3 class="font-display font-bold text-gray-900 mb-1">End-to-end automation</h3>
+        <p class="text-gray-500 text-sm">Email and chat in one system — AI processes every request, searches the knowledge base, and delivers the right answer through the right channel.</p>
+      </div>
+
+      <!-- Screenshot 4 -->
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="mb-4 rounded-xl overflow-hidden border border-gray-100 shadow-md" style="height:260px;">
+          <img src="/brand_assets/screenshot-qdrant.png" alt="Knowledge base" class="w-full h-full object-cover object-top"/>
+        </div>
+        <h3 class="font-display font-bold text-gray-900 mb-1">Vector knowledge base</h3>
+        <p class="text-gray-500 text-sm">Your FAQs, policies, and product manuals stored as vectors. The AI searches semantically — not just by keywords.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-bm-pale">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-electric mb-3">In practice</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900">What this looks like<br/><span class="grad-text">for a real business</span></h2>
+      <p class="text-gray-500 mt-4 text-sm">An illustrative scenario for an e-commerce company.</p>
+    </div>
+    <div class="max-w-3xl mx-auto reveal">
+      <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+        <div class="bg-bm-dark px-6 py-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-bm-electric/20 flex items-center justify-center">
+            <svg class="w-4 h-4 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+          <div>
+            <div class="text-white font-display font-bold text-sm">E-commerce</div>
+            <div class="text-white/40 text-xs">8 employees · 3,000+ orders/month</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-500 text-sm leading-relaxed mb-6">Customer support received 80–120 emails daily. 70 % were recurring questions — where is my package, how to return an item, address change. Two support staff spent most of the day copy-pasting the same answers.</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+            <div class="text-center p-3 bg-gray-50 rounded-xl">
+              <div class="text-xs text-gray-400 mb-1">Response time before</div>
+              <div class="text-xl font-display font-bold text-gray-400">4–6 h</div>
+            </div>
+            <div class="text-center p-3 bg-green-50 rounded-xl">
+              <div class="text-xs text-gray-400 mb-1">Response time after</div>
+              <div class="text-xl font-display font-bold text-green-600">12 min</div>
+            </div>
+            <div class="text-center p-3 bg-gray-50 rounded-xl">
+              <div class="text-xs text-gray-400 mb-1">Resolved without human before</div>
+              <div class="text-xl font-display font-bold text-gray-400">0 %</div>
+            </div>
+            <div class="text-center p-3 bg-green-50 rounded-xl">
+              <div class="text-xs text-gray-400 mb-1">Resolved without human after</div>
+              <div class="text-xl font-display font-bold text-green-600">68 %</div>
+            </div>
+          </div>
+          <div class="border-t border-gray-100 pt-5">
+            <p class="text-gray-500 text-sm leading-relaxed italic">"Customers get a response almost instantly. We finally deal with complex cases — not the same questions over and over."</p>
+            <p class="text-gray-400 text-xs mt-2">— Customer Support Lead, e-commerce · illustrative scenario</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FEATURES ═══════════════════════════ -->
+<section class="py-20 bg-bm-dark grain relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none opacity-10"
+       style="background: radial-gradient(ellipse 80% 50% at 50% 0%, #1A4ADB, transparent);"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-bm-sky mb-3">What's included</span>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-white">
+        Everything you need to<br/><span class="grad-text">automate support</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.05s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2">Gmail integration</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Monitors your inbox, classifies support emails, and prepares draft replies — all automatically.</p>
+      </div>
+
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.1s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2">Chat widget</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Embeddable chatbot for your website. Customers get instant answers, 24/7, without human intervention.</p>
+      </div>
+
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.15s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2">RAG knowledge base</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Upload your PDFs, FAQs, and policies. The AI retrieves only relevant context — answers stay accurate.</p>
+      </div>
+
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.2s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2">Human in the loop</h3>
+        <p class="text-white/50 text-sm leading-relaxed">The AI prepares drafts, humans approve. You stay in full control — nothing is sent without your review.</p>
+      </div>
+
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.25s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2">Easy knowledge updates</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Changed your return policy? Update the document, reload the knowledge base. The AI learns immediately.</p>
+      </div>
+
+      <div class="card-hover bg-white/5 border border-white/8 rounded-2xl p-6 reveal" style="transition-delay:0.3s">
+        <div class="w-10 h-10 rounded-xl bg-bm-electric/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bm-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-white mb-2">Powered by Groq + Llama</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Ultra-fast inference with Groq hardware. Responses generated in under 3 seconds, even for complex queries.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ TECH STACK ═══════════════════════════ -->
+<section class="py-16 bg-white border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <p class="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-10">Built with trusted technologies</p>
+    <div class="flex flex-wrap items-center justify-center gap-8 opacity-60">
+      <img src="/brand_assets/groq.png" alt="Groq" class="h-7 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+      <img src="/brand_assets/cohere.png" alt="Cohere" class="h-7 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+      <span class="text-sm font-semibold text-gray-500">n8n</span>
+      <span class="text-sm font-semibold text-gray-500">Qdrant</span>
+      <span class="text-sm font-semibold text-gray-500">Gmail API</span>
+      <span class="text-sm font-semibold text-gray-500">Llama 3.3</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CTA ═══════════════════════════ -->
+<section class="py-24 bg-bm-pale">
+  <div class="max-w-3xl mx-auto px-6 text-center reveal">
+    <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-5">
+      Ready to stop answering<br/><span class="grad-text">the same emails?</span>
+    </h2>
+    <p class="text-gray-500 text-lg mb-10">
+      We'll set up the entire system for your business — knowledge base, email automation, and chat widget — tailored to your brand and policies.
+    </p>
+    <a href="/#contact" class="btn-p inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-bm-electric text-white font-semibold text-base">
+      Get in touch
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+    <p class="text-gray-400 text-sm mt-4">No commitment. We'll show you a working demo first.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="bg-bm-darkest py-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2">
+      <span style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.1rem; color:white; letter-spacing:-0.03em;">
+        Biz<span style="color:#5B9CF6;">Matica</span>
+      </span>
+    </a>
+    <p class="text-white/30 text-xs">© 2026 BizMatica. All rights reserved.</p>
+    <a href="/" class="text-white/40 hover:text-white/70 text-xs transition-colors duration-200">← Back to main site</a>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('nav-scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
