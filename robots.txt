@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bizmatica.net/sitemap.xml
+Sitemap: https://bizmatica.cz/sitemap.xml
+Sitemap: https://bizmatica.sk/sitemap.xml

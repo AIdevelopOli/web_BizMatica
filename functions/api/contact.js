@@ -4,12 +4,7 @@ export async function onRequestPost(context) {
   try {
     const { name, email, company, message, lang, 'cf-turnstile-response': token } = await request.json();
 
-    const fromMap = {
-      cs: 'BizMatica Web <info@bizmatica.cz>',
-      sk: 'BizMatica Web <info@bizmatica.sk>',
-      en: 'BizMatica Web <info@bizmatica.net>',
-    };
-    const from = fromMap[lang] || fromMap.en;
+    const from = 'BizMatica Web <info@bizmatica.net>';
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {

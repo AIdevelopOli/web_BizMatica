@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #020B1E;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    position: relative;
+  }
+  .accent-line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, #1A4ADB 20%, #5B9CF6 50%, #1A4ADB 80%, transparent 100%);
+    z-index: 20;
+  }
+  .network-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  /* Dark overlay on left to keep text readable */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(to right,
+      rgba(2,11,30,0.92) 0%,
+      rgba(2,11,30,0.85) 35%,
+      rgba(2,11,30,0.45) 60%,
+      rgba(2,11,30,0.1) 100%
+    );
+  }
+  .content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+    max-width: 680px;
+  }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 22px;
+  }
+  .wordmark {
+    font-size: 84px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -3px;
+    color: #ffffff;
+    text-shadow: 0 0 40px rgba(59,110,248,0.6), 0 2px 20px rgba(0,0,0,0.8);
+  }
+  .tagline-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .tagline-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #3B6EF8;
+    box-shadow: 0 0 14px #3B6EF8;
+    flex-shrink: 0;
+  }
+  .tagline {
+    font-size: 21px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #5B9CF6;
+  }
+  .description {
+    font-size: 26px;
+    font-weight: 600;
+    color: rgba(238,244,255,0.90);
+    line-height: 1.4;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .domain {
+    position: absolute;
+    bottom: 34px;
+    right: 60px;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(91,156,246,0.55);
+    letter-spacing: 0.06em;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+  <div class="accent-line"></div>
+
+  <!-- Neural network SVG background -->
+  <svg class="network-bg" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="bg" cx="65%" cy="50%">
+        <stop offset="0%" stop-color="#0A1F7A" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#020B1E" stop-opacity="0"/>
+      </radialGradient>
+      <!-- Node gradients: white/light for large, blue for medium, subtle for small -->
+      <radialGradient id="nBig" cx="35%" cy="30%">
+        <stop offset="0%" stop-color="#c8d8f8"/>
+        <stop offset="50%" stop-color="#7aa4f0"/>
+        <stop offset="100%" stop-color="#1A4ADB" stop-opacity="0.6"/>
+      </radialGradient>
+      <radialGradient id="nMed" cx="35%" cy="30%">
+        <stop offset="0%" stop-color="#9bbcf6"/>
+        <stop offset="60%" stop-color="#3B6EF8"/>
+        <stop offset="100%" stop-color="#0A1F7A" stop-opacity="0.7"/>
+      </radialGradient>
+      <radialGradient id="nSml" cx="35%" cy="30%">
+        <stop offset="0%" stop-color="#6090e8"/>
+        <stop offset="100%" stop-color="#0A1F7A" stop-opacity="0.5"/>
+      </radialGradient>
+      <filter id="gBig" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="10" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="gMed" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="5" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="gSml" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="3" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- Background glow -->
+    <rect width="1200" height="630" fill="url(#bg)"/>
+
+    <!-- Connection lines - muted, thin -->
+    <g stroke="#3B6EF8" stroke-opacity="0.18" stroke-width="1" fill="none">
+      <line x1="720" y1="120" x2="900" y2="200"/>
+      <line x1="720" y1="120" x2="820" y2="60"/>
+      <line x1="720" y1="120" x2="600" y2="280"/>
+      <line x1="900" y1="200" x2="1050" y2="280"/>
+      <line x1="900" y1="200" x2="960" y2="100"/>
+      <line x1="900" y1="200" x2="820" y2="350"/>
+      <line x1="600" y1="280" x2="820" y2="350"/>
+      <line x1="600" y1="280" x2="500" y2="420"/>
+      <line x1="600" y1="280" x2="740" y2="420"/>
+      <line x1="820" y1="350" x2="1050" y2="280"/>
+      <line x1="820" y1="350" x2="740" y2="420"/>
+      <line x1="820" y1="350" x2="980" y2="480"/>
+      <line x1="1050" y1="280" x2="1140" y2="380"/>
+      <line x1="1050" y1="280" x2="960" y2="100"/>
+      <line x1="740" y1="420" x2="980" y2="480"/>
+      <line x1="740" y1="420" x2="620" y2="540"/>
+      <line x1="980" y1="480" x2="1140" y2="380"/>
+      <line x1="980" y1="480" x2="1100" y2="580"/>
+      <line x1="500" y1="420" x2="620" y2="540"/>
+      <!-- Extra cross connections -->
+      <line x1="820" y1="60"  x2="960" y2="100"/>
+      <line x1="960" y1="100" x2="1140" y2="160"/>
+      <line x1="1140" y1="160" x2="1140" y2="380"/>
+      <line x1="500" y1="420" x2="740" y2="420"/>
+      <line x1="620" y1="540" x2="1100" y2="580"/>
+    </g>
+
+    <!-- Brighter highlight lines -->
+    <g stroke="#5B9CF6" stroke-opacity="0.30" stroke-width="1.2" fill="none">
+      <line x1="720" y1="120" x2="900" y2="200"/>
+      <line x1="900" y1="200" x2="820" y2="350"/>
+      <line x1="820" y1="350" x2="740" y2="420"/>
+      <line x1="740" y1="420" x2="980" y2="480"/>
+    </g>
+
+    <!-- Small dots scattered -->
+    <g fill="#4C7EF0" opacity="0.4">
+      <circle cx="780" cy="170" r="2.5"/>
+      <circle cx="860" cy="275" r="2"/>
+      <circle cx="670" cy="200" r="2"/>
+      <circle cx="1000" cy="240" r="2.5"/>
+      <circle cx="700" cy="350" r="2"/>
+      <circle cx="890" cy="415" r="2.5"/>
+      <circle cx="1070" cy="330" r="2"/>
+      <circle cx="560" cy="350" r="2"/>
+      <circle cx="650" cy="480" r="2.5"/>
+      <circle cx="1050" cy="500" r="2"/>
+      <circle cx="1180" cy="250" r="2"/>
+      <circle cx="850" cy="500" r="2"/>
+    </g>
+
+    <!-- Small nodes -->
+    <g filter="url(#gSml)">
+      <circle cx="820"  cy="60"   r="7"  fill="url(#nSml)"/>
+      <circle cx="960"  cy="100"  r="8"  fill="url(#nSml)"/>
+      <circle cx="1140" cy="160"  r="6"  fill="url(#nSml)"/>
+      <circle cx="500"  cy="420"  r="9"  fill="url(#nSml)"/>
+      <circle cx="620"  cy="540"  r="8"  fill="url(#nSml)"/>
+      <circle cx="1100" cy="580"  r="7"  fill="url(#nSml)"/>
+      <circle cx="1140" cy="380"  r="9"  fill="url(#nSml)"/>
+    </g>
+
+    <!-- Medium nodes -->
+    <g filter="url(#gMed)">
+      <circle cx="600"  cy="280"  r="14" fill="url(#nMed)"/>
+      <circle cx="1050" cy="280"  r="16" fill="url(#nMed)"/>
+      <circle cx="740"  cy="420"  r="15" fill="url(#nMed)"/>
+      <circle cx="980"  cy="480"  r="14" fill="url(#nMed)"/>
+    </g>
+
+    <!-- Large nodes -->
+    <g filter="url(#gBig)">
+      <circle cx="720"  cy="120"  r="26" fill="url(#nBig)"/>
+      <circle cx="900"  cy="200"  r="30" fill="url(#nBig)"/>
+      <circle cx="820"  cy="350"  r="34" fill="url(#nBig)"/>
+    </g>
+  </svg>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <div class="logo-row">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 76" width="90" height="90">
+        <defs>
+          <linearGradient id="cG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3B6EF8"/>
+            <stop offset="100%" stop-color="#0A1F7A"/>
+          </linearGradient>
+          <linearGradient id="nG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#5B9CF6"/>
+            <stop offset="100%" stop-color="#1A4ADB"/>
+          </linearGradient>
+          <filter id="glw">
+            <feGaussianBlur stdDeviation="3" result="b1"/>
+            <feGaussianBlur stdDeviation="6" result="b2"/>
+            <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="ng2">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle cx="38" cy="38" r="34" fill="none" stroke="#1A4ADB" stroke-width="0.6" opacity="0.25" stroke-dasharray="3 5"/>
+        <circle cx="38" cy="38" r="17" fill="none" stroke="#3B6EF8" stroke-width="1" opacity="0.25"/>
+        <line x1="38" y1="26" x2="38" y2="9"  stroke="#2158E8" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="47" y1="31" x2="64" y2="25" stroke="#2158E8" stroke-width="2"   stroke-linecap="round"/>
+        <line x1="46" y1="44" x2="61" y2="61" stroke="#2158E8" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="28" y1="42" x2="10" y2="57" stroke="#2158E8" stroke-width="2"   stroke-linecap="round"/>
+        <line x1="29" y1="30" x2="11" y2="21" stroke="#2158E8" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="38" cy="38" r="13" fill="#2158E8" opacity="0.3" filter="url(#glw)"/>
+        <circle cx="38" cy="38" r="11" fill="url(#cG)"/>
+        <circle cx="38" cy="38" r="5.5" fill="white" opacity="0.95"/>
+        <circle cx="38" cy="38" r="2.5" fill="#1A4ADB"/>
+        <circle cx="11" cy="21" r="4"   fill="url(#nG)" filter="url(#ng2)"/>
+        <circle cx="38" cy="6"  r="5.5" fill="url(#nG)" filter="url(#ng2)"/>
+        <circle cx="66" cy="24" r="4.5" fill="url(#nG)" filter="url(#ng2)"/>
+        <circle cx="62" cy="62" r="6"   fill="url(#nG)" filter="url(#ng2)"/>
+        <circle cx="9"  cy="57" r="4"   fill="url(#nG)" filter="url(#ng2)"/>
+      </svg>
+      <span class="wordmark">BizMatica</span>
+    </div>
+    <div class="tagline-row">
+      <div class="tagline-dot"></div>
+      <div class="tagline">AI Automation Agency</div>
+    </div>
+    <div class="description">Automate. Grow. Win.</div>
+  </div>
+
+  <div class="domain">bizmatica.net</div>
+</body>
+</html>

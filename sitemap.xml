@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- English (bizmatica.net) -->
+  <url>
+    <loc>https://bizmatica.net/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Czech (bizmatica.cz) -->
+  <url>
+    <loc>https://bizmatica.cz/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Slovak (bizmatica.sk) -->
+  <url>
+    <loc>https://bizmatica.sk/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+</urlset>
