@@ -2,10 +2,24 @@ export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
-    const { name, email, company, message } = await request.json();
+    const { name, email, company, message, 'cf-turnstile-response': token } = await request.json();
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Verify Turnstile token
+    const verify = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret: env.TURNSTILE_SECRET_KEY, response: token }),
+    });
+    const verifyData = await verify.json();
+    if (!verifyData.success) {
+      return new Response(JSON.stringify({ error: 'Spam check failed' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
