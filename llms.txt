@@ -1,0 +1,38 @@
+# BizMatica
+
+> BizMatica is an AI automation agency helping small and medium-sized businesses (SMBs) eliminate repetitive work with intelligent automation. We build process automations, AI chatbots, system integrations, automated reporting, and custom AI solutions.
+
+## Services
+
+- **Process Automation**: Automate repetitive workflows — data entry, approvals, notifications, document processing.
+- **AI Chatbots**: Deploy AI-powered chatbots for customer support, lead qualification, and internal helpdesks.
+- **System Integrations**: Connect your existing tools (CRM, ERP, e-commerce, email) so data flows automatically.
+- **Automated Reporting**: Auto-generate and distribute reports — sales, operations, finance — on any schedule.
+- **Custom AI Solutions**: Purpose-built AI tools trained on your data and processes.
+- **AI Consultation & Strategy**: Free discovery audit to identify your highest-impact automation opportunities.
+
+## How It Works (5-Phase Process)
+
+1. **Discovery Audit** — Free analysis of workflows, tools, and pain points. Identify highest-impact automation opportunities.
+2. **Custom Design** — Tailored solution with ROI projections and realistic implementation timeline.
+3. **Implementation** — Build and deploy automation with real-data testing. Typically 1–3 weeks.
+4. **Ongoing Support** — 30-day post-launch monitoring, edge case handling, performance tuning.
+5. **Lifecycle Development** — Updates and enhancements as your business evolves.
+
+## Key Facts
+
+- Average client saves 15–20 hours per week on manual tasks after automation
+- Free 30-minute discovery call — no strings attached
+- Serves SMBs across Czech Republic, Slovakia, and internationally
+- Founded by Ing. Oliver Klamo MBA
+
+## Content
+
+- [Blog (EN)](https://bizmatica.net/blog/) — Practical guides and case studies on AI automation for SMBs
+- [Blog (CS)](https://bizmatica.cz/cs/blog/) — Czech version
+- [Blog (SK)](https://bizmatica.sk/sk/blog/) — Slovak version
+
+## Contact
+
+- Website: https://bizmatica.net (EN), https://bizmatica.cz (CS), https://bizmatica.sk (SK)
+- Languages: English, Czech, Slovak
