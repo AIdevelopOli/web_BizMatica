@@ -2,7 +2,14 @@ export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
-    const { name, email, company, message, 'cf-turnstile-response': token } = await request.json();
+    const { name, email, company, message, lang, 'cf-turnstile-response': token } = await request.json();
+
+    const fromMap = {
+      cs: 'BizMatica Web <info@bizmatica.cz>',
+      sk: 'BizMatica Web <info@bizmatica.sk>',
+      en: 'BizMatica Web <info@bizmatica.net>',
+    };
+    const from = fromMap[lang] || fromMap.en;
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
@@ -32,7 +39,7 @@ export async function onRequestPost(context) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'BizMatica Web <info@bizmatica.net>',
+        from,
         to: 'info@bestbiz.cz',
         reply_to: email,
         subject: `New inquiry from ${name}${company ? ` (${company})` : ''}`,
