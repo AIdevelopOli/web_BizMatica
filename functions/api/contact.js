@@ -18,7 +18,7 @@ export async function onRequestPost(context) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'BizMatica Web <onboarding@resend.dev>',
+        from: 'BizMatica Web <info@bizmatica.net>',
         to: 'info@bestbiz.cz',
         reply_to: email,
         subject: `New inquiry from ${name}${company ? ` (${company})` : ''}`,
