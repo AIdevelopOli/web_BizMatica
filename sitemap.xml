@@ -32,4 +32,33 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Blog article: How We Automate Business Processes -->
+  <url>
+    <loc>https://bizmatica.net/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bizmatica.cz/cs/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bizmatica.sk/sk/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
