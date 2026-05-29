@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Google Sans', Roboto, Arial, sans-serif; background: #f6f8fc; width: 900px; }
+    .gmail-wrap { display: flex; height: 600px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
+    .sidebar { width: 220px; background: #fff; padding: 8px 0; flex-shrink: 0; border-right: 1px solid #e0e0e0; }
+    .compose-btn { margin: 8px 16px 16px; padding: 16px 24px; border-radius: 16px; background: #c2e7ff; color: #001d35; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 10px; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+    .compose-btn svg { width: 20px; height: 20px; }
+    .nav-item { padding: 4px 8px 4px 16px; border-radius: 0 16px 16px 0; font-size: 14px; color: #202124; display: flex; align-items: center; gap: 12px; height: 32px; cursor: pointer; margin-right: 16px; }
+    .nav-item.active { background: #d3e3fd; font-weight: 600; }
+    .nav-item svg { width: 18px; height: 18px; opacity: 0.6; }
+    .nav-item .count { margin-left: auto; font-size: 12px; }
+    .nav-divider { height: 1px; background: #e0e0e0; margin: 8px 0; }
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .toolbar { padding: 8px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #e0e0e0; }
+    .search-bar { flex: 1; background: #eaf1fb; border-radius: 24px; padding: 8px 16px; display: flex; align-items: center; gap: 8px; color: #444746; font-size: 16px; }
+    .email-list { flex: 1; overflow-y: auto; }
+    .email-row { display: flex; align-items: center; padding: 0 16px; height: 52px; border-bottom: 1px solid #f0f0f0; cursor: pointer; gap: 12px; }
+    .email-row:hover { background: #f2f6fc; }
+    .email-row.draft-row { background: #f0f7ff; }
+    .email-row .avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #fff; flex-shrink: 0; }
+    .email-row .sender { width: 160px; font-size: 13px; font-weight: 600; color: #202124; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .email-row .sender.draft-label { color: #c5221f; }
+    .email-row .snippet { flex: 1; font-size: 13px; color: #5f6368; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .email-row .snippet .subject { color: #202124; font-weight: 500; }
+    .email-row .time { font-size: 12px; color: #5f6368; flex-shrink: 0; }
+    .email-row.unread .sender, .email-row.unread .time { font-weight: 700; color: #202124; }
+    .draft-window {
+      position: absolute;
+      bottom: 0;
+      right: 24px;
+      width: 540px;
+      background: #fff;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+    .draft-header { background: #404040; color: #fff; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: 500; border-radius: 8px 8px 0 0; cursor: pointer; }
+    .draft-header .actions { display: flex; gap: 8px; align-items: center; }
+    .draft-header svg { width: 16px; height: 16px; opacity: 0.8; }
+    .draft-fields { border-bottom: 1px solid #e0e0e0; }
+    .draft-field { display: flex; align-items: center; padding: 4px 16px; border-bottom: 1px solid #f0f0f0; font-size: 13px; color: #5f6368; gap: 8px; min-height: 36px; }
+    .draft-field .label { width: 48px; flex-shrink: 0; }
+    .draft-field .value { color: #202124; }
+    .draft-field .chip { background: #e8f0fe; color: #1a73e8; padding: 2px 8px; border-radius: 12px; font-size: 12px; display: flex; align-items: center; gap: 4px; }
+    .draft-body { padding: 12px 16px; font-size: 14px; color: #202124; line-height: 1.6; min-height: 200px; }
+    .draft-body .ai-badge { display: inline-flex; align-items: center; gap: 4px; background: #e8f0fe; color: #1a73e8; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-bottom: 10px; }
+    .draft-footer { padding: 8px 16px 12px; display: flex; align-items: center; gap: 8px; border-top: 1px solid #f0f0f0; }
+    .send-btn { background: #0b57d0; color: #fff; border: none; padding: 9px 22px; border-radius: 18px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit; }
+    .draft-footer-actions { margin-left: auto; display: flex; gap: 4px; }
+    .draft-footer-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #444746; cursor: pointer; }
+    .draft-footer-icon svg { width: 18px; height: 18px; }
+  </style>
+</head>
+<body>
+<div style="position:relative; width:900px; padding: 20px;">
+
+  <div class="gmail-wrap" style="position:relative;">
+
+    <div class="sidebar">
+      <div class="compose-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        Napsat
+      </div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Doručená pošta <span class="count" style="color:#202124;font-weight:600;">3</span></div>
+      <div class="nav-item active"><svg viewBox="0 0 24 24" fill="#c5221f"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg><span style="color:#c5221f;">Koncepty</span> <span class="count" style="color:#c5221f;font-weight:700;">1</span></div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>Odeslaná pošta</div>
+      <div class="nav-divider"></div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Označené</div>
+    </div>
+
+    <div class="main">
+      <div class="toolbar">
+        <div class="search-bar">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          Hledat poštu
+        </div>
+      </div>
+
+      <div class="email-list">
+        <div class="email-row draft-row">
+          <div class="avatar" style="background:#c5221f;">K</div>
+          <div class="sender draft-label">Koncept</div>
+          <div class="snippet"><span class="subject">Re: Záruka — Můj TV přestal fungovat</span> &nbsp;— Vážený zákazníku, děkujeme za váš kontakt. K vaší záruční situaci...</div>
+          <div class="time" style="color:#c5221f;font-weight:600;">Právě teď</div>
+        </div>
+        <div class="email-row unread">
+          <div class="avatar" style="background:#1a73e8;">M</div>
+          <div class="sender">Martin Novák</div>
+          <div class="snippet"><span class="subject">Můj TV přestal fungovat po 8 měsících</span> &nbsp;— Dobrý den, koupil jsem u vás 55" televizi před 8 měsíci a najednou přestala...</div>
+          <div class="time">9:14</div>
+        </div>
+        <div class="email-row">
+          <div class="avatar" style="background:#34a853;">K</div>
+          <div class="sender">Kateřina Vlčková</div>
+          <div class="snippet"><span class="subject">Žádost o vrácení — Objednávka #48291</span> &nbsp;— Dobrý den, ráda bych vrátila produkt objednaný minulý týden. Dorazil poškozený...</div>
+          <div class="time">Včera</div>
+        </div>
+        <div class="email-row">
+          <div class="avatar" style="background:#fa7b17;">J</div>
+          <div class="sender">Jan Procházka</div>
+          <div class="snippet"><span class="subject">Dotaz ohledně záruční politiky</span> &nbsp;— Dobrý den, rád bych se zeptal na záruční podmínky pro produkt, který...</div>
+          <div class="time">25. 5.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="draft-window">
+    <div class="draft-header">
+      Re: Záruka — Můj TV přestal fungovat
+      <div class="actions">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        <svg viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="white"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+      </div>
+    </div>
+    <div class="draft-fields">
+      <div class="draft-field"><span class="label">Komu</span><span class="chip">Martin Novák &nbsp;✕</span></div>
+      <div class="draft-field"><span class="label">Předmět</span><span class="value">Re: Záruka — Můj TV přestal fungovat po 8 měsících</span></div>
+    </div>
+    <div class="draft-body">
+      <div class="ai-badge">✦ AI návrh odpovědi</div>
+      <p>Vážený zákazníku,</p><br/>
+      <p>Děkujeme, že jste se na nás obrátili ohledně vašeho televizoru. Dle naší záruční politiky jsou výrobky kryty zárukou po dobu <strong>24 měsíců</strong> od data zakoupení.</p><br/>
+      <p>Jelikož váš televizor přestal fungovat po 8 měsících, je plně kryt zárukou. Postupujte prosím takto:</p>
+      <ol style="padding-left:20px; margin: 8px 0;">
+        <li>Kontaktujte naše servisní centrum na <strong>+420 800 123 456</strong></li>
+        <li>Přiložte doklad o koupi (číslo objednávky nebo účtenku)</li>
+        <li>Zajistíme bezplatnou opravu nebo výměnu</li>
+      </ol><br/>
+      <p>Omlouváme se za vzniklé nepříjemnosti a vyřešíme vše co nejrychleji.</p><br/>
+      <p>S pozdravem,<br/>Tým zákaznické podpory Gadget &amp; More Electronics</p>
+    </div>
+    <div class="draft-footer">
+      <button class="send-btn">Odeslat</button>
+      <div class="draft-footer-actions">
+        <div class="draft-footer-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/></svg></div>
+        <div class="draft-footer-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mluvit s Claudem (čeština)</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:24px}
+    button{margin:4px;padding:8px 12px}
+    #transcript{white-space:pre-wrap;margin-top:12px;padding:12px;border:1px solid #ddd;border-radius:6px}
+  </style>
+</head>
+<body>
+  <h1>Mluvit s Claudem — český mikrofon</h1>
+  <p>Stiskněte <strong>Start</strong>, mluvte česky a pošlete text do Clauda.</p>
+
+  <div>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn" disabled>Stop</button>
+    <button id="sendBtn" disabled>Odeslat do Claude</button>
+  </div>
+
+  <div id="transcript">Zde se zobrazí přepis...</div>
+
+  <div id="response" style="margin-top:12px"></div>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const sendBtn = document.getElementById('sendBtn');
+    const transcriptEl = document.getElementById('transcript');
+    const responseEl = document.getElementById('response');
+
+    let recognition;
+    let finalTranscript = '';
+
+    function initRecognition(){
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if(!SpeechRecognition){
+        transcriptEl.textContent = 'Váš prohlížeč nepodporuje Web Speech API.';
+        startBtn.disabled = true;
+        return;
+      }
+
+      recognition = new SpeechRecognition();
+      recognition.lang = 'cs-CZ';
+      recognition.interimResults = true;
+      recognition.continuous = false;
+
+      recognition.onstart = ()=>{
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+        transcriptEl.textContent = 'Poslouchám...';
+      };
+
+      recognition.onerror = (e)=>{
+        console.error('Recognition error', e);
+        transcriptEl.textContent = 'Chyba rozpoznávání: ' + (e.error || e.message);
+      };
+
+      recognition.onresult = (event)=>{
+        let interim = '';
+        for(let i=event.resultIndex;i<event.results.length;i++){
+          const res = event.results[i];
+          if(res.isFinal) finalTranscript += res[0].transcript;
+          else interim += res[0].transcript;
+        }
+        transcriptEl.textContent = finalTranscript + '\n' + interim;
+        sendBtn.disabled = finalTranscript.trim().length === 0;
+      };
+
+      recognition.onend = ()=>{
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+        if(finalTranscript.trim().length === 0) transcriptEl.textContent = 'Žádný zachycený hlas.';
+      };
+    }
+
+    startBtn.addEventListener('click', ()=>{
+      finalTranscript = '';
+      responseEl.textContent = '';
+      initRecognition();
+      recognition.start();
+    });
+
+    stopBtn.addEventListener('click', ()=>{
+      if(recognition) recognition.stop();
+    });
+
+    sendBtn.addEventListener('click', async ()=>{
+      const text = finalTranscript.trim();
+      if(!text) return;
+      sendBtn.disabled = true;
+      responseEl.textContent = 'Odesílám...';
+
+      try{
+        const res = await fetch('/api/sendToClaude', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ text, lang: 'cs-CZ' })
+        });
+
+        const data = await res.json();
+        if(!res.ok) throw data;
+        responseEl.innerHTML = '<strong>Claude odpověděl:</strong><div style="margin-top:8px;white-space:pre-wrap">'+(data.reply || JSON.stringify(data))+'</div>';
+
+        // optionally speak the response in Czech
+        if('speechSynthesis' in window && data.reply){
+          const uttr = new SpeechSynthesisUtterance(data.reply);
+          uttr.lang = 'cs-CZ';
+          window.speechSynthesis.cancel();
+          window.speechSynthesis.speak(uttr);
+        }
+
+      }catch(err){
+        console.error(err);
+        responseEl.textContent = 'Chyba při odesílání: ' + (err.error || err.message || JSON.stringify(err));
+      }finally{
+        sendBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f2f5;
+      width: 900px;
+      height: 580px;
+    }
+    .app-shell {
+      display: flex;
+      height: 580px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+    }
+    .form-panel {
+      width: 360px;
+      flex-shrink: 0;
+      background: #1a2a4a;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 26px 24px;
+      overflow: hidden;
+    }
+    .badge-top {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e8734a;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #e8734a; }
+    .form-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .form-subtitle { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #e8734a;
+      margin-bottom: 8px;
+      margin-top: 12px;
+    }
+    .field { margin-bottom: 8px; }
+    .field label { display: block; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+    .field input, .field select {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      appearance: none;
+    }
+    .field select { color: rgba(255,255,255,0.7); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tone-row { display: flex; gap: 6px; margin-bottom: 8px; }
+    .tone-btn { flex: 1; padding: 7px 4px; border-radius: 6px; font-size: 10px; font-weight: 700; text-align: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); }
+    .tone-btn.active { background: #e8734a; border-color: #e8734a; color: #fff; }
+    .analyze-btn {
+      margin-top: 14px;
+      width: 100%;
+      background: #e8734a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .result-panel {
+      flex: 1;
+      background: #f8f9fb;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .result-header {
+      padding: 18px 22px 14px;
+      border-bottom: 1px solid #eaeaea;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .result-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 3px;
+    }
+    .result-title { font-size: 18px; font-weight: 700; color: #111; }
+    .stats-row { display: flex; gap: 16px; }
+    .stat-chip { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 6px 12px; text-align: center; }
+    .stat-chip .val { font-size: 16px; font-weight: 800; color: #111; }
+    .stat-chip .lbl { font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; }
+    .result-body { padding: 16px 22px; flex: 1; overflow: hidden; }
+    .seq-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #888; margin-bottom: 12px;
+    }
+    .seq-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .seq-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 36px;
+      bottom: -10px;
+      width: 2px;
+      background: #e5e7eb;
+    }
+    .seq-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .seq-content { flex: 1; background: #fff; border-radius: 10px; padding: 10px 14px; border: 1px solid #e5e7eb; }
+    .seq-title { font-size: 13px; font-weight: 700; color: #111; margin-bottom: 2px; }
+    .seq-meta { font-size: 11px; color: #888; }
+    .seq-status { margin-left: auto; display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; flex-shrink: 0; white-space: nowrap; }
+    .status-sent { background: #dcfce7; color: #15803d; }
+    .status-opened { background: #dbeafe; color: #1d4ed8; }
+    .status-pending { background: #f3f4f6; color: #6b7280; }
+    .seq-row-inner { display: flex; align-items: center; gap: 8px; }
+    .metrics-row { display: flex; gap: 10px; margin-top: 14px; }
+    .metric-box { flex: 1; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px 14px; }
+    .metric-box .m-val { font-size: 22px; font-weight: 800; color: #111; }
+    .metric-box .m-lbl { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+    .metric-box .m-sub { font-size: 11px; color: #16a34a; font-weight: 600; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- LEFT: Nastavení sekvence -->
+  <div class="form-panel">
+    <div class="badge-top"><div class="badge-dot"></div>AI FOLLOW-UP</div>
+    <div class="form-title">Sekvence<br/>oslovení</div>
+    <div class="form-subtitle">Nastavte automatickou sekvenci e-mailů pro nové leady.</div>
+
+    <div class="section-label">Zdroj leadů</div>
+    <div class="field"><label>ZDROJ</label><select><option>Supabase — kvalifikované leady (skóre ≥ 6)</option></select></div>
+
+    <div class="section-label">Časování sekvence</div>
+    <div class="field-row">
+      <div class="field"><label>E-MAIL 2 (DNY)</label><input value="3"/></div>
+      <div class="field"><label>E-MAIL 3 (DNY)</label><input value="7"/></div>
+    </div>
+
+    <div class="section-label">Tón oslovení</div>
+    <div class="tone-row">
+      <div class="tone-btn active">Konzultant</div>
+      <div class="tone-btn">Přátelský</div>
+      <div class="tone-btn">Formální</div>
+    </div>
+
+    <div class="section-label">Odesílatel</div>
+    <div class="field"><label>JMÉNO</label><input value="Ondřej Klamár · BizMatica"/></div>
+
+    <button class="analyze-btn">SPUSTIT SEKVENCI →</button>
+  </div>
+
+  <!-- RIGHT: Přehled sekvence -->
+  <div class="result-panel">
+    <div class="result-header">
+      <div>
+        <div class="result-eyebrow">Aktivní kampaň</div>
+        <div class="result-title">Jana Nováková — TechFlow s.r.o.</div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-chip"><div class="val">3</div><div class="lbl">E-maily</div></div>
+        <div class="stat-chip"><div class="val" style="color:#1d4ed8;">2/3</div><div class="lbl">Odesláno</div></div>
+      </div>
+    </div>
+    <div class="result-body">
+
+      <div class="seq-label">Průběh sekvence</div>
+
+      <div class="seq-item">
+        <div class="seq-circle" style="background:#dcfce7;color:#15803d;">1</div>
+        <div class="seq-content">
+          <div class="seq-row-inner">
+            <div>
+              <div class="seq-title">Personalizovaný první kontakt</div>
+              <div class="seq-meta">Odesláno 23. 5. · 9:02</div>
+            </div>
+            <div class="seq-status status-opened">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              Otevřeno
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seq-item">
+        <div class="seq-circle" style="background:#dbeafe;color:#1d4ed8;">2</div>
+        <div class="seq-content">
+          <div class="seq-row-inner">
+            <div>
+              <div class="seq-title">Follow-up #2 — připomenutí</div>
+              <div class="seq-meta">Odesláno 26. 5. · 9:15</div>
+            </div>
+            <div class="seq-status status-opened">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              Otevřeno
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seq-item">
+        <div class="seq-circle" style="background:#f3f4f6;color:#6b7280;">3</div>
+        <div class="seq-content">
+          <div class="seq-row-inner">
+            <div>
+              <div class="seq-title">Follow-up #3 — poslední pokus</div>
+              <div class="seq-meta">Plánováno 30. 5. · 9:00</div>
+            </div>
+            <div class="seq-status status-pending">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Čeká
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-box">
+          <div class="m-val">68%</div>
+          <div class="m-lbl">Open rate</div>
+          <div class="m-sub">↑ +24% vs. šablony</div>
+        </div>
+        <div class="metric-box">
+          <div class="m-val">31%</div>
+          <div class="m-lbl">Reply rate</div>
+          <div class="m-sub">↑ +18% vs. šablony</div>
+        </div>
+        <div class="metric-box">
+          <div class="m-val">4</div>
+          <div class="m-lbl">Aktivní sekvence</div>
+          <div class="m-sub" style="color:#888;">tento týden</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

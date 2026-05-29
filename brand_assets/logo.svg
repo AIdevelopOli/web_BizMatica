@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 76" width="310" height="76">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 94" width="310" height="94">
   <defs>
     <linearGradient id="coreGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#3B6EF8"/>
@@ -25,7 +25,7 @@
 
   <!-- === ICON: NEURAL NETWORK === -->
 
-  <!-- Outer frame ring (very subtle, gives icon a boundary) -->
+  <!-- Outer frame ring -->
   <circle cx="38" cy="38" r="34" fill="none" stroke="#1A4ADB" stroke-width="0.6" opacity="0.18" stroke-dasharray="3 5"/>
 
   <!-- Pulse rings around center -->
@@ -74,6 +74,17 @@
     font-size="32"
     font-weight="800"
     font-style="italic"
-    letter-spacing="-1"
-    fill="#0A1F7A">BizMatica</text>
+    letter-spacing="-1">
+    <tspan fill="#ffffff">Biz</tspan><tspan fill="#5B9CF6">Matica</tspan>
+  </text>
+
+  <!-- === TAGLINE === -->
+  <text
+    x="93" y="68"
+    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="9.5"
+    font-weight="500"
+    letter-spacing="0.8"
+    fill="#8BBEFF"
+    opacity="0.85">AUTOMATE. GROW. WIN.</text>
 </svg>

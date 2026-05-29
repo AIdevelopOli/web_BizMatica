@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #0f0f0f; width: 900px; height: 560px; overflow: hidden; }
+
+    .shell {
+      display: flex;
+      height: 560px;
+      background: #0f0f0f;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #111;
+      border-right: 1px solid #222;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .sb-header {
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid #1e1e1e;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sb-logo {
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(135deg, #3ecf8e, #1f8a5a);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .sb-org { font-size: 13px; font-weight: 600; color: #e5e5e5; }
+
+    .sb-section { padding: 12px 8px 4px; }
+    .sb-section-label { font-size: 10px; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 8px; margin-bottom: 4px; }
+    .sb-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #888;
+      cursor: pointer;
+    }
+    .sb-item.active { background: #1a1a1a; color: #e5e5e5; }
+    .sb-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* Main area */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #0f0f0f;
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      border-bottom: 1px solid #1e1e1e;
+      gap: 10px;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .breadcrumb .active { color: #e5e5e5; font-weight: 500; }
+    .breadcrumb svg { width: 12px; height: 12px; color: #444; }
+
+    .topbar-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .btn-insert {
+      background: #3ecf8e;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .filter-btn {
+      background: #1a1a1a;
+      color: #888;
+      border: 1px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Table */
+    .table-wrap { flex: 1; overflow: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    thead tr { background: #0f0f0f; position: sticky; top: 0; z-index: 1; }
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #555;
+      border-bottom: 1px solid #1e1e1e;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    td {
+      padding: 10px 14px;
+      color: #ccc;
+      border-bottom: 1px solid #1a1a1a;
+      white-space: nowrap;
+    }
+    tr:hover td { background: #141414; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge-high { background: rgba(62,207,142,0.12); color: #3ecf8e; }
+    .badge-low  { background: rgba(99,120,255,0.12); color: #6378ff; }
+
+    .score-wrap { display: flex; align-items: center; gap: 8px; }
+    .score-bar-bg { width: 50px; height: 4px; background: #222; border-radius: 2px; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 2px; }
+
+    .row-count {
+      padding: 10px 20px;
+      font-size: 11px;
+      color: #444;
+      border-top: 1px solid #1e1e1e;
+    }
+  </style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sb-header">
+      <div class="sb-logo">S</div>
+      <div class="sb-org">bizmatica</div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-section-label">Database</div>
+      <div class="sb-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3M21 19c0 1.66-4.03 3-9 3s-9-1.34-9-3M3 5v14M21 5v14" stroke-linecap="round"/></svg>
+        leads
+      </div>
+      <div class="sb-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3M21 19c0 1.66-4.03 3-9 3s-9-1.34-9-3M3 5v14M21 5v14" stroke-linecap="round"/></svg>
+        users
+      </div>
+      <div class="sb-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3s-9-1.34-9-3M21 19c0 1.66-4.03 3-9 3s-9-1.34-9-3M3 5v14M21 5v14" stroke-linecap="round"/></svg>
+        subscriptions
+      </div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-section-label">Auth</div>
+      <div class="sb-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Users
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="breadcrumb">
+        <span>Database</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span class="active">leads</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="filter-btn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h18M7 12h10M10 20h4"/></svg>
+          Filter
+        </button>
+        <button class="btn-insert">+ Insert row</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30px; padding-left:16px;">
+              <input type="checkbox" style="accent-color:#3ecf8e;"/>
+            </th>
+            <th>id</th>
+            <th>name</th>
+            <th>company</th>
+            <th>email</th>
+            <th>score</th>
+            <th>intent</th>
+            <th>created_at</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding-left:16px;"><input type="checkbox" style="accent-color:#3ecf8e;"/></td>
+            <td style="color:#444; font-size:11px;">8f2a1c</td>
+            <td style="color:#e5e5e5; font-weight:500;">Martin Kovář</td>
+            <td>Kovář &amp; Partners s.r.o.</td>
+            <td style="color:#555;">martin@kovar-partners.cz</td>
+            <td>
+              <div class="score-wrap">
+                <span style="color:#e5e5e5; font-weight:600;">82</span>
+                <div class="score-bar-bg"><div class="score-bar-fill" style="width:82%; background:#3ecf8e;"></div></div>
+              </div>
+            </td>
+            <td><span class="badge badge-high">● High</span></td>
+            <td style="color:#444;">2026-05-27 10:47</td>
+          </tr>
+          <tr>
+            <td style="padding-left:16px;"><input type="checkbox" style="accent-color:#3ecf8e;"/></td>
+            <td style="color:#444; font-size:11px;">3d9f0b</td>
+            <td style="color:#e5e5e5; font-weight:500;">Sandra Beck</td>
+            <td>Beck Digital GmbH</td>
+            <td style="color:#555;">s.beck@beckdigital.de</td>
+            <td>
+              <div class="score-wrap">
+                <span style="color:#e5e5e5; font-weight:600;">74</span>
+                <div class="score-bar-bg"><div class="score-bar-fill" style="width:74%; background:#3ecf8e;"></div></div>
+              </div>
+            </td>
+            <td><span class="badge badge-high">● High</span></td>
+            <td style="color:#444;">2026-05-27 09:31</td>
+          </tr>
+          <tr>
+            <td style="padding-left:16px;"><input type="checkbox" style="accent-color:#3ecf8e;"/></td>
+            <td style="color:#444; font-size:11px;">c1e47a</td>
+            <td style="color:#e5e5e5; font-weight:500;">Pavel Novotný</td>
+            <td>—</td>
+            <td style="color:#555;">p.novotny@gmail.com</td>
+            <td>
+              <div class="score-wrap">
+                <span style="color:#e5e5e5; font-weight:600;">28</span>
+                <div class="score-bar-bg"><div class="score-bar-fill" style="width:28%; background:#6378ff;"></div></div>
+              </div>
+            </td>
+            <td><span class="badge badge-low">● Low</span></td>
+            <td style="color:#444;">2026-05-26 16:22</td>
+          </tr>
+          <tr>
+            <td style="padding-left:16px;"><input type="checkbox" style="accent-color:#3ecf8e;"/></td>
+            <td style="color:#444; font-size:11px;">70b812</td>
+            <td style="color:#e5e5e5; font-weight:500;">Ing. Jana Procházková</td>
+            <td>Retail Solutions a.s.</td>
+            <td style="color:#555;">j.prochazkova@retailsol.cz</td>
+            <td>
+              <div class="score-wrap">
+                <span style="color:#e5e5e5; font-weight:600;">91</span>
+                <div class="score-bar-bg"><div class="score-bar-fill" style="width:91%; background:#3ecf8e;"></div></div>
+              </div>
+            </td>
+            <td><span class="badge badge-high">● High</span></td>
+            <td style="color:#444;">2026-05-26 14:05</td>
+          </tr>
+          <tr>
+            <td style="padding-left:16px;"><input type="checkbox" style="accent-color:#3ecf8e;"/></td>
+            <td style="color:#444; font-size:11px;">a5d230</td>
+            <td style="color:#e5e5e5; font-weight:500;">Tomáš Válek</td>
+            <td>Válek Consulting</td>
+            <td style="color:#555;">tomas@valekgroup.cz</td>
+            <td>
+              <div class="score-wrap">
+                <span style="color:#e5e5e5; font-weight:600;">41</span>
+                <div class="score-bar-bg"><div class="score-bar-fill" style="width:41%; background:#6378ff;"></div></div>
+              </div>
+            </td>
+            <td><span class="badge badge-low">● Low</span></td>
+            <td style="color:#444;">2026-05-25 11:18</td>
+          </tr>
+          <tr>
+            <td style="padding-left:16px;"><input type="checkbox" style="accent-color:#3ecf8e;"/></td>
+            <td style="color:#444; font-size:11px;">9c1f55</td>
+            <td style="color:#e5e5e5; font-weight:500;">Markéta Horáčková</td>
+            <td>MH Services s.r.o.</td>
+            <td style="color:#555;">marketa@mhservices.cz</td>
+            <td>
+              <div class="score-wrap">
+                <span style="color:#e5e5e5; font-weight:600;">67</span>
+                <div class="score-bar-bg"><div class="score-bar-fill" style="width:67%; background:#3ecf8e;"></div></div>
+              </div>
+            </td>
+            <td><span class="badge badge-high">● High</span></td>
+            <td style="color:#444;">2026-05-24 09:54</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row-count">6 rows · Table: leads</div>
+  </div>
+
+</div>
+
+</body>
+</html>

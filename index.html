@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -176,31 +176,8 @@
     <div class="flex items-center justify-between py-4">
 
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 group" aria-label="BizMatica">
-        <svg width="34" height="34" viewBox="0 0 72 72" class="transition-transform duration-300 group-hover:scale-105" fill="none">
-          <line x1="38" y1="26" x2="38" y2="9"  stroke="#5B9CF6" stroke-width="2"   stroke-linecap="round" opacity=".75"/>
-          <line x1="47" y1="31" x2="63" y2="25" stroke="#5B9CF6" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
-          <line x1="46" y1="44" x2="61" y2="61" stroke="#5B9CF6" stroke-width="2"   stroke-linecap="round" opacity=".75"/>
-          <line x1="28" y1="42" x2="10" y2="57" stroke="#5B9CF6" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
-          <line x1="29" y1="30" x2="11" y2="21" stroke="#5B9CF6" stroke-width="1.5" stroke-linecap="round" opacity=".65"/>
-          <circle cx="11" cy="21" r="4"   fill="#3B6EF8"/>
-          <circle cx="38" cy="7"  r="5"   fill="#3B6EF8"/>
-          <circle cx="64" cy="24" r="4"   fill="#3B6EF8"/>
-          <circle cx="62" cy="62" r="5.5" fill="#1A4ADB"/>
-          <circle cx="9"  cy="57" r="3.5" fill="#3B6EF8"/>
-          <defs>
-            <linearGradient id="nc" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#3B6EF8"/>
-              <stop offset="100%" stop-color="#0A1F7A"/>
-            </linearGradient>
-          </defs>
-          <circle cx="38" cy="38" r="11" fill="url(#nc)"/>
-          <circle cx="38" cy="38" r="5"  fill="white" opacity=".95"/>
-          <circle cx="38" cy="38" r="2"  fill="#1A4ADB"/>
-        </svg>
-        <span style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:white; letter-spacing:-0.03em;">
-          Biz<span style="color:#5B9CF6;">Matica</span>
-        </span>
+      <a href="https://bizmatica.net/" class="group flex flex-col items-start gap-0.5" aria-label="BizMatica">
+        <img src="/brand_assets/logo.svg" style="height:64px;width:auto;" alt="BizMatica" class="transition-transform duration-300 group-hover:scale-105" />
       </a>
 
       <!-- Desktop links -->
@@ -281,10 +258,6 @@
       <!-- Left: text -->
       <div>
         <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-bm-electric/40 bg-bm-electric/10 mb-8">
-          <span class="w-1.5 h-1.5 rounded-full bg-bm-sky animate-pulse"></span>
-          <span class="text-bm-sky text-sm font-semibold tracking-wide">AI Automation for SMBs</span>
-        </div>
 
         <!-- H1 -->
         <h1 class="font-display font-bold text-white mb-6 leading-[1.05]" style="font-size:clamp(2.6rem,5vw,4.4rem);letter-spacing:-0.04em;">
@@ -542,9 +515,54 @@
       </div>
 
       <div class="card-hover reveal group rounded-2xl border border-gray-100 overflow-hidden bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.04);">
-        <div class="h-44 relative overflow-hidden bg-bm-dark flex items-center justify-center">
+        <div class="h-44 relative overflow-hidden bg-bm-dark">
           <div class="absolute inset-0" style="background:linear-gradient(135deg,#060D2E 0%,#0A1F7A 100%);"></div>
-          <svg class="relative z-10 w-14 h-14 text-bm-sky opacity-60" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <!-- Email sequence illustration -->
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 360 176" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="eg1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#3B6EF8" stop-opacity="0.25"/><stop offset="100%" stop-color="#3B6EF8" stop-opacity="0"/></radialGradient>
+              <radialGradient id="cg1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#5B9CF6" stop-opacity="0.18"/><stop offset="100%" stop-color="#5B9CF6" stop-opacity="0"/></radialGradient>
+              <radialGradient id="sg1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#22d3a0" stop-opacity="0.22"/><stop offset="100%" stop-color="#22d3a0" stop-opacity="0"/></radialGradient>
+            </defs>
+
+            <!-- Connecting dashed line -->
+            <line x1="68" y1="80" x2="292" y2="80" stroke="rgba(91,156,246,0.25)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+            <!-- Node 1: Envelope -->
+            <circle cx="68" cy="80" r="28" fill="url(#eg1)"/>
+            <circle cx="68" cy="80" r="18" fill="rgba(59,110,248,0.15)" stroke="rgba(59,110,248,0.5)" stroke-width="1"/>
+            <g transform="translate(57,70)"><rect x="0" y="0" width="22" height="16" rx="2" fill="none" stroke="#5B9CF6" stroke-width="1.4"/><polyline points="0,0 11,9 22,0" fill="none" stroke="#5B9CF6" stroke-width="1.4" stroke-linejoin="round"/></g>
+            <text x="68" y="118" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="rgba(255,255,255,0.45)" font-weight="500">Day 1</text>
+
+            <!-- Arrow 1 -->
+            <g transform="translate(103,76)"><line x1="0" y1="4" x2="20" y2="4" stroke="rgba(91,156,246,0.5)" stroke-width="1.2"/><polyline points="16,0 22,4 16,8" fill="none" stroke="rgba(91,156,246,0.5)" stroke-width="1.2" stroke-linejoin="round"/></g>
+
+            <!-- Node 2: Clock -->
+            <circle cx="145" cy="80" r="22" fill="url(#cg1)"/>
+            <circle cx="145" cy="80" r="14" fill="rgba(91,156,246,0.12)" stroke="rgba(91,156,246,0.4)" stroke-width="1"/>
+            <circle cx="145" cy="80" r="1.5" fill="#5B9CF6"/>
+            <line x1="145" y1="80" x2="145" y2="70" stroke="#5B9CF6" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="145" y1="80" x2="151" y2="83" stroke="#5B9CF6" stroke-width="1.3" stroke-linecap="round"/>
+            <text x="145" y="108" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="rgba(255,255,255,0.38)" font-weight="500">+3 days</text>
+
+            <!-- Arrow 2 -->
+            <g transform="translate(172,76)"><line x1="0" y1="4" x2="20" y2="4" stroke="rgba(91,156,246,0.5)" stroke-width="1.2"/><polyline points="16,0 22,4 16,8" fill="none" stroke="rgba(91,156,246,0.5)" stroke-width="1.2" stroke-linejoin="round"/></g>
+
+            <!-- Node 3: Envelope (follow-up) -->
+            <circle cx="216" cy="80" r="28" fill="url(#eg1)"/>
+            <circle cx="216" cy="80" r="18" fill="rgba(59,110,248,0.15)" stroke="rgba(59,110,248,0.5)" stroke-width="1"/>
+            <g transform="translate(205,70)"><rect x="0" y="0" width="22" height="16" rx="2" fill="none" stroke="#7BB8FF" stroke-width="1.4"/><polyline points="0,0 11,9 22,0" fill="none" stroke="#7BB8FF" stroke-width="1.4" stroke-linejoin="round"/><line x1="3" y1="8" x2="8" y2="8" stroke="#7BB8FF" stroke-width="1" stroke-linecap="round" opacity="0.6"/></g>
+            <text x="216" y="118" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="rgba(255,255,255,0.45)" font-weight="500">Follow-up</text>
+
+            <!-- Arrow 3 -->
+            <g transform="translate(247,76)"><line x1="0" y1="4" x2="20" y2="4" stroke="rgba(91,156,246,0.5)" stroke-width="1.2"/><polyline points="16,0 22,4 16,8" fill="none" stroke="rgba(91,156,246,0.5)" stroke-width="1.2" stroke-linejoin="round"/></g>
+
+            <!-- Node 4: Check (replied) -->
+            <circle cx="292" cy="80" r="28" fill="url(#sg1)"/>
+            <circle cx="292" cy="80" r="18" fill="rgba(34,211,160,0.12)" stroke="rgba(34,211,160,0.5)" stroke-width="1"/>
+            <polyline points="283,80 289,87 302,72" fill="none" stroke="#22d3a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="292" y="118" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="rgba(34,211,160,0.7)" font-weight="600">Replied!</text>
+          </svg>
           <div class="absolute bottom-4 left-5">
             <span class="tag bg-bm-electric/20 text-bm-sky border border-bm-electric/30">Automation</span>
           </div>
@@ -585,7 +603,7 @@
         <p class="text-bm-sky font-semibold text-xs tracking-widest uppercase mb-2">The Team</p>
         <!-- Oliver -->
         <div class="flex items-center gap-4 p-5 rounded-2xl border border-white/10 bg-white/5">
-          <img src="/brand_assets/oliver-new.jpg.jpg" alt="Oliver Klamo" class="w-16 h-16 rounded-full object-cover flex-shrink-0" style="box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+          <img src="/brand_assets/oliver-new.jpg.jpg" alt="Oliver Klamo" class="w-32 h-32 rounded-full object-cover flex-shrink-0" style="box-shadow:0 6px 20px rgba(0,0,0,0.4);">
           <div>
             <div class="text-white font-semibold text-sm">Ing. Oliver Klamo MBA</div>
             <div class="text-white/50 text-xs mt-0.5">Projects &amp; Automation</div>
@@ -593,7 +611,7 @@
         </div>
         <!-- Jana -->
         <div class="flex items-center gap-4 p-5 rounded-2xl border border-white/10 bg-white/5">
-          <img src="https://prekladatelna.cz/wp-content/uploads/2020/01/Jana3-e1579615795349.png" alt="Jana Klamo" class="w-16 h-16 rounded-full object-cover flex-shrink-0 bg-[#7ef9f9]" style="box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+          <img src="https://prekladatelna.cz/wp-content/uploads/2020/01/Jana3-e1579615795349.png" alt="Jana Klamo" class="w-32 h-32 rounded-full object-cover flex-shrink-0 bg-[#7ef9f9]" style="box-shadow:0 6px 20px rgba(0,0,0,0.4);">
           <div>
             <div class="text-white font-semibold text-sm">Ing. Jana Klamo</div>
             <div class="text-white/50 text-xs mt-0.5">Sales &amp; Marketing</div>
@@ -673,7 +691,7 @@
         </div>
         <div>
           <div class="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-1">Email</div>
-          <a href="mailto:info@bestbiz.cz" class="text-gray-700 text-sm hover:text-bm-electric transition-colors duration-200">info@bestbiz.cz</a>
+          <a href="mailto:info@bizmatica.net" class="text-gray-700 text-sm hover:text-bm-electric transition-colors duration-200">info@bizmatica.net</a>
         </div>
       </div>
 
@@ -826,5 +844,162 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return; // canvas removed, script is no-op
+  const ctx = canvas.getContext('2d');
+  const DPR = window.devicePixelRatio || 1;
+  let W, H;
+
+  function resize() {
+    const r = canvas.parentElement.getBoundingClientRect();
+    W = r.width; H = r.height;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); initNodes(); });
+
+  // Color palettes for spheres
+  const palettes = [
+    { h:'rgba(240,248,255,0.96)', m:'rgba(180,215,255,0.55)', e:'rgba(80,140,230,0.10)' },
+    { h:'rgba(255,248,252,0.93)', m:'rgba(235,185,220,0.50)', e:'rgba(200,120,180,0.08)' },
+    { h:'rgba(255,253,235,0.93)', m:'rgba(245,225,155,0.48)', e:'rgba(210,170,60,0.08)'  },
+    { h:'rgba(230,245,255,0.92)', m:'rgba(130,195,255,0.52)', e:'rgba(50,130,240,0.10)'  },
+  ];
+
+  let nodes = [], particles = [];
+
+  function initNodes() {
+    nodes = [];
+    // Large nodes
+    for (let i = 0; i < 4; i++) nodes.push({ r: 32 + Math.random()*22 });
+    // Medium nodes
+    for (let i = 0; i < 8; i++) nodes.push({ r: 14 + Math.random()*16 });
+    // Small nodes
+    for (let i = 0; i < 18; i++) nodes.push({ r: 5 + Math.random()*9 });
+
+    nodes.forEach(n => {
+      n.x  = W * (0.06 + Math.random() * 0.88);
+      n.y  = H * (0.06 + Math.random() * 0.88);
+      n.vx = (Math.random() - 0.5) * 0.22;
+      n.vy = (Math.random() - 0.5) * 0.22;
+      n.p  = palettes[Math.floor(Math.random() * palettes.length)];
+      n.ph = Math.random() * Math.PI * 2;
+    });
+
+    particles = [];
+    for (let i = 0; i < 70; i++) {
+      particles.push({
+        x: Math.random() * W, y: Math.random() * H,
+        r: 0.8 + Math.random() * 2.2,
+        a: 0.2 + Math.random() * 0.5,
+        vx: (Math.random() - 0.5) * 0.12,
+        vy: (Math.random() - 0.5) * 0.12,
+        c: Math.random() > 0.65 ? '100,190,255' : '255,255,255'
+      });
+    }
+  }
+  initNodes();
+
+  function drawBg() {
+    const g = ctx.createRadialGradient(W*0.55, H*0.42, 0, W*0.5, H*0.5, Math.max(W,H)*0.78);
+    g.addColorStop(0, '#0B2270');
+    g.addColorStop(0.45, '#050F30');
+    g.addColorStop(1,  '#010818');
+    ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  }
+
+  function drawSphere(x, y, r, p) {
+    // Soft outer glow
+    const og = ctx.createRadialGradient(x, y, r*0.4, x, y, r*2.6);
+    og.addColorStop(0, p.m.replace(/[\d.]+\)$/, '0.12)'));
+    og.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.beginPath(); ctx.arc(x, y, r*2.6, 0, Math.PI*2);
+    ctx.fillStyle = og; ctx.fill();
+
+    // Sphere body
+    const hx = x - r*0.36, hy = y - r*0.38;
+    const sg = ctx.createRadialGradient(hx, hy, 0, x, y, r*1.05);
+    sg.addColorStop(0,    p.h);
+    sg.addColorStop(0.28, p.m);
+    sg.addColorStop(0.72, p.e);
+    sg.addColorStop(1,    'rgba(0,0,0,0)');
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2);
+    ctx.fillStyle = sg; ctx.fill();
+
+    // Sharp specular highlight
+    const spec = ctx.createRadialGradient(hx, hy, 0, hx, hy, r*0.42);
+    spec.addColorStop(0, 'rgba(255,255,255,0.88)');
+    spec.addColorStop(0.5,'rgba(255,255,255,0.25)');
+    spec.addColorStop(1,  'rgba(255,255,255,0)');
+    ctx.beginPath(); ctx.arc(hx, hy, r*0.42, 0, Math.PI*2);
+    ctx.fillStyle = spec; ctx.fill();
+  }
+
+  let t = 0;
+  function update() {
+    t += 0.007;
+    const mx = Math.min(W,H) * 0.018;
+    nodes.forEach(n => {
+      n.x += n.vx + Math.sin(t*0.8 + n.ph) * mx;
+      n.y += n.vy + Math.cos(t*0.6 + n.ph) * mx;
+      if (n.x < n.r)     { n.x = n.r;     n.vx =  Math.abs(n.vx); }
+      if (n.x > W - n.r) { n.x = W - n.r; n.vx = -Math.abs(n.vx); }
+      if (n.y < n.r)     { n.y = n.r;     n.vy =  Math.abs(n.vy); }
+      if (n.y > H - n.r) { n.y = H - n.r; n.vy = -Math.abs(n.vy); }
+    });
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    drawBg();
+    update();
+
+    // Particles
+    particles.forEach(p => {
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(${p.c},${p.a})`; ctx.fill();
+    });
+
+    // Connections
+    const maxD = Math.min(W, H) * 0.35;
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i+1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x-b.x, dy = a.y-b.y;
+        const d = Math.sqrt(dx*dx+dy*dy);
+        if (d > maxD) continue;
+        const al = (1 - d/maxD) * 0.32;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = `rgba(190,220,255,${al.toFixed(3)})`;
+        ctx.lineWidth = 0.75; ctx.stroke();
+      }
+    }
+
+    // Spheres (small first, large on top)
+    nodes.slice().sort((a,b) => a.r - b.r).forEach(n => drawSphere(n.x, n.y, n.r, n.p));
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+

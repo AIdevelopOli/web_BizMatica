@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Google Sans', Roboto, Arial, sans-serif; background: #f6f8fc; width: 900px; }
+
+    .gmail-wrap { display: flex; height: 560px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
+
+    .sidebar { width: 220px; background: #fff; padding: 8px 0; flex-shrink: 0; border-right: 1px solid #e0e0e0; }
+    .compose-btn { margin: 8px 16px 16px; padding: 16px 24px; border-radius: 16px; background: #c2e7ff; color: #001d35; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .compose-btn svg { width: 20px; height: 20px; }
+    .nav-item { padding: 4px 8px 4px 16px; border-radius: 0 16px 16px 0; font-size: 14px; color: #202124; display: flex; align-items: center; gap: 12px; height: 32px; cursor: pointer; margin-right: 16px; }
+    .nav-item.active { background: #d3e3fd; font-weight: 600; }
+    .nav-item svg { width: 18px; height: 18px; opacity: 0.6; }
+    .nav-item .count { margin-left: auto; font-size: 12px; }
+
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .toolbar { padding: 8px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #e0e0e0; }
+    .search-bar { flex: 1; background: #eaf1fb; border-radius: 24px; padding: 8px 16px; display: flex; align-items: center; gap: 8px; color: #444746; font-size: 16px; }
+
+    .email-list { flex: 1; overflow-y: auto; }
+    .email-row { display: flex; align-items: center; padding: 0 16px; height: 52px; border-bottom: 1px solid #f0f0f0; cursor: pointer; gap: 12px; }
+    .email-row.sent-row { background: #f0f7ff; }
+    .email-row .avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #fff; flex-shrink: 0; }
+    .email-row .sender { width: 160px; font-size: 13px; font-weight: 600; color: #202124; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .email-row .snippet { flex: 1; font-size: 13px; color: #5f6368; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .email-row .snippet .subject { color: #202124; font-weight: 500; }
+    .email-row .time { font-size: 12px; color: #5f6368; flex-shrink: 0; }
+
+    /* Email open panel */
+    .email-open {
+      position: absolute;
+      bottom: 0;
+      right: 24px;
+      width: 560px;
+      background: #fff;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+      overflow: hidden;
+      max-height: 440px;
+    }
+    .email-header-bar {
+      background: #1a73e8;
+      color: #fff;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .email-meta { padding: 14px 18px 10px; border-bottom: 1px solid #f0f0f0; }
+    .email-meta .subject-line { font-size: 18px; font-weight: 600; color: #202124; margin-bottom: 10px; }
+    .email-meta .from-row { display: flex; align-items: center; gap: 10px; }
+    .email-meta .avatar-sm { width: 36px; height: 36px; border-radius: 50%; background: #1a73e8; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #fff; flex-shrink: 0; }
+    .email-meta .from-name { font-size: 13px; font-weight: 600; color: #202124; }
+    .email-meta .to-line { font-size: 12px; color: #5f6368; }
+    .email-meta .ai-badge { display: inline-flex; align-items: center; gap: 4px; background: #e8f0fe; color: #1a73e8; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 10px; margin-left: 8px; }
+    .email-meta .time-stamp { margin-left: auto; font-size: 12px; color: #5f6368; }
+
+    .email-body { padding: 16px 18px; font-size: 14px; color: #202124; line-height: 1.65; overflow-y: auto; max-height: 280px; }
+    .email-body p { margin-bottom: 12px; }
+    .email-body .score-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #e6f4ea;
+      color: #137333;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+<div style="position:relative; width:900px; padding: 20px;">
+
+  <div class="gmail-wrap" style="position:relative;">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="compose-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        Compose
+      </div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Inbox</div>
+      <div class="nav-item active"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg><span>Sent</span></div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg>Drafts</div>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+      <div class="toolbar">
+        <div class="search-bar">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          Search mail
+        </div>
+      </div>
+      <div class="email-list">
+        <div class="email-row sent-row">
+          <div class="avatar" style="background:#1a73e8;">M</div>
+          <div class="sender">To: Martin Kovář</div>
+          <div class="snippet"><span class="subject">Quick question about your automation needs</span> &nbsp;— Hi Martin, thanks for reaching out — automating lead qualification is exactly what we do...</div>
+          <div class="time" style="color:#1a73e8;font-weight:600;">Just now</div>
+        </div>
+        <div class="email-row">
+          <div class="avatar" style="background:#34a853;">P</div>
+          <div class="sender">To: Pavel Novotný</div>
+          <div class="snippet"><span class="subject">Resources to get you started with AI automation</span> &nbsp;— Hi Pavel, thanks for your interest. Here are a few resources that might help...</div>
+          <div class="time">9:02 AM</div>
+        </div>
+        <div class="email-row">
+          <div class="avatar" style="background:#fa7b17;">S</div>
+          <div class="sender">To: Sandra Beck</div>
+          <div class="snippet"><span class="subject">Let's talk about your workflow challenges</span> &nbsp;— Hi Sandra, I noticed you're interested in process automation. We'd love to schedule...</div>
+          <div class="time">Yesterday</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Open email panel -->
+  <div class="email-open">
+    <div class="email-header-bar">
+      AI-generated follow-up email
+      <div style="display:flex;gap:10px;">
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+    </div>
+    <div class="email-meta">
+      <div class="subject-line">Quick question about your automation needs</div>
+      <div class="from-row">
+        <div class="avatar-sm">B</div>
+        <div>
+          <div class="from-name">
+            BizMatica
+            <span class="ai-badge">✦ AI generated</span>
+          </div>
+          <div class="to-line">to martin@kovar-partners.cz</div>
+        </div>
+        <div class="time-stamp">Today, 10:47 AM</div>
+      </div>
+    </div>
+    <div class="email-body">
+      <div class="score-pill">🟢 High intent · Score 82/100</div>
+      <p>Hi Martin,</p>
+      <p>Thanks for reaching out — automating lead qualification for a 200-lead/month pipeline is exactly what we specialise in, and your timeline of 4 weeks is very doable.</p>
+      <p>I'd love to show you a working demo tailored to your setup. Are you free for a 20-minute call this <strong>Thursday or Friday afternoon</strong>? I can walk you through the full system live.</p>
+      <p>Looking forward to connecting.</p>
+      <p>Best,<br/>Oliver Klamo<br/>BizMatica</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

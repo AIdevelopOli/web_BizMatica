@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fb;
+      width: 900px;
+      height: 560px;
+      overflow: hidden;
+    }
+    .panel {
+      background: #f8f9fb;
+      padding: 36px 48px;
+      height: 560px;
+      display: flex;
+      flex-direction: column;
+    }
+    .eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+    .title { font-size: 26px; font-weight: 800; color: #111; margin-bottom: 28px; }
+    .top-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .circle-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+    .circle-wrap svg { width: 100px; height: 100px; transform: rotate(-90deg); }
+    .circle-bg { fill: none; stroke: #e5e7eb; stroke-width: 8; }
+    .circle-fill { fill: none; stroke: #2ea65a; stroke-width: 8; stroke-linecap: round; stroke-dasharray: 251; stroke-dashoffset: 50; }
+    .circle-label { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+    .circle-label .num { font-size: 26px; font-weight: 800; color: #111; line-height: 1; }
+    .circle-label .denom { font-size: 12px; color: #aaa; }
+    .verdict-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+    .verdict-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #e6f4ea; color: #1e7e34;
+      border-radius: 7px; padding: 8px 16px;
+      font-size: 15px; font-weight: 700; margin-bottom: 8px;
+    }
+    .verdict-dot { width: 8px; height: 8px; border-radius: 50%; background: #2ea65a; }
+    .score-text { font-size: 13px; color: #888; }
+    .block { margin-bottom: 20px; }
+    .block-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+    .reasoning-text { font-size: 13.5px; color: #333; line-height: 1.65; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .check-list li { font-size: 13px; color: #333; display: flex; align-items: center; gap: 8px; }
+    .icon-ok { color: #2ea65a; font-size: 15px; font-weight: 700; }
+    .icon-no { color: #d93025; font-size: 15px; font-weight: 700; }
+    .next-step-box {
+      background: #fff8f5;
+      border: 1px solid #fcd5c0;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: auto;
+    }
+    .ns-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c0522a; margin-bottom: 5px; }
+    .next-step-box p { font-size: 13.5px; color: #444; }
+  </style>
+</head>
+<body>
+<div class="panel">
+
+  <div class="eyebrow">Výsledok analýzy</div>
+  <div class="title">Kvalifikačná správa</div>
+
+  <div class="top-row">
+    <div class="circle-wrap">
+      <svg viewBox="0 0 100 100">
+        <circle class="circle-bg" cx="50" cy="50" r="40"/>
+        <circle class="circle-fill" cx="50" cy="50" r="40"/>
+      </svg>
+      <div class="circle-label">
+        <div class="num">8</div>
+        <div class="denom">/ 10</div>
+      </div>
+    </div>
+    <div class="verdict-col">
+      <div class="verdict-label">Hodnotenie</div>
+      <div class="verdict-badge"><div class="verdict-dot"></div>KVALIFIKOVANÝ</div>
+      <div class="score-text">Skóre 8/10</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">Zdôvodnenie</div>
+    <div class="reasoning-text">Lead je kvalifikovaný vďaka jasnému rozpočtu, urgentному problému a zapojeniu rozhodujúcej osoby. Veľkosť firmy je malá, ale odvetvie SaaS má typicky vysoký odchod zákazníkov. Časový rámec „čo najskôr" poukazuje na naliehavosť.</div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="block-label">Silné stránky</div>
+      <ul class="check-list">
+        <li><span class="icon-ok">✓</span> jasný rozpočet</li>
+        <li><span class="icon-ok">✓</span> rozhodujúca osoba zapojená</li>
+        <li><span class="icon-ok">✓</span> urgentný problém</li>
+      </ul>
+    </div>
+    <div>
+      <div class="block-label">Obavy</div>
+      <ul class="check-list">
+        <li><span class="icon-no">✗</span> malá veľkosť firmy</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="next-step-box">
+    <div class="ns-label">Odporúčaný ďalší krok</div>
+    <p>Naplánujte hovor a prediskutujte možné riešenia na zníženie odchodu zákazníkov</p>
+  </div>
+
+</div>
+</body>
+</html>
