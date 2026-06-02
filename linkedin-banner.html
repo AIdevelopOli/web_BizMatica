@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+  body {
+    width: 1584px;
+    height: 396px;
+    overflow: hidden;
+    background: #060D2E;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .banner {
+    width: 1584px;
+    height: 396px;
+    position: relative;
+    overflow: hidden;
+    background: #060D2E;
+  }
+
+  /* Layered background gradients */
+  .bg-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(59,110,248,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 60% at 20% 30%, rgba(26,74,219,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 50% at 90% 80%, rgba(91,156,246,0.08) 0%, transparent 55%),
+      #060D2E;
+  }
+
+  /* SVG grid */
+  .grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+  }
+
+  /* Noise grain overlay */
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 256px;
+  }
+
+  /* Flow nodes SVG */
+  .nodes {
+    position: absolute;
+    left: 280px;
+    top: 0;
+    width: 680px;
+    height: 396px;
+    opacity: 0.85;
+  }
+
+  /* Right content */
+  .content {
+    position: absolute;
+    right: 72px;
+    top: 0;
+    bottom: 0;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: right;
+    width: 500px;
+  }
+
+  .logo-wrap {
+    margin-bottom: 24px;
+  }
+
+  .logo-wrap img {
+    height: 48px;
+    width: auto;
+  }
+
+  .tagline {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin-bottom: 18px;
+  }
+
+  .tagline span {
+    color: #5B9CF6;
+  }
+
+  .sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sub::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: rgba(91,156,246,0.6);
+  }
+
+  /* Divider line */
+  .divider {
+    position: absolute;
+    right: 580px;
+    top: 40px;
+    bottom: 40px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(59,110,248,0.3) 30%, rgba(59,110,248,0.3) 70%, transparent);
+  }
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="bg-gradient"></div>
+
+  <!-- Grid SVG -->
+  <svg class="grid" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+        <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(91,156,246,1)" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+  </svg>
+
+  <div class="grain"></div>
+
+  <!-- Automation flow nodes -->
+  <svg class="nodes" viewBox="0 0 820 396" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Connection lines -->
+    <line x1="185" y1="185" x2="295" y2="120" stroke="rgba(59,110,248,0.3)" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <line x1="185" y1="198" x2="295" y2="198" stroke="rgba(91,156,246,0.5)" stroke-width="1.5"/>
+    <line x1="185" y1="211" x2="295" y2="276" stroke="rgba(59,110,248,0.3)" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <line x1="365" y1="120" x2="455" y2="185" stroke="rgba(59,110,248,0.35)" stroke-width="1.5"/>
+    <line x1="365" y1="198" x2="455" y2="198" stroke="rgba(91,156,246,0.55)" stroke-width="2"/>
+    <line x1="365" y1="276" x2="455" y2="211" stroke="rgba(59,110,248,0.35)" stroke-width="1.5"/>
+    <line x1="555" y1="185" x2="645" y2="120" stroke="rgba(59,110,248,0.3)" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <line x1="555" y1="198" x2="645" y2="198" stroke="rgba(91,156,246,0.5)" stroke-width="1.5"/>
+    <line x1="555" y1="211" x2="645" y2="276" stroke="rgba(59,110,248,0.3)" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+    <!-- Glow halos -->
+    <circle cx="155" cy="198" r="52" fill="rgba(26,74,219,0.07)"/>
+    <circle cx="505" cy="198" r="60" fill="rgba(26,74,219,0.12)"/>
+
+    <!-- Node: Input trigger -->
+    <circle cx="155" cy="198" r="38" fill="#08103A" stroke="rgba(59,110,248,0.55)" stroke-width="1.5"/>
+    <circle cx="155" cy="198" r="28" fill="#0D1E5A" stroke="rgba(91,156,246,0.4)" stroke-width="1"/>
+    <text x="155" y="194" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="DM Sans,sans-serif" font-size="10" font-weight="300" letter-spacing="1">TRIGGER</text>
+    <text x="155" y="208" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" font-size="11" font-weight="500">Input</text>
+
+    <!-- Branch nodes left -->
+    <circle cx="330" cy="120" r="28" fill="#060D2E" stroke="rgba(59,110,248,0.4)" stroke-width="1.5"/>
+    <text x="330" y="116" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="DM Sans,sans-serif" font-size="9">Email</text>
+    <text x="330" y="129" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="DM Sans,sans-serif" font-size="11" font-weight="500">Trigger</text>
+
+    <circle cx="330" cy="198" r="30" fill="#060D2E" stroke="rgba(91,156,246,0.55)" stroke-width="2"/>
+    <text x="330" y="194" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="DM Sans,sans-serif" font-size="9">Form</text>
+    <text x="330" y="207" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" font-size="11" font-weight="500">Submit</text>
+
+    <circle cx="330" cy="276" r="28" fill="#060D2E" stroke="rgba(59,110,248,0.4)" stroke-width="1.5"/>
+    <text x="330" y="272" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="DM Sans,sans-serif" font-size="9">CRM</text>
+    <text x="330" y="285" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="DM Sans,sans-serif" font-size="11" font-weight="500">Update</text>
+
+    <!-- AI Engine - glowing center -->
+    <circle cx="505" cy="198" r="58" fill="rgba(26,74,219,0.1)"/>
+    <circle cx="505" cy="198" r="46" fill="#0D1E5A" stroke="rgba(59,110,248,0.8)" stroke-width="2"/>
+    <circle cx="505" cy="198" r="36" fill="#1A3AC0" stroke="rgba(91,156,246,0.6)" stroke-width="1.5"/>
+    <text x="505" y="191" text-anchor="middle" fill="rgba(255,255,255,1)" font-family="Syne,sans-serif" font-size="18" font-weight="800" letter-spacing="-0.5">AI</text>
+    <text x="505" y="208" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-family="DM Sans,sans-serif" font-size="9" letter-spacing="2">ENGINE</text>
+
+    <!-- Output nodes -->
+    <circle cx="680" cy="120" r="28" fill="#060D2E" stroke="rgba(59,110,248,0.4)" stroke-width="1.5"/>
+    <text x="680" y="116" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="DM Sans,sans-serif" font-size="9">Auto</text>
+    <text x="680" y="129" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="DM Sans,sans-serif" font-size="11" font-weight="500">Reply</text>
+
+    <circle cx="680" cy="198" r="30" fill="#060D2E" stroke="rgba(91,156,246,0.55)" stroke-width="2"/>
+    <text x="680" y="194" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="DM Sans,sans-serif" font-size="9">Report</text>
+    <text x="680" y="207" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="DM Sans,sans-serif" font-size="11" font-weight="500">Ready</text>
+
+    <circle cx="680" cy="276" r="28" fill="#060D2E" stroke="rgba(59,110,248,0.4)" stroke-width="1.5"/>
+    <text x="680" y="272" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-family="DM Sans,sans-serif" font-size="9">Lead</text>
+    <text x="680" y="285" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="DM Sans,sans-serif" font-size="11" font-weight="500">Scored</text>
+
+    <!-- Animated dot -->
+    <circle r="5" fill="#5B9CF6" opacity="0.9">
+      <animateMotion dur="2.8s" repeatCount="indefinite">
+        <mpath href="#mainpath"/>
+      </animateMotion>
+    </circle>
+    <path id="mainpath" d="M 155 198 L 330 198 L 505 198 L 680 198" fill="none"/>
+  </svg>
+
+  <div class="divider"></div>
+
+  <!-- Left text content -->
+  <div class="content">
+    <div class="logo-wrap">
+      <img src="/brand_assets/logo.svg" alt="BizMatica" />
+    </div>
+    <div class="tagline">
+      Turning repetitive work<br/>into <span>automated workflows</span>
+    </div>
+    <div class="sub">AI Automation Agency</div>
+  </div>
+</div>
+</body>
+</html>
