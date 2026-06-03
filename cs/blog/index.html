@@ -1,41 +1,34 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jak automatizujeme podnikové procesy: Náš 5fázový přístup | BizMatica</title>
-  <meta name="description" content="Zjistěte, jak BizMatica automatizuje podnikové procesy ve strukturovaném 5-fázovém přístupu - od discovery auditu po rozvoj v čase. Bezplatná 30min konzultace." />
+  <title>Blog | BizMatica — AI automatizace pro firmy</title>
+  <meta name="description" content="Praktické návody, případové studie a přehledy o AI automatizaci a automatizaci procesů pro malé a střední firmy." />
   <link rel="icon" type="image/png" href="/brand_assets/favicon-64.png" />
   <link rel="canonical" href="https://bizmatica.cz/cs/blog/" />
   <link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/" />
   <link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/" />
   <link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/" />
   <link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Jak automatizujeme podnikové procesy: Náš 5fázový přístup" />
-  <meta property="og:description" content="Zjistěte, jak BizMatica automatizuje podnikové procesy ve strukturovaném 5-fázovém přístupu - od discovery auditu po rozvoj v čase." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog | BizMatica — AI automatizace pro firmy" />
+  <meta property="og:description" content="Praktické návody, případové studie a přehledy o AI automatizaci a automatizaci procesů pro malé a střední firmy." />
   <meta property="og:url" content="https://bizmatica.cz/cs/blog/" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=600&fit=crop&q=80" />
+  <meta property="og:image" content="https://bizmatica.net/brand_assets/blog-preview.png" />
   <meta property="og:site_name" content="BizMatica" />
-  <meta property="article:published_time" content="2025-05-29" />
-  <meta property="article:author" content="Ing. Oliver Klamo MBA" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Jak automatizujeme podnikové procesy: Náš 5fázový přístup" />
-  <meta name="twitter:description" content="Zjistěte, jak BizMatica automatizuje podnikové procesy ve strukturovaném 5-fázovém přístupu - od discovery auditu po rozvoj v čase." />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=600&fit=crop&q=80" />
+  <meta name="twitter:title" content="Blog | BizMatica — AI automatizace pro firmy" />
+  <meta name="twitter:description" content="Praktické návody a přehledy o AI automatizaci pro malé a střední firmy." />
+  <meta name="twitter:image" content="https://bizmatica.net/brand_assets/blog-preview.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Jak automatizujeme podnikové procesy: Náš 5fázový přístup",
-    "description": "Zjistěte, jak BizMatica automatizuje podnikové procesy ve strukturovaném 5-fázovém přístupu - od discovery auditu po rozvoj v čase.",
-    "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=600&fit=crop&q=80",
-    "datePublished": "2025-05-29",
-    "dateModified": "2025-05-29",
-    "inLanguage": "cs",
-    "author": {"@type": "Person", "name": "Ing. Oliver Klamo MBA", "jobTitle": "Zakladatel", "worksFor": {"@type": "Organization", "name": "BizMatica"}},
-    "publisher": {"@type": "Organization", "name": "BizMatica", "url": "https://bizmatica.cz", "logo": {"@type": "ImageObject", "url": "https://bizmatica.net/brand_assets/logo.svg"}},
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://bizmatica.cz/cs/blog/"}
+    "@type": "Blog",
+    "name": "BizMatica Blog",
+    "description": "Praktické návody o AI automatizaci a automatizaci procesů pro malé a střední firmy.",
+    "url": "https://bizmatica.cz/cs/blog/",
+    "publisher": {"@type": "Organization", "name": "BizMatica", "url": "https://bizmatica.cz", "logo": {"@type": "ImageObject", "url": "https://bizmatica.net/brand_assets/logo.svg"}}
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,43 +37,37 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          colors: { bm: { darkest:'#030A1E', dark:'#060D2E', navy:'#0A1F7A', blue:'#1A4ADB', electric:'#3B6EF8', sky:'#5B9CF6', pale:'#EEF4FF' } },
-          fontFamily: { display:['Syne','sans-serif'], sans:['DM Sans','sans-serif'] }
-        }
-      }
+      theme: { extend: { colors: { bm: { darkest:'#030A1E', dark:'#060D2E', navy:'#0A1F7A', blue:'#1A4ADB', electric:'#3B6EF8', sky:'#5B9CF6', pale:'#EEF4FF' } }, fontFamily: { display:['Syne','sans-serif'], sans:['DM Sans','sans-serif'] } } }
     }
   </script>
   <style>
     *, body { font-family: 'DM Sans', sans-serif; }
     h1, h2, h3, .font-display { font-family: 'Syne', sans-serif; }
-    .nav-scrolled { background: rgba(6,13,46,0.96)!important; backdrop-filter:blur(14px); border-bottom:1px solid rgba(59,110,248,0.15); }
-    .btn-p { transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease; }
-    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,110,248,0.4); }
+    .nav-scrolled { background:rgba(6,13,46,0.96)!important; backdrop-filter:blur(14px); border-bottom:1px solid rgba(59,110,248,0.15); }
+    .btn-p { transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease; }
+    .btn-p:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(59,110,248,0.4); }
+    .card-hover { transition:transform 0.25s cubic-bezier(0.34,1.2,0.64,1),box-shadow 0.25s ease; }
+    .card-hover:hover { transform:translateY(-4px); box-shadow:0 20px 48px rgba(26,74,219,0.1),0 4px 12px rgba(0,0,0,0.06); }
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
-
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="flex items-center justify-between py-4">
-      <a href="https://bizmatica.cz/" class="group" aria-label="BizMatica">
-        <img src="/brand_assets/logo.svg" style="height:64px;width:auto;" alt="BizMatica" class="transition-transform duration-300 group-hover:scale-105" />
-      </a>
+      <a href="https://bizmatica.cz/" class="group" aria-label="BizMatica"><img src="/brand_assets/logo.svg" style="height:64px;width:auto;" alt="BizMatica" class="transition-transform duration-300 group-hover:scale-105" /></a>
       <div class="hidden md:flex items-center gap-7">
-        <a href="/#sluzby"       class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Služby</a>
+        <a href="/#sluzby"         class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Služby</a>
         <a href="/#jak-to-funguje" class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Jak to funguje</a>
-        <a href="/#reference"    class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Reference</a>
-        <a href="/cs/blog/"      class="text-sm font-medium text-white transition-colors duration-200">Blog</a>
-        <a href="/#o-nas"        class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">O nás</a>
-        <a href="/#kontakt"      class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Kontakt</a>
+        <a href="/#reference"      class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Reference</a>
+        <a href="/cs/blog/"        class="text-sm font-medium text-white transition-colors duration-200">Blog</a>
+        <a href="/#o-nas"          class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">O nás</a>
+        <a href="/#kontakt"        class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Kontakt</a>
       </div>
       <div class="flex items-center gap-3">
         <div class="hidden sm:flex items-center gap-1 text-xs font-semibold">
-          <a href="https://bizmatica.net/blog/" class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200">EN</a>
-          <a href="https://bizmatica.cz/cs/blog/"  class="px-2.5 py-1 rounded-md text-white bg-white/15 border border-white/25">CS</a>
-          <a href="https://bizmatica.sk/sk/blog/"  class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200">SK</a>
+          <a href="https://bizmatica.net/blog/"  class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200">EN</a>
+          <a href="https://bizmatica.cz/cs/blog/" class="px-2.5 py-1 rounded-md bg-white/15 text-white border border-white/25">CS</a>
+          <a href="https://bizmatica.sk/sk/blog/" class="px-2.5 py-1 rounded-md text-white/55 hover:text-white hover:bg-white/10 transition-colors duration-200">SK</a>
         </div>
         <a href="/#kontakt" class="btn-p hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-bm-electric text-white text-sm font-semibold">Začít</a>
       </div>
@@ -98,78 +85,64 @@
 </section>
 
 <section class="py-20 bg-white">
-  <div class="max-w-3xl mx-auto px-6 lg:px-10">
-    <article>
-      <div class="flex items-center gap-3 mb-6">
-        <span class="text-xs font-semibold uppercase tracking-widest text-bm-electric bg-bm-electric/10 px-3 py-1 rounded-full">Automatizace procesů</span>
-        <span class="text-gray-400 text-sm">29. května 2025 · 2 min čtení</span>
-      </div>
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <div class="space-y-8">
 
-      <h1 class="font-display font-bold text-bm-dark text-3xl lg:text-4xl mb-6" style="letter-spacing:-0.02em;">Jak automatizujeme podnikové procesy: Náš 5fázový přístup</h1>
-
-      <div class="rounded-2xl overflow-hidden mb-10 relative" style="height:360px;">
-        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=600&fit=crop&q=80"
-             alt="Automatizace podnikových procesů" class="w-full h-full object-cover" />
-        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(3,10,30,0.5) 0%,transparent 60%);"></div>
-      </div>
-
-      <div class="prose prose-lg max-w-none text-gray-600" style="line-height:1.8;">
-        <p>Většina <strong>malých a středních firem</strong> sedí na nevyužitém potenciálu efektivity. Opakující se úkoly, které váš tým dělá každý den. Zadávání dat, follow-up emaily, generování reportů, kvalifikace leadů lze automatizovat se správnými nástroji a správným přístupem.</p>
-
-        <p>V BizMatica nepřipojíme jen nástroj a nenazýváme to automatizací. Postupujeme podle strukturovaného <strong>5fázového procesu</strong>, který zajišťuje, že každý <strong>automatizovaný workflow</strong>, který postavíme, skutečně funguje, a fungovat nepřestane.</p>
-
-        <h3 class="font-display font-bold text-bm-dark text-xl mt-10 mb-3">1. Discovery Audit</h3>
-        <p>Analyzujeme vaše <strong>workflows</strong>, nástroje a kritická místa, abychom identifikovali <strong>příležitosti s největším dopadem</strong>. Mluvíme s vaším týmem, mapujeme procesy a stanovujeme priority podle ušetřeného času - zcela zdarma, bez závazků.</p>
-
-        <h3 class="font-display font-bold text-bm-dark text-xl mt-8 mb-3">2. Návrh řešení</h3>
-        <p>Navrhujeme <strong>řešení na míru</strong> s jasnými <strong>projekcemi ROI</strong> a realistickým harmonogramem. Žádné generické šablony. Každé řešení stavíme kolem vašich konkrétních nástrojů, velikosti týmu a obchodních cílů.</p>
-
-        <h3 class="font-display font-bold text-bm-dark text-xl mt-8 mb-3">3. Implementace</h3>
-        <p>Stavíme a nasazujeme automatizaci podle dohodnutého harmonogramu. Naši inženýři testují každý krok s reálnými daty ještě před spuštěním. Tato fáze trvá typicky 1–3 týdny podle složitosti.</p>
-
-        <h3 class="font-display font-bold text-bm-dark text-xl mt-8 mb-3">4. Průběžná podpora</h3>
-        <p>Sledujeme a udržujeme vaši automatizaci, aby fungovala hladce a přizpůsobovala se vývoji vašeho podnikání. Prvních 30 dní po spuštění jsme k dispozici - zachytáváme hraniční případy a dolaďujeme výkon.</p>
-
-        <h3 class="font-display font-bold text-bm-dark text-xl mt-8 mb-3">5. Rozvoj v čase</h3>
-        <p>Firmy rostou, procesy se mění. Zajišťujeme aktualizace, rozšíření a nové požadavky na automatizaci, jak se vaše potřeby vyvíjejí, aby vaše procesy nikdy znovu nebyly brzdou růstu.</p>
-
-        <div class="mt-10 p-6 rounded-2xl bg-bm-pale border border-bm-sky/20">
-          <p class="text-bm-navy font-semibold text-lg mb-2">Výsledek?</p>
-          <p class="text-gray-600">naši klienti v průměru ušetří <strong>15–20 hodin týdně</strong> na manuálních úkolech díky <strong>AI automatizaci procesů</strong>. A co je důležitější, tyto hodiny se přesunou do činností, které firmu skutečně rozvíjí.</p>
+      <!-- Článek 1 – nejnovější -->
+      <a href="/cs/blog/co-automatizovat-ve-firme/" class="card-hover block rounded-2xl border border-gray-100 overflow-hidden group">
+        <div class="md:flex">
+          <div class="md:w-72 lg:w-80 flex-shrink-0" style="height:220px;">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=440&fit=crop&q=80" alt="Automatizace procesů v malé firmě" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-7 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-semibold uppercase tracking-widest text-bm-electric bg-bm-electric/10 px-3 py-1 rounded-full">Automatizace procesů</span>
+              <span class="text-gray-400 text-sm">3. června 2026</span>
+            </div>
+            <h2 class="font-display font-bold text-bm-dark text-xl mb-2 group-hover:text-bm-electric transition-colors duration-200" style="letter-spacing:-0.01em;">Automatizace procesů v malé firmě: kde začít a co přináší největší efekt</h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">Nástroje, které dříve vyžadovaly specializovaný tým, jsou dnes dostupné firmám s pěti zaměstnanci. Zde je šest procesů, které generují největší ztráty času.</p>
+            <span class="inline-flex items-center gap-1.5 text-bm-electric text-sm font-semibold">
+              Číst článek
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </span>
+          </div>
         </div>
+      </a>
 
-        <p class="mt-8">Chcete zjistit, jestli je vaše firma připravená na automatizaci? Nabízíme bezplatný 30minutový discovery call, kde identifikujeme vaše tři největší příležitosti k automatizaci - bez závazků.</p>
-      </div>
-
-      <div class="mt-12 flex gap-4">
-        <a href="/#kontakt" class="btn-p inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-bm-electric text-white font-semibold text-base">
-          Rezervovat bezplatný hovor
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-        </a>
-      </div>
-
-      <div class="mt-14 pt-8 border-t border-gray-100 flex items-center gap-4">
-        <img src="/brand_assets/oliver-new.jpg.jpg" alt="Oliver Klamo" class="w-12 h-12 rounded-full object-cover" />
-        <div>
-          <div class="font-semibold text-gray-900 text-sm">Ing. Oliver Klamo MBA</div>
-          <div class="text-gray-400 text-xs">Zakladatel · BizMatica</div>
+      <!-- Článek 2 -->
+      <a href="/cs/blog/jak-automatizujeme-podnikove-procesy/" class="card-hover block rounded-2xl border border-gray-100 overflow-hidden group">
+        <div class="md:flex">
+          <div class="md:w-72 lg:w-80 flex-shrink-0" style="height:220px;">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=440&fit=crop&q=80" alt="Jak automatizujeme podnikové procesy" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-7 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-semibold uppercase tracking-widest text-bm-electric bg-bm-electric/10 px-3 py-1 rounded-full">Automatizace procesů</span>
+              <span class="text-gray-400 text-sm">29. května 2025</span>
+            </div>
+            <h2 class="font-display font-bold text-bm-dark text-xl mb-2 group-hover:text-bm-electric transition-colors duration-200" style="letter-spacing:-0.01em;">Jak automatizujeme podnikové procesy: Náš 5fázový přístup</h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">Postupujeme podle strukturovaného 5fázového procesu, který zajišťuje, že každý automatizovaný workflow, který postavíme, skutečně funguje.</p>
+            <span class="inline-flex items-center gap-1.5 text-bm-electric text-sm font-semibold">
+              Číst článek
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </span>
+          </div>
         </div>
-      </div>
-    </article>
+      </a>
+
+    </div>
   </div>
 </section>
 
 <footer class="bg-bm-darkest py-10 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
     <img src="/brand_assets/logo.svg" style="height:36px;width:auto;" alt="BizMatica" />
-    <span class="text-white/30 text-sm">© 2025 BizMatica. Všechna práva vyhrazena.</span>
+    <span class="text-white/30 text-sm">© 2026 BizMatica. Všechna práva vyhrazena.</span>
   </div>
 </footer>
-
 <script>
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => { nav.classList.toggle('nav-scrolled', window.scrollY > 20); });
 </script>
 </body>
 </html>
-
