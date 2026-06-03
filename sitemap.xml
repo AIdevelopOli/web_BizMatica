@@ -61,4 +61,34 @@
     <priority>0.8</priority>
   </url>
 
+
+  <!-- Blog article: Co automatizovat ve firmě -->
+  <url>
+    <loc>https://bizmatica.net/blog/co-automatizovat-ve-firme/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/co-automatizovat-ve-firme/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/co-automatizovat-ve-firme/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/co-automatizovat-ve-firme/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/co-automatizovat-ve-firme/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bizmatica.cz/cs/blog/co-automatizovat-ve-firme/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/co-automatizovat-ve-firme/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/co-automatizovat-ve-firme/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/co-automatizovat-ve-firme/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/co-automatizovat-ve-firme/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bizmatica.sk/sk/blog/co-automatizovat-ve-firme/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/co-automatizovat-ve-firme/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/co-automatizovat-ve-firme/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/co-automatizovat-ve-firme/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/co-automatizovat-ve-firme/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
