@@ -120,4 +120,34 @@
     <priority>0.8</priority>
   </url>
 
+
+  <!-- Blog article: Které procesy automatizovat -->
+  <url>
+    <loc>https://bizmatica.net/blog/ktere-procesy-automatizovat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/ktere-procesy-automatizovat/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/ktere-procesy-automatizovat/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/ktere-procesy-automatizovat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/ktere-procesy-automatizovat/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bizmatica.cz/cs/blog/ktere-procesy-automatizovat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/ktere-procesy-automatizovat/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/ktere-procesy-automatizovat/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/ktere-procesy-automatizovat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/ktere-procesy-automatizovat/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bizmatica.sk/sk/blog/ktere-procesy-automatizovat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/ktere-procesy-automatizovat/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/ktere-procesy-automatizovat/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/ktere-procesy-automatizovat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/ktere-procesy-automatizovat/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
