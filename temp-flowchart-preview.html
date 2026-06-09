@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { bm: { darkest:'#030A1E', dark:'#060D2E', navy:'#0A1F7A', blue:'#1A4ADB', electric:'#3B6EF8', sky:'#5B9CF6', pale:'#EEF4FF' } }, fontFamily: { display:['Syne','sans-serif'], sans:['DM Sans','sans-serif'] } } }
+    }
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background: #f8fafc; }
+    h1,h2,h3,.font-display { font-family: 'Syne', sans-serif; }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-10">
+
+<div class="w-full max-w-sm">
+
+  <!-- Header -->
+  <div class="rounded-t-2xl bg-bm-dark px-6 py-5 text-center">
+    <p class="font-display font-bold text-white text-base" style="letter-spacing:-0.01em;">Je váš proces vhodný k automatizaci?</p>
+  </div>
+
+  <div class="bg-white border-x border-gray-100">
+
+    <!-- Start node -->
+    <div class="flex flex-col items-center pt-6 pb-2">
+      <div class="bg-bm-electric text-white rounded-full px-8 py-2.5 font-semibold text-sm tracking-wide">VÁŠ PROCES</div>
+      <div class="flex flex-col items-center mt-3 mb-1">
+        <div class="w-px h-5 bg-gray-200"></div>
+        <svg width="12" height="7"><polygon points="0,0 12,0 6,7" fill="#CBD5E1"/></svg>
+      </div>
+    </div>
+
+    <!-- Questions -->
+    <div class="px-6 pb-5 space-y-2">
+
+      <!-- Q1 -->
+      <div class="rounded-xl border border-gray-100 bg-gray-50/60 px-4 py-3">
+        <div class="flex items-center gap-3">
+          <span class="w-6 h-6 rounded-full bg-bm-electric text-white text-xs font-bold flex items-center justify-center flex-shrink-0">1</span>
+          <p class="text-gray-700 text-sm font-medium">Opakuje se alespoň jednou týdně?</p>
+        </div>
+        <div class="flex gap-2 mt-2 ml-9">
+          <span class="text-xs bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full font-semibold">ANO</span>
+          <span class="text-xs bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full font-semibold">NE</span>
+        </div>
+      </div>
+
+      <div class="flex justify-center"><div class="w-px h-3 bg-gray-200"></div></div>
+      <div class="flex justify-center mb-1"><svg width="12" height="7"><polygon points="0,0 12,0 6,7" fill="#CBD5E1"/></svg></div>
+
+      <!-- Q2 -->
+      <div class="rounded-xl border border-gray-100 bg-gray-50/60 px-4 py-3">
+        <div class="flex items-center gap-3">
+          <span class="w-6 h-6 rounded-full bg-bm-electric text-white text-xs font-bold flex items-center justify-center flex-shrink-0">2</span>
+          <p class="text-gray-700 text-sm font-medium">Řídí se jasnými pravidly?</p>
+        </div>
+        <div class="flex gap-2 mt-2 ml-9">
+          <span class="text-xs bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full font-semibold">ANO</span>
+          <span class="text-xs bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full font-semibold">NE</span>
+        </div>
+      </div>
+
+      <div class="flex justify-center"><div class="w-px h-3 bg-gray-200"></div></div>
+      <div class="flex justify-center mb-1"><svg width="12" height="7"><polygon points="0,0 12,0 6,7" fill="#CBD5E1"/></svg></div>
+
+      <!-- Q3 -->
+      <div class="rounded-xl border border-gray-100 bg-gray-50/60 px-4 py-3">
+        <div class="flex items-center gap-3">
+          <span class="w-6 h-6 rounded-full bg-bm-electric text-white text-xs font-bold flex items-center justify-center flex-shrink-0">3</span>
+          <p class="text-gray-700 text-sm font-medium">Zahrnuje přesun dat mezi nástroji?</p>
+        </div>
+        <div class="flex gap-2 mt-2 ml-9">
+          <span class="text-xs bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full font-semibold">ANO</span>
+          <span class="text-xs bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full font-semibold">NE</span>
+        </div>
+      </div>
+
+      <div class="flex justify-center"><div class="w-px h-3 bg-gray-200"></div></div>
+      <div class="flex justify-center mb-1"><svg width="12" height="7"><polygon points="0,0 12,0 6,7" fill="#CBD5E1"/></svg></div>
+
+      <!-- Q4 -->
+      <div class="rounded-xl border border-gray-100 bg-gray-50/60 px-4 py-3">
+        <div class="flex items-center gap-3">
+          <span class="w-6 h-6 rounded-full bg-bm-electric text-white text-xs font-bold flex items-center justify-center flex-shrink-0">4</span>
+          <p class="text-gray-700 text-sm font-medium">Dochází tam k chybám nebo zpožděním?</p>
+        </div>
+        <div class="flex gap-2 mt-2 ml-9">
+          <span class="text-xs bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full font-semibold">ANO</span>
+          <span class="text-xs bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full font-semibold">NE</span>
+        </div>
+      </div>
+
+      <div class="flex justify-center"><div class="w-px h-3 bg-gray-200"></div></div>
+      <div class="flex justify-center mb-1"><svg width="12" height="7"><polygon points="0,0 12,0 6,7" fill="#CBD5E1"/></svg></div>
+
+      <!-- Q5 -->
+      <div class="rounded-xl border border-gray-100 bg-gray-50/60 px-4 py-3">
+        <div class="flex items-center gap-3">
+          <span class="w-6 h-6 rounded-full bg-bm-electric text-white text-xs font-bold flex items-center justify-center flex-shrink-0">5</span>
+          <p class="text-gray-700 text-sm font-medium">Nevyžaduje vztah ani složitý úsudek?</p>
+        </div>
+        <div class="flex gap-2 mt-2 ml-9">
+          <span class="text-xs bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full font-semibold">ANO</span>
+          <span class="text-xs bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full font-semibold">NE</span>
+        </div>
+      </div>
+
+      <div class="flex justify-center"><div class="w-px h-3 bg-gray-200"></div></div>
+      <div class="flex justify-center mb-1"><svg width="12" height="7"><polygon points="0,0 12,0 6,7" fill="#CBD5E1"/></svg></div>
+
+      <!-- Score box -->
+      <div class="rounded-xl bg-bm-pale border border-bm-sky/20 px-4 py-3 text-center">
+        <p class="text-bm-navy font-semibold text-sm">Kolik otázek má odpověď ANO?</p>
+      </div>
+
+      <div class="flex justify-center"><div class="w-px h-3 bg-gray-200"></div></div>
+      <div class="flex justify-center mb-1"><svg width="12" height="7"><polygon points="0,0 12,0 6,7" fill="#CBD5E1"/></svg></div>
+
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="grid grid-cols-2 rounded-b-2xl overflow-hidden border border-t-0 border-gray-100">
+    <div class="bg-green-50 p-5 text-center border-r border-green-100">
+      <div class="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-2">
+        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <p class="font-display font-bold text-green-700 text-base">3 a více</p>
+      <p class="text-green-600 text-xs mt-1 leading-snug">Vhodný<br>k automatizaci</p>
+    </div>
+    <div class="bg-gray-50 p-5 text-center">
+      <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-2">
+        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </div>
+      <p class="font-display font-bold text-gray-400 text-base">Méně než 3</p>
+      <p class="text-gray-400 text-xs mt-1 leading-snug">Zatím<br>nevhodný</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
