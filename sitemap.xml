@@ -121,6 +121,15 @@
   </url>
 
 
+  <!-- Blog article: Automatizace vs AI agent -->
+  <url>
+    <loc>https://bizmatica.cz/cs/blog/automatizace-vs-ai-agent/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/automatizace-vs-ai-agent/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.cz/cs/blog/automatizace-vs-ai-agent/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Blog article: Které procesy automatizovat -->
   <url>
     <loc>https://bizmatica.net/blog/which-processes-to-automate/</loc>
