@@ -123,9 +123,29 @@
 
   <!-- Blog article: Automatizace vs AI agent -->
   <url>
-    <loc>https://bizmatica.cz/cs/blog/automatizace-vs-ai-agent/</loc>
+    <loc>https://bizmatica.net/blog/automation-vs-ai-agent/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/automation-vs-ai-agent/"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/automatizace-vs-ai-agent/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.cz/cs/blog/automatizace-vs-ai-agent/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/automatizacia-vs-ai-agent/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/automation-vs-ai-agent/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bizmatica.cz/cs/blog/automatizace-vs-ai-agent/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/automation-vs-ai-agent/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/automatizace-vs-ai-agent/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/automatizacia-vs-ai-agent/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/automation-vs-ai-agent/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bizmatica.sk/sk/blog/automatizacia-vs-ai-agent/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bizmatica.net/blog/automation-vs-ai-agent/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://bizmatica.cz/cs/blog/automatizace-vs-ai-agent/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://bizmatica.sk/sk/blog/automatizacia-vs-ai-agent/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bizmatica.net/blog/automation-vs-ai-agent/"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
