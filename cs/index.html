@@ -657,6 +657,10 @@
       <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">Kontakt</p>
       <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl mb-5" style="letter-spacing:-0.03em;line-height:1.08;">Jste připraveni<br/>automatizovat vaše podnikání?</h2>
       <p class="text-gray-500 text-lg" style="line-height:1.72;">Začněte bezplatným auditem. Identifikujeme vaše nejlepší příležitosti k automatizaci a připravíme jasný plán - bez závazků.</p>
+      <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/oliver-klamo-bestbiz/30min'});return false;" class="btn-p mt-6 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-bm-electric text-white font-semibold text-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Zarezervovat schůzku zdarma
+      </a>
     </div>
 
     <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
@@ -814,6 +818,8 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
 
