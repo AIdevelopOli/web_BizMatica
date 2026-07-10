@@ -26,11 +26,11 @@
   <!-- === ICON: NEURAL NETWORK === -->
 
   <!-- Outer frame ring -->
-  <circle cx="38" cy="38" r="34" fill="none" stroke="#1A4ADB" stroke-width="0.6" opacity="0.18" stroke-dasharray="3 5"/>
+  <circle cx="38" cy="38" r="34" fill="none" stroke="#8BBEFF" stroke-width="1" opacity="0.5" stroke-dasharray="3 5"/>
 
   <!-- Pulse rings around center -->
-  <circle cx="38" cy="38" r="17" fill="none" stroke="#3B6EF8" stroke-width="1"   opacity="0.2"/>
-  <circle cx="38" cy="38" r="24" fill="none" stroke="#3B6EF8" stroke-width="0.7" opacity="0.12"/>
+  <circle cx="38" cy="38" r="17" fill="none" stroke="#5B9CF6" stroke-width="1"   opacity="0.35"/>
+  <circle cx="38" cy="38" r="24" fill="none" stroke="#5B9CF6" stroke-width="0.8" opacity="0.22"/>
 
   <!-- Cross-links (faint secondary connections) -->
   <line x1="38"  y1="6"  x2="66" y2="24" stroke="#4C7EF0" stroke-width="1"   stroke-linecap="round" opacity="0.3"/>
