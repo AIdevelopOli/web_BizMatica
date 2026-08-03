@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>BizMatica — Leták A5</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #D0D8E8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 60px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .flyer {
+    width: 560px;
+    height: 793px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(5,13,31,0.35), 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  /* ── TOP — navy ── */
+  .top {
+    flex: 0 0 322px;
+    background: linear-gradient(145deg, #0D25A0 0%, #050D1F 100%);
+    padding: 0 44px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .top::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(59,110,248,0.28) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .top::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -20px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(91,156,246,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .logo-row {
+    position: absolute;
+    top: 22px;
+    right: -18px;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: rgba(139,190,255,0.55);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .headline {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+  }
+
+  .headline em {
+    color: #5B9CF6;
+    font-style: normal;
+  }
+
+  /* ── BOTTOM — white ── */
+  .bottom {
+    flex: 0 0 322px;
+    background: #ffffff;
+    padding: 0 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card-footer {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    border-top: 1px solid #EEF1F7;
+  }
+
+  .benefits-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .benefit-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    background: #EEF4FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #3B6EF8;
+  }
+
+  .benefit-copy strong {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    color: #050D1F;
+    display: block;
+    margin-bottom: 5px;
+    letter-spacing: -0.01em;
+  }
+
+  .benefit-copy span {
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.6;
+  }
+
+  .rule {
+    width: 100%;
+    height: 1px;
+    background: #F0F2F5;
+    margin: 24px 0;
+    margin-top: auto;
+  }
+
+  .footer-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .qr-box {
+    width: 88px;
+    height: 88px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #E5E9F0;
+  }
+
+  .qr-box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    image-rendering: pixelated;
+  }
+
+  .contact-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .contact-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-line svg {
+    color: #3B6EF8;
+    flex-shrink: 0;
+  }
+
+  .contact-line span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #374151;
+    letter-spacing: 0.02em;
+  }
+
+  .cta {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #3B6EF8;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 9px 16px;
+    border-radius: 8px;
+    letter-spacing: 0.01em;
+    width: fit-content;
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+
+  <!-- TOP -->
+  <div class="top">
+    <div class="logo-row">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 94" height="64" style="width:auto;">
+        <defs>
+          <linearGradient id="coreGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3B6EF8"/>
+            <stop offset="100%" stop-color="#0A1F7A"/>
+          </linearGradient>
+          <linearGradient id="nodeGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#5B9CF6"/>
+            <stop offset="100%" stop-color="#1A4ADB"/>
+          </linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur1"/>
+            <feGaussianBlur stdDeviation="6" result="blur2"/>
+            <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="nodeGlow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle cx="38" cy="38" r="34" fill="none" stroke="#8BBEFF" stroke-width="1" opacity="0.5" stroke-dasharray="3 5"/>
+        <circle cx="38" cy="38" r="17" fill="none" stroke="#5B9CF6" stroke-width="1" opacity="0.35"/>
+        <circle cx="38" cy="38" r="24" fill="none" stroke="#5B9CF6" stroke-width="0.8" opacity="0.22"/>
+        <line x1="38" y1="6" x2="66" y2="24" stroke="#4C7EF0" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+        <line x1="66" y1="24" x2="62" y2="62" stroke="#4C7EF0" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+        <line x1="10" y1="22" x2="8" y2="56" stroke="#4C7EF0" stroke-width="0.8" stroke-linecap="round" opacity="0.25"/>
+        <line x1="8" y1="56" x2="62" y2="62" stroke="#4C7EF0" stroke-width="0.8" stroke-linecap="round" opacity="0.25"/>
+        <line x1="38" y1="26" x2="38" y2="9" stroke="#2158E8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+        <line x1="47" y1="31" x2="64" y2="25" stroke="#2158E8" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <line x1="46" y1="44" x2="61" y2="61" stroke="#2158E8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+        <line x1="28" y1="42" x2="10" y2="57" stroke="#2158E8" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <line x1="29" y1="30" x2="11" y2="21" stroke="#2158E8" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+        <circle cx="38" cy="17" r="2" fill="#5B9CF6" opacity="0.7"/>
+        <circle cx="55" cy="28" r="1.5" fill="#5B9CF6" opacity="0.6"/>
+        <circle cx="54" cy="52" r="2" fill="#5B9CF6" opacity="0.7"/>
+        <circle cx="19" cy="50" r="1.5" fill="#5B9CF6" opacity="0.6"/>
+        <circle cx="20" cy="25" r="1.5" fill="#5B9CF6" opacity="0.6"/>
+        <circle cx="11" cy="21" r="4" fill="url(#nodeGrad)" filter="url(#nodeGlow)"/>
+        <circle cx="38" cy="6" r="5.5" fill="url(#nodeGrad)" filter="url(#nodeGlow)"/>
+        <circle cx="66" cy="24" r="4.5" fill="url(#nodeGrad)" filter="url(#nodeGlow)"/>
+        <circle cx="62" cy="62" r="6" fill="url(#nodeGrad)" filter="url(#nodeGlow)"/>
+        <circle cx="9" cy="57" r="4" fill="url(#nodeGrad)" filter="url(#nodeGlow)"/>
+        <circle cx="38" cy="38" r="14" fill="#2158E8" opacity="0.2" filter="url(#glow)"/>
+        <circle cx="38" cy="38" r="11" fill="url(#coreGrad)"/>
+        <circle cx="38" cy="38" r="5.5" fill="white" opacity="0.95"/>
+        <circle cx="38" cy="38" r="2.5" fill="#1A4ADB"/>
+        <text x="86" y="46" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="32" font-weight="800" font-style="italic" letter-spacing="-1">
+          <tspan fill="#ffffff">Biz</tspan><tspan fill="#5B9CF6">Matica</tspan>
+        </text>
+        <text x="93" y="68" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" font-weight="500" letter-spacing="0.8" fill="#8BBEFF" opacity="0.85">AUTOMATE. GROW. WIN.</text>
+      </svg>
+    </div>
+
+    <div class="eyebrow">AI automatizace · bizmatica.cz</div>
+    <div class="headline">
+      Méně rutiny.<br>
+      <em>Více byznysu.</em>
+    </div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(255,255,255,0.65);margin-top:16px;line-height:1.5;position:relative;z-index:2;">BizMatica pomůže vaší firmě odstranit rutinní úkoly, propojit systémy a vytvořit inteligentní AI řešení tak, aby se váš tým mohl věnovat tomu, na čem opravdu záleží.</div>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.18em;text-transform:uppercase;color:#3B6EF8;margin-bottom:22px;">Co vám AI automatizace přinese:</div>
+    <div class="benefits-wrapper">
+    <div class="benefits">
+
+      <div class="benefit">
+        <div class="benefit-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="benefit-copy">
+          <strong>Váš tým se přestane věnovat rutině</strong>
+          <span>Opakující se úkoly přebere AI. Lidé se věnují práci s hodnotou.</span>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <div class="benefit-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="benefit-copy">
+          <strong>AI automatizace pracuje 24/7</strong>
+          <span>Žádné přestávky, žádné chyby z únavy, žádné zapomenuté úkoly.</span>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <div class="benefit-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="8" cy="6" r="2" fill="white"/><circle cx="16" cy="12" r="2" fill="white"/><circle cx="10" cy="18" r="2" fill="white"/></svg>
+        </div>
+        <div class="benefit-copy">
+          <strong>Specifické řešení pro váš byznys</strong>
+          <span>Automatizace se přizpůsobí přesně vašim procesům.</span>
+        </div>
+      </div>
+
+    </div>
+    </div><!-- /benefits-wrapper -->
+
+  </div><!-- /bottom -->
+
+  <!-- CARD FOOTER -->
+  <div class="card-footer">
+
+      <!-- LEFT NAVY COLUMN -->
+      <div style="width:136px;flex-shrink:0;background:linear-gradient(155deg,#0D25A0 0%,#050D1F 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;position:relative;">
+        <div style="position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(59,110,248,0.25) 0%,transparent 60%);pointer-events:none;"></div>
+        <img id="qr-letak" src="data:image/png;base64,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" alt="QR" style="width:88px;height:88px;border-radius:4px;image-rendering:pixelated;position:relative;z-index:1;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:0.18em;color:rgba(139,190,255,0.6);position:relative;z-index:1;">BIZMATICA.CZ</span>
+      </div>
+
+      <!-- SEPARATOR -->
+      <div style="width:1px;flex-shrink:0;background:linear-gradient(to bottom,transparent 8%,#DBE5FF 30%,#DBE5FF 70%,transparent 92%);"></div>
+
+      <!-- RIGHT WHITE COLUMN -->
+      <div style="flex:1;background:#fff;display:flex;flex-direction:column;justify-content:center;padding:18px 20px 18px 22px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:800;font-style:italic;color:#050D1F;letter-spacing:-0.025em;line-height:1.1;">Ing. Oliver Klamo, MBA</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:#3B6EF8;letter-spacing:0.2em;text-transform:uppercase;margin-top:4px;">Zakladatel &amp; AI Automation Consultant</div>
+        <div style="width:28px;height:1.5px;background:linear-gradient(to right,#3B6EF8,rgba(59,110,248,0.1));margin:7px 0 7px;"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:7px;">
+              <svg width="11" height="11" fill="none" stroke="#3B6EF8" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#2E3A5C;letter-spacing:0.02em;">info@bizmatica.cz</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:7px;">
+              <svg width="11" height="11" fill="none" stroke="#3B6EF8" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#2E3A5C;letter-spacing:0.02em;">+420 602 134 247</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:7px;">
+              <svg width="11" height="11" fill="none" stroke="#3B6EF8" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#2E3A5C;letter-spacing:0.02em;">bizmatica.cz</span>
+            </div>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:5px;background:#3B6EF8;color:white;font-family:'DM Sans',sans-serif;font-weight:600;font-size:11px;padding:7px 13px;border-radius:7px;white-space:nowrap;">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Bezplatná konzultace
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /card-footer -->
+
+</div><!-- /flyer -->
+</body>
+</html>

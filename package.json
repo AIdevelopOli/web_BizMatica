@@ -13,5 +13,9 @@
   "dependencies": {
     "nodemailer": "^8.0.8",
     "puppeteer": "^25.0.4"
+  },
+  "devDependencies": {
+    "pdf-lib": "^1.17.1",
+    "qrcode": "^1.5.4"
   }
 }

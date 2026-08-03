@@ -3,3 +3,14 @@ temporary screenshots/
 screenshot-section.mjs
 screenshot.mjs
 serve.mjs
+
+# Print files a pomocné skripty
+print-files/
+business-card.html
+gen-letak-qr.mjs
+gen-qr.mjs
+generate-print.mjs
+restructure-card.mjs
+restructure-card2.mjs
+restructure-card3.mjs
+screenshot-contact.mjs
