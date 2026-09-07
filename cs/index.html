@@ -77,28 +77,33 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Co je automatizace podnikových procesů?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Automatizace podnikových procesů využívá software a AI k automatickému provádění opakujících se úkolů, jako je zadávání dat, follow-up e-maily, generování reportů nebo kvalifikace leadů, bez manuální práce. Váš tým se tak může soustředit na hodnotnější činnosti."}
+        "name": "Kolik AI automatizace stojí?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Cena závisí na rozsahu: kolik systémů propojujeme, jaký je objem dat a jestli chcete průběžnou podporu. Po bezplatném auditu dostanete pevnou nabídku, obvykle do 48 hodin. Žádné hodinové sazby s otevřeným koncem."}
       },
       {
         "@type": "Question",
-        "name": "Jak dlouho trvá implementace automatizace?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Většina automatizací se nasadí za 1–3 týdny podle složitosti. Začínáme bezplatným auditem, abychom přesně odhadli rozsah projektu ještě před jakýmkoli závazkem."}
+        "name": "Nemáme ve firmě technické lidi. Zvládneme to?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Technická část je naše práce. Vy popíšete proces, který vás zdržuje, my navrhneme, postavíme a nasadíme řešení. Vaše role je poskytnout součinnost, přístupy k systémům a zpětnou vazbu."}
       },
       {
         "@type": "Question",
-        "name": "Kolik může moje firma ušetřit díky AI automatizaci?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Automatizace typicky ušetří 15–20 hodin týdně manuální práce. Přesné úspory závisí na tom, které procesy se automatizují a jak velký je tým."}
+        "name": "Kdo řešení spravuje a co když přestane fungovat?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Po nasazení automatizaci monitorujeme a udržujeme, aby běžela spolehlivě a přizpůsobovala se změnám ve vaší firmě. Když něco selže, řešíme to my."}
       },
       {
         "@type": "Question",
-        "name": "S jakými firmami BizMatica pracuje?",
-        "acceptedAnswer": {"@type": "Answer", "text": "BizMatica se zaměřuje na malé a střední podniky (MSP) ze všech odvětví v České republice, na Slovensku i v zahraničí."}
+        "name": "Musíme kvůli tomu měnit nástroje, které používáme?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Většinou ne. Automatizace se napojí na vaše stávající systémy jako CRM, e-mail, účetnictví nebo e-shop přes jejich API. Cílem je zapadnout do toho, co už máte."}
       },
       {
         "@type": "Question",
-        "name": "Je úvodní konzultace zdarma?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Ano. BizMatica nabízí bezplatný 30minutový hovor, kde identifikujeme vaše tři největší příležitosti k automatizaci, bez závazků a bez podmínek."}
+        "name": "Co se stane s našimi daty?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Řešení stavíme tak, aby data zůstala pod vaší kontrolou. Používáme prověřené poskytovatele a zpracováváme jen data nutná pro danou automatizaci. Konkrétní tok dat a soulad s GDPR doložíme při návrhu řešení."}
+      },
+      {
+        "@type": "Question",
+        "name": "Jak dlouho trvá nasazení?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Většina automatizací se nasadí za 1–3 týdny podle složitosti. Bezplatný audit upřesní rozsah i termín ještě před jakýmkoli závazkem."}
       }
     ]
   }
@@ -207,6 +212,12 @@
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #060D2E; }
     ::-webkit-scrollbar-thumb { background: #1A4ADB; border-radius: 3px; }
+
+    details.faq-item summary { list-style: none; }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary svg { transition: transform 0.2s ease; }
+    details.faq-item[open] summary svg { transform: rotate(45deg); }
+    details.faq-item summary:focus-visible { outline: 2px solid #3B6EF8; outline-offset: 2px; border-radius: 12px; }
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
@@ -225,6 +236,7 @@
       <div class="hidden md:flex items-center gap-7">
         <a href="#reference"   class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">AI řešení</a>
         <a href="#jak-to-funguje" class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Jak to funguje</a>
+        <a href="#faq"         class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">FAQ</a>
         <a href="/cs/blog/"    class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Blog</a>
         <a href="#o-nas"       class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">O nás</a>
         <a href="#kariera"     class="text-sm font-medium text-white/65 hover:text-white transition-colors duration-200">Kariéra</a>
@@ -254,6 +266,7 @@
   <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 px-6 py-5 space-y-4" style="background:rgba(6,13,46,0.98);backdrop-filter:blur(14px);">
     <a href="#reference"      class="block text-white/75 hover:text-white text-sm font-medium transition-colors">AI řešení</a>
     <a href="#jak-to-funguje" class="block text-white/75 hover:text-white text-sm font-medium transition-colors">Jak to funguje</a>
+    <a href="#faq"            class="block text-white/75 hover:text-white text-sm font-medium transition-colors">FAQ</a>
     <a href="/cs/blog/"       class="block text-white/75 hover:text-white text-sm font-medium transition-colors">Blog</a>
     <a href="#o-nas"          class="block text-white/75 hover:text-white text-sm font-medium transition-colors">O nás</a>
     <a href="#kariera"        class="block text-white/75 hover:text-white text-sm font-medium transition-colors">Kariéra</a>
@@ -501,6 +514,68 @@
         <h3 class="font-display font-bold text-bm-dark text-xl mb-3" style="letter-spacing:-0.02em;">Průběžný rozvoj</h3>
         <p class="text-gray-500 text-sm" style="line-height:1.72;">Potřebujete úpravy? Řešíme aktualizace, vylepšení a nové požadavky s tím, jak váš byznys roste.</p>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FAQ ═══════════════════════════ -->
+<section id="faq" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-3xl mx-auto px-6 lg:px-10">
+    <div class="mb-14 reveal">
+      <p class="text-bm-electric font-semibold text-xs tracking-widest uppercase mb-4">Časté dotazy</p>
+      <h2 class="font-display font-bold text-bm-dark text-4xl lg:text-5xl" style="letter-spacing:-0.03em;line-height:1.08;">Co se ptáte<br/>nejčastěji</h2>
+    </div>
+
+    <div class="reveal flex flex-col gap-3">
+
+      <details class="faq-item group rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.04);">
+        <summary class="flex items-center justify-between gap-5 cursor-pointer px-6 py-5 font-display font-bold text-bm-dark text-lg" style="letter-spacing:-0.01em;">
+          Kolik AI automatizace stojí?
+          <svg class="w-5 h-5 text-bm-electric flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="px-6 pb-6 text-gray-500 text-base" style="line-height:1.72;">Cena závisí na rozsahu: kolik systémů propojujeme, jaký je objem dat a jestli chcete průběžnou podporu. Po bezplatném auditu dostanete pevnou nabídku, obvykle do 48 hodin. Žádné hodinové sazby s otevřeným koncem.</p>
+      </details>
+
+      <details class="faq-item group rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.04);">
+        <summary class="flex items-center justify-between gap-5 cursor-pointer px-6 py-5 font-display font-bold text-bm-dark text-lg" style="letter-spacing:-0.01em;">
+          Nemáme ve firmě technické lidi. Zvládneme to?
+          <svg class="w-5 h-5 text-bm-electric flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="px-6 pb-6 text-gray-500 text-base" style="line-height:1.72;">Technická část je naše práce. Vy popíšete proces, který vás zdržuje, my navrhneme, postavíme a nasadíme řešení. Vaše role je poskytnout součinnost, přístupy k systémům a zpětnou vazbu.</p>
+      </details>
+
+      <details class="faq-item group rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.04);">
+        <summary class="flex items-center justify-between gap-5 cursor-pointer px-6 py-5 font-display font-bold text-bm-dark text-lg" style="letter-spacing:-0.01em;">
+          Kdo řešení spravuje a co když přestane fungovat?
+          <svg class="w-5 h-5 text-bm-electric flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="px-6 pb-6 text-gray-500 text-base" style="line-height:1.72;">Po nasazení automatizaci monitorujeme a udržujeme, aby běžela spolehlivě a přizpůsobovala se změnám ve vaší firmě. Když něco selže, řešíme to my.</p>
+      </details>
+
+      <details class="faq-item group rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.04);">
+        <summary class="flex items-center justify-between gap-5 cursor-pointer px-6 py-5 font-display font-bold text-bm-dark text-lg" style="letter-spacing:-0.01em;">
+          Musíme kvůli tomu měnit nástroje, které používáme?
+          <svg class="w-5 h-5 text-bm-electric flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="px-6 pb-6 text-gray-500 text-base" style="line-height:1.72;">Většinou ne. Automatizace se napojí na vaše stávající systémy jako CRM, e-mail, účetnictví nebo e-shop přes jejich API. Cílem je zapadnout do toho, co už máte.</p>
+      </details>
+
+      <details class="faq-item group rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.04);">
+        <summary class="flex items-center justify-between gap-5 cursor-pointer px-6 py-5 font-display font-bold text-bm-dark text-lg" style="letter-spacing:-0.01em;">
+          Co se stane s našimi daty?
+          <svg class="w-5 h-5 text-bm-electric flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="px-6 pb-6 text-gray-500 text-base" style="line-height:1.72;">Řešení stavíme tak, aby data zůstala pod vaší kontrolou. Používáme prověřené poskytovatele a zpracováváme jen data nutná pro danou automatizaci. Konkrétní tok dat a soulad s GDPR doložíme při návrhu řešení.</p>
+      </details>
+
+      <details class="faq-item group rounded-2xl border border-gray-100 bg-white" style="box-shadow:0 2px 20px rgba(0,0,0,0.04);">
+        <summary class="flex items-center justify-between gap-5 cursor-pointer px-6 py-5 font-display font-bold text-bm-dark text-lg" style="letter-spacing:-0.01em;">
+          Jak dlouho trvá nasazení?
+          <svg class="w-5 h-5 text-bm-electric flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        </summary>
+        <p class="px-6 pb-6 text-gray-500 text-base" style="line-height:1.72;">Většina automatizací se nasadí za 1–3 týdny podle složitosti. Bezplatný audit upřesní rozsah i termín ještě před jakýmkoli závazkem.</p>
+      </details>
 
     </div>
   </div>
