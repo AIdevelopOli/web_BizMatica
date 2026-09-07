@@ -4,6 +4,9 @@ screenshot-section.mjs
 screenshot.mjs
 serve.mjs
 
+# Dev/preview kopie (nenasazovat)
+cs/dev/
+
 # Print files a pomocné skripty
 print-files/
 business-card.html

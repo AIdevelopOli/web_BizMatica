@@ -2,9 +2,13 @@ export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
-    const { name, email, company, message, lang, 'cf-turnstile-response': token } = await request.json();
+    const { name, email, company, message, link, type, lang, 'cf-turnstile-response': token } = await request.json();
 
     const from = 'BizMatica Web <info@bizmatica.net>';
+    const isCareer = type === 'kariera';
+    const safeLink = typeof link === 'string' && /^https?:\/\//i.test(link.trim())
+      ? link.trim().replace(/[<>"]/g, '')
+      : '';
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
@@ -37,8 +41,19 @@ export async function onRequestPost(context) {
         from,
         to: 'info@bestbiz.cz',
         reply_to: email,
-        subject: `New inquiry from ${name}${company ? ` (${company})` : ''}`,
-        html: `
+        subject: isCareer
+          ? `Uchazeč o spolupráci: ${name}`
+          : `New inquiry from ${name}${company ? ` (${company})` : ''}`,
+        html: isCareer
+          ? `
+          <p><strong>Uchazeč o spolupráci</strong></p>
+          <p><strong>Jméno:</strong> ${name}</p>
+          <p><strong>E-mail:</strong> <a href="mailto:${email}">${email}</a></p>
+          ${safeLink ? `<p><strong>Odkaz na práci:</strong> <a href="${safeLink}">${safeLink}</a></p>` : ''}
+          <hr/>
+          <p>${message.replace(/\n/g, '<br/>')}</p>
+        `
+          : `
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
           ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
