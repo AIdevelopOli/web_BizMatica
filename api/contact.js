@@ -7,7 +7,7 @@ module.exports = async function handler(req, res) {
 
   const { name, email, company, message, link, type, lang } = req.body;
 
-  const to = lang === 'sk' ? 'info@bizmatica.sk' : 'info@bizmatica.cz';
+  const to = lang === 'sk' ? 'info@bizmatica.sk' : lang === 'en' ? 'info@bizmatica.net' : 'info@bizmatica.cz';
   const isCareer = type === 'kariera';
   const safeLink = typeof link === 'string' && /^https?:\/\//i.test(link.trim())
     ? link.trim().replace(/[<>"]/g, '')
