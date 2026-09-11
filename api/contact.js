@@ -29,7 +29,7 @@ module.exports = async function handler(req, res) {
   try {
     await transporter.sendMail({
       from: `"BizMatica Web" <${process.env.SMTP_USER}>`,
-      to: 'info@bestbiz.cz',
+      to: 'info@bizmatica.cz',
       replyTo: email,
       subject: isCareer
         ? `Uchazeč o spolupráci: ${name}`

@@ -39,7 +39,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from,
-        to: 'info@bestbiz.cz',
+        to: 'info@bizmatica.cz',
         reply_to: email,
         subject: isCareer
           ? `Uchazeč o spolupráci: ${name}`
