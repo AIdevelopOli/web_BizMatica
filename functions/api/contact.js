@@ -5,6 +5,7 @@ export async function onRequestPost(context) {
     const { name, email, company, message, link, type, lang, 'cf-turnstile-response': token } = await request.json();
 
     const from = 'BizMatica Web <info@bizmatica.net>';
+    const to = lang === 'sk' ? 'info@bizmatica.sk' : 'info@bizmatica.cz';
     const isCareer = type === 'kariera';
     const safeLink = typeof link === 'string' && /^https?:\/\//i.test(link.trim())
       ? link.trim().replace(/[<>"]/g, '')
@@ -39,7 +40,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from,
-        to: 'info@bizmatica.cz',
+        to,
         reply_to: email,
         subject: isCareer
           ? `Uchazeč o spolupráci: ${name}`

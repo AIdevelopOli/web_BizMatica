@@ -5,8 +5,9 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, company, message, link, type } = req.body;
+  const { name, email, company, message, link, type, lang } = req.body;
 
+  const to = lang === 'sk' ? 'info@bizmatica.sk' : 'info@bizmatica.cz';
   const isCareer = type === 'kariera';
   const safeLink = typeof link === 'string' && /^https?:\/\//i.test(link.trim())
     ? link.trim().replace(/[<>"]/g, '')
@@ -29,7 +30,7 @@ module.exports = async function handler(req, res) {
   try {
     await transporter.sendMail({
       from: `"BizMatica Web" <${process.env.SMTP_USER}>`,
-      to: 'info@bizmatica.cz',
+      to,
       replyTo: email,
       subject: isCareer
         ? `Uchazeč o spolupráci: ${name}`
